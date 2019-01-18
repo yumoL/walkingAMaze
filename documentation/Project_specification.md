@@ -15,13 +15,14 @@ When walking a maze, the program will get the file name of the maze, then the pr
 
 ### Time and space complexity 
 | Algorithms     | Time complexity     | Space complexity|
-| :------------- | :----------:        | :-----------:   |
-|  DFS           | O(|V|+|E|)          | O(|V|)          |
-|  BFS           | O(|V|+|E|)          | O(|V|)          |
-|  A*-search     | O(|E|)              | O(|V|)          |
+| :-------------:| :----------:        | :-----------:   |
+|  DFS           | O(V+E)              | O(V)          |
+|  BFS           | O(V+E)          | O(V)          |
+|  A*-search     | O(E)              | O(V)          |
 
 |V|=number of nodes; |E|=number of edges
 
 ### Sources
 [A*search](https://en.wikipedia.org/wiki/A*_search_algorithm)
+
 [Different algorithms to walk a maze](http://bryukh.com/labyrinth-algorithms/)
