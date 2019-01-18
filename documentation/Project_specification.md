@@ -9,7 +9,7 @@ In this project I'm going to compare different algorithms to go through a maze. 
 The data structures to be used are (at least) stack and queue. The algorithms to be used are DFS, BFS (in both drawing and walking a maze)  and A*-search (only in walking a maze). 
 
 ### Program input and use of them
-When drawing a new maze, the program will get the size (how many lines and how many columns does the maze have) as inputs, then the program will draw a new maze with given information automatically. 
+When drawing a new maze, the program will get the size of the maze (how many lines and how many columns does the maze have) as inputs, then the program will draw a new maze with given information automatically. 
 
 When walking a maze, the program will get the file name of the maze, then the program will walk the maze using the algorithms mentioned above. 
 
