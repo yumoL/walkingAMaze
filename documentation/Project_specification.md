@@ -20,7 +20,7 @@ When walking a maze, the program will get the file name of the maze, then the pr
 |  BFS           | O(V+E)          | O(V)          |
 |  A*-search     | O(E)              | O(V)          |
 
-|V|=number of nodes; |E|=number of edges
+V=number of nodes; E=number of edges
 
 ### Sources
 [A*search](https://en.wikipedia.org/wiki/A*_search_algorithm)
