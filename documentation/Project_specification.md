@@ -3,7 +3,7 @@
 ### Problem to solve
 This project is about generating a maze and walking through it using different algorithms.
 
-In this project I'm going to compare different algorithms to walk through a maze. The algorithms to be compared include DFS(depth-first search), BFS(breadth-first search) and A*-search. In addition to walking through a maze, I'm also going to generate a maze using DFS and BFS, which means in the final program, user can not only chose a finished maze which will be saved as a txt.-file to walk through, but also can generate a new maze by himself using different algorithms to walk through. 
+In this project I'm going to use different algorithms to walk through a maze. The algorithms to be used include DFS(depth-first search), BFS(breadth-first search) and A*-search. In addition to walking through a maze, I'm also going to generate a maze using DFS and BFS, which means in the final program, user can not only choose a finished maze which will be saved as a txt.-file to walk through, but also can generate a new maze by himself using different algorithms to walk through. 
 
 ### Data structers and algorithms
 The data structures to be used are (at least) stack and queue. The algorithms to be used are DFS, BFS (in both drawing and walking a maze)  and A*-search (only in walking a maze). 
