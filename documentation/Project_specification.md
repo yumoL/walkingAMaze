@@ -1,9 +1,9 @@
 # Project Specification
 
 ### Problem to solve
-This project is about drawing a maze and walking through it using different algorithms.
+This project is about generating a maze and walking through it using different algorithms.
 
-In this project I'm going to compare different algorithms to go through a maze. The algorithms to be compared include DFS(depth-first search), BFS(breadth-first search) and A*-search. In addition to walking through a maze, I'm also going to draw a maze using DFS and BFS, which means in the final program, user can not only chose a finished maze which will be saved as a txt.-file to walk through, but also can draw a new maze using different algorithms to walk through. 
+In this project I'm going to compare different algorithms to walk through a maze. The algorithms to be compared include DFS(depth-first search), BFS(breadth-first search) and A*-search. In addition to walking through a maze, I'm also going to generate a maze using DFS and BFS, which means in the final program, user can not only chose a finished maze which will be saved as a txt.-file to walk through, but also can generate a new maze by himself using different algorithms to walk through. 
 
 ### Data structers and algorithms
 The data structures to be used are (at least) stack and queue. The algorithms to be used are DFS, BFS (in both drawing and walking a maze)  and A*-search (only in walking a maze). 
@@ -26,3 +26,5 @@ V=number of nodes; E=number of edges
 [A*search](https://en.wikipedia.org/wiki/A*_search_algorithm)
 
 [Different algorithms to walk a maze](http://bryukh.com/labyrinth-algorithms/)
+
+[Maze generation](https://en.wikipedia.org/wiki/Maze_generation_algorithm)
