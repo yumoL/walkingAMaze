@@ -18,7 +18,7 @@ When walking a maze, the program will get the file name of the maze, then the pr
 | :-------------:| :----------:    | :-----------:   |
 |  DFS           | O(V+E)          | O(V)            |
 |  BFS           | O(V+E)          | O(V)            |
-|  A*-search     | O(E) (worst case) | O(V)(worst case |
+|  A*-search     | O(E) (worst case) | O(V)(worst case)|
 
 V=number of nodes; E=number of edges
 
