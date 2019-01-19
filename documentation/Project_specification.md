@@ -14,11 +14,11 @@ When drawing a new maze, the program will get the size of the maze (how many lin
 When walking a maze, the program will get the file name of the maze, then the program will walk the maze using the algorithms mentioned above. 
 
 ### Time and space complexity 
-| Algorithms     | Time complexity     | Space complexity|
-| :-------------:| :----------:        | :-----------:   |
-|  DFS           | O(V+E)              | O(V)          |
-|  BFS           | O(V+E)          | O(V)          |
-|  A*-search     | O(E)              | O(V)          |
+| Algorithms     | Time complexity | Space complexity|
+| :-------------:| :----------:    | :-----------:   |
+|  DFS           | O(V+E)          | O(V)            |
+|  BFS           | O(V+E)          | O(V)            |
+|  A*-search     | O(E) (worst case) | O(V)(worst case |
 
 V=number of nodes; E=number of edges
 
