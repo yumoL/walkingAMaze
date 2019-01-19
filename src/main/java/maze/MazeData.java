@@ -10,16 +10,16 @@ import java.util.Scanner;
 public class MazeData {
 
     /**
-     * lines=how many lines in the labyrinth columns=how many columns in the
-     * labyrinth
+     * lines=how many lines in the maze, columns=how many columns in the
+     * maze
      */
     private int lines, columns;
-    private char[][] labyrinth;
+    private char[][] maze;
 
     /**
-     * initialise the labyrinth
+     * initialise the maze
      *
-     * @param filename the name of the labyrinth file
+     * @param filename the name of the maze file
      */
     public MazeData(String filename) {
         if (filename == null) {
@@ -33,7 +33,7 @@ public class MazeData {
                 throw new IllegalArgumentException("File " + filename + " doesn't exist");
             }
             scanner = setScanner(file);
-            setLabyrinth(scanner);
+            setMaze(scanner);
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -52,18 +52,18 @@ public class MazeData {
     }
 
     /**
-     * get certain character of the labyrinth
+     * get certain character of the maze
      *
-     * @param i the x-coordinate of the character in the labyrinth
-     * @param j the y-coordinate of the character in the labyrinth
+     * @param i the x-coordinate of the character in the maze
+     * @param j the y-coordinate of the character in the maze
      * @return character whose x-coordinate is i and y-coordinate is j in the
-     * labyrinth
+     * maze
      */
-    public char getLabyrinth(int i, int j) {
+    public char getMaze(int i, int j) {
         if (!inArea(i, j)) {
             throw new IllegalArgumentException("i or j out of index");
         }
-        return labyrinth[i][j];
+        return maze[i][j];
     }
 
     /**
@@ -71,7 +71,7 @@ public class MazeData {
      *
      * @param x x-coordinate
      * @param y y-coordinate
-     * @return true if both x- and y-coordinates are in the labyrinth, otherwise
+     * @return true if both x- and y-coordinates are in the maze, otherwise
      * false
      */
     public boolean inArea(int x, int y) {
@@ -84,34 +84,34 @@ public class MazeData {
         return scanner;
     }
 
-    private void setLabyrinth(Scanner scanner) {
+    private void setMaze(Scanner scanner) {
         String firstLine = scanner.nextLine();
         String[] info = firstLine.trim().split("\\s+");
         lines = Integer.parseInt(info[0]);
         columns = Integer.parseInt(info[1]);
 
-        labyrinth = new char[lines][columns];
+        maze = new char[lines][columns];
         for (int i = 0; i < lines; i++) {
             String line = scanner.nextLine();
             if (line.length() != columns) {
-                throw new IllegalArgumentException("The labyrinth file is not correct");
+                throw new IllegalArgumentException("The maze file is not correct");
             }
 
             for (int j = 0; j < columns; j++) {
-                labyrinth[i][j] = line.charAt(j);
+                maze[i][j] = line.charAt(j);
             }
         }
 
     }
 
     /**
-     * print the labyrinth in text, only used in tests
+     * print the maze in text, only used in tests
      */
     public void print() {
         System.out.println(lines + " " + columns);
         for (int i = 0; i < lines; i++) {
             for (int j = 0; j < columns; j++) {
-                System.out.print(labyrinth[i][j]);
+                System.out.print(maze[i][j]);
             }
             System.out.println("");
         }
