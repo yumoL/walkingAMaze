@@ -12,4 +12,4 @@ should also be able to walk through a maze using at least DFS.
 
 ### Here's a question
 
-- Since I use different algorithms to walk a maze, will it be enough that I just walk through a maze using different algorithms
+- Since I use different algorithms to walk through a maze, will it be enough that user can walk through a maze using different algorithms? For example when user chooses "using DFS" then the program walks through a maze using DFS and when user chooses "Using A*" then the program walks through a maze using A*-search. Or should I also make a table to compare the efficiency of different algorithms? For example when user chooses "walking the maze", then there is a table which shows something like walking the maze using BFS spent x seconds and walking the maze using A*-search spent y seconds. 
