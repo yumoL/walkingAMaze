@@ -2,6 +2,7 @@
 A project of TiraLabra
 
 [![Build Status](https://travis-ci.org/yumoL/walkingAMaze.svg?branch=master)](https://travis-ci.org/yumoL/walkingAMaze)
+2f6cf354-90b4-4693-a219-5aafd074a065
 
 ### Documentation
 
