@@ -1,4 +1,4 @@
-package maze;
+package data;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -7,14 +7,19 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * Read the data of a maze from a file
+ */
 public class MazeData {
 
     /**
-     * lines=how many lines in the maze, columns=how many columns in the
-     * maze
+     * lines=how many lines in the maze, columns=how many columns in the maze
      */
     private int lines, columns;
     private char[][] maze;
+
+    public static final char ROAD = ' ';
+    public static final char WALL = '#';
 
     /**
      * initialise the maze
@@ -104,16 +109,16 @@ public class MazeData {
 
     }
 
-    /**
-     * print the maze in text, only used in tests
-     */
-    public void print() {
-        System.out.println(lines + " " + columns);
-        for (int i = 0; i < lines; i++) {
-            for (int j = 0; j < columns; j++) {
-                System.out.print(maze[i][j]);
-            }
-            System.out.println("");
-        }
-    }
+//    /**
+//     * print the maze in text, only used in tests
+//     */
+//    public void print() {
+//        System.out.println(lines + " " + columns);
+//        for (int i = 0; i < lines; i++) {
+//            for (int j = 0; j < columns; j++) {
+//                System.out.print(maze[i][j]);
+//            }
+//            System.out.println("");
+//        }
+//    }
 }
