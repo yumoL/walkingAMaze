@@ -65,21 +65,21 @@ public class MazeSolver {
         boolean hasSolution = false;
 
         while (!stack.isEmpty()) {
-            Node currentPosition = stack.pop();
-            setData(currentPosition.getX(), currentPosition.getY(), true);
+            Node currentNode = stack.pop();
+            setData(currentNode.getX(), currentNode.getY(), true);
 
-            if (currentPosition.getX() == data.getExitX() && currentPosition.getY() == data.getExitY()) {
+            if (currentNode.getX() == data.getExitX() && currentNode.getY() == data.getExitY()) {
                 hasSolution = true;
-                findPath(currentPosition);
+                findPath(currentNode);
                 break;
             }
 
             for (int i = 0; i < 4; i++) {
-                int newX = currentPosition.getX() + DIRECTION[i][0];
-                int newY = currentPosition.getY() + DIRECTION[i][1];
+                int newX = currentNode.getX() + DIRECTION[i][0];
+                int newY = currentNode.getY() + DIRECTION[i][1];
 
                 if (access(newX, newY)) {
-                    stack.push(new Node(newX, newY, currentPosition));
+                    stack.push(new Node(newX, newY, currentNode));
                     data.visited[newX][newY] = true;
 
                 }
@@ -104,20 +104,20 @@ public class MazeSolver {
         boolean hasSolution = false;
 
         while (!queue.isEmpty()) {
-            Node currentPosition = queue.pop();
-            setData(currentPosition.getX(), currentPosition.getY(), true);
+            Node currentNode = queue.pop();
+            setData(currentNode.getX(), currentNode.getY(), true);
 
-            if (currentPosition.getX() == data.getExitX() && currentPosition.getY() == data.getExitY()) {
+            if (currentNode.getX() == data.getExitX() && currentNode.getY() == data.getExitY()) {
                 hasSolution = true;
-                findPath(currentPosition);
+                findPath(currentNode);
                 break;
             }
             for (int i = 0; i < 4; i++) {
-                int newX = currentPosition.getX() + DIRECTION[i][0];
-                int newY = currentPosition.getY() + DIRECTION[i][1];
+                int newX = currentNode.getX() + DIRECTION[i][0];
+                int newY = currentNode.getY() + DIRECTION[i][1];
 
                 if (access(newX, newY)) {
-                    queue.addLast(new Node(newX, newY, currentPosition));
+                    queue.addLast(new Node(newX, newY, currentNode));
                     data.visited[newX][newY] = true;
                 }
             }
