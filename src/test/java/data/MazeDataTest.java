@@ -48,7 +48,7 @@ public class MazeDataTest {
         int columns = 101;
         int lines = 101;
         assertEquals(columns, data.getColumn());
-        assertEquals(lines, data.getLine());
+        assertEquals(lines, data.getRow());
     }
 
     @Test
