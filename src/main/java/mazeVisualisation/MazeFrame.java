@@ -36,14 +36,22 @@ public class MazeFrame extends JFrame {
             Graphics2D graphic2D = (Graphics2D) g;
 
             int width = canvasWidth / data.getColumn();
-            int height = canvasHeight / data.getLine();
+            int height = canvasHeight / data.getRow();
 
-            for (int i = 0; i < data.getLine(); i++) {
+            for (int i = 0; i < data.getRow(); i++) {
                 for (int j = 0; j < data.getColumn(); j++) {
                     if (data.getMaze(i, j) == MazeData.WALL) {
                         VisualizationHelper.setColor(graphic2D, Color.BLUE);
                     } else {
                         VisualizationHelper.setColor(graphic2D, Color.WHITE);
+                    }
+
+                    if (data.path[i][j]) {
+                        VisualizationHelper.setColor(graphic2D, Color.YELLOW);
+                    }
+
+                    if (data.result[i][j]) {
+                        VisualizationHelper.setColor(graphic2D, Color.RED);
                     }
                     VisualizationHelper.fillRectangle(graphic2D, j * width, i * height, width, height);
                 }
