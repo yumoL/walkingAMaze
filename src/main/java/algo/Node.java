@@ -3,8 +3,8 @@ package algo;
 public class Node implements Comparable<Node>{
 
     private int x, y;
-    private Node pre;
-    public int g, h, f;
+    private Node pre;// previous Node
+    public int g, h, f; //variables used in Astar-algorithm. Since A star doesn't work yet, the details of these variables haven't been added
 
     public Node(int x, int y, Node pre) {
         this.x = x;
