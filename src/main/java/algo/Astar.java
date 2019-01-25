@@ -9,8 +9,8 @@
 //
 //public class Astar {
 //
-//    private List<Node> openList = new ArrayList<Node>();// 开启列表
-//    private List<Node> closeList = new ArrayList<Node>();// 关闭列表
+//    private final List<Node> openList = new ArrayList<>();
+//    private final List<Node> closeList = new ArrayList<>();
 //    private MazeData data;
 //    private MazeFrame frame;
 //
@@ -43,56 +43,50 @@
 //            if (curNode.getX() == endPoint.getX() && curNode.getY() == endPoint.getY()
 //                    || openList.contains(endPoint)) {
 //                System.out.println("ok");
-//                findPath(curNode);
-////                while (!(curNode.getX() == startPoint.getY() && curNode.getY() == startPoint.getY())) {
-////                    //System.out.print("(" + curNode.x + "," + curNode.y + ") ");
-////                    //map[curNode.x][curNode.y] = 2;
-////                    
-////                    if (curNode.parentNode != null) {
-////                        curNode = curNode.parentNode;
-////                    }
-////                }
+//                //findPath(curNode);
+//                while (!(curNode.getX() == startPoint.getY() && curNode.getY() == startPoint.getY())) {
+//                    System.out.print("(" + curNode.getX() + "," + curNode.getY()+ ") ");
+//                    data.maze[curNode.getX()][curNode.getY()] = '2';
+//                    
+//                    if (curNode.getPre() != null) {
+//                        curNode = curNode.getPre();
+//                    }
+//                }
 //                //System.out.print("(" + startPoint.x + "," + startPoint.y + ")\n ");
-//                //map[startPoint.x][startPoint.y] = 2;
+//                data.maze[startPoint.getX()][startPoint.getY()] = 2;
 //                return true;
 //            }
 //            // up
 //            if (curNode.getY() - 1 >= 0) {
-//                if (checkPath(curNode.getX(), curNode.getY() - 1, curNode, endPoint,
-//                        CONST_HENG)) {
-//                    setData(curNode.getX(), curNode.getY() - 1, true);
-//                };
+//                checkPath(curNode.getX(), curNode.getY() - 1, curNode, endPoint,
+//                        CONST_HENG);
+//                    
+//                
 //            }
 //            // down
 //            if (curNode.getY() + 1 < col - 1) {
-//                if (checkPath(curNode.getX(), curNode.getY() + 1, curNode, endPoint,
-//                        CONST_HENG)) {
-//                    setData(curNode.getX(), curNode.getY() + 1, true);
-//                };
+//               checkPath(curNode.getX(), curNode.getY() + 1, curNode, endPoint,
+//                        CONST_HENG);
+//                    
 //            }
 //            // left
 //            if (curNode.getX() - 1 >= 0) {
-//                if (checkPath(curNode.getX() - 1, curNode.getY(), curNode, endPoint,
-//                        CONST_HENG)) {
-//                    setData(curNode.getX() - 1, curNode.getY(), true);
-//                };
+//               checkPath(curNode.getX() - 1, curNode.getY(), curNode, endPoint,
+//                        CONST_HENG);
+//                
 //            }
 //            // right
 //            if (curNode.getX() + 1 < row - 1) {
-//                if (checkPath(curNode.getX() + 1, curNode.getY(), curNode, endPoint,
-//                        CONST_HENG)) {
-//                    setData(curNode.getX() + 1, curNode.getY(), true);
-//                };
+//                checkPath(curNode.getX() + 1, curNode.getY(), curNode, endPoint,
+//                        CONST_HENG);
+//                    
 //            }
 //
 //            openList.remove(curNode);
 //            closeList.add(curNode);
-//            setData(curNode.getX(), curNode.getY(), true);
+//            //setData(curNode.getX(), curNode.getY(), true);
 //        }
-//        // if (!openList.contains(endPoint)) {
-//        // System.out.println("一条路径都未找到！！！");
-//        // return false;
-//        // }
+//        
 //
 //        return false;
 //
@@ -106,7 +100,7 @@
 //
 //        frame.render(data);
 //
-//        VisualizationHelper.pause(5);
+//        VisualizationHelper.pause(0);
 //    }
 //
 //   
@@ -119,23 +113,25 @@
 //            return false;
 //        }
 //        
-//        if (isListContains(closeList, x, y) != -1) {// 存在
+//        if (isListContains(closeList, x, y) != -1) {
 //            return false;
 //        }
 //        
 //        int index = -1;
-//        if ((index = isListContains(openList, x, y)) != -1) {// 存在
+//        if ((index = isListContains(openList, x, y)) != -1) {
 //            
 //            if ((preNode.g + c) < openList.get(index).g) {
 //                countG(node, endPoint, c);
 //                countF(node);
 //                openList.set(index, node);
+//                //setData(node.getX(),node.getY(),true);
 //            }
 //        } else {
 //            
 //            node.setPre(preNode);
 //            count(node, endPoint, c);
 //            openList.add(node);
+//            //setData(node.getX(),node.getY(),true);
 //        }
 //        return true;
 //    }
