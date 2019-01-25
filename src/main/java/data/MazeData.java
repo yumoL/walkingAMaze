@@ -13,13 +13,20 @@ import java.util.Scanner;
 public class MazeData {
 
     /**
-     * lines=how many lines in the maze, columns=how many columns in the maze
+     * rows=how many lines in the maze, columns=how many columns in the maze
      */
-    private int lines, columns;
+    private int rows, columns;
     private char[][] maze;
 
     public static final char ROAD = ' ';
     public static final char WALL = '#';
+    
+    private int entranceX,entranceY;
+    private int exitX,exitY;
+    
+    public boolean[][]visited;
+    public boolean[][]path;
+    public boolean[][]result;
 
     /**
      * initialise the maze
@@ -46,14 +53,34 @@ public class MazeData {
                 scanner.close();
             }
         }
+        entranceX=1;
+        entranceY=0;
+        exitX=rows-2;
+        exitY=columns-1;
     }
 
     public int getColumn() {
         return this.columns;
     }
 
-    public int getLine() {
-        return this.lines;
+    public int getRow() {
+        return this.rows;
+    }
+    
+    public int getEntranceX(){
+        return this.entranceX;
+    }
+    
+    public int getEntranceY(){
+        return this.entranceY;
+    }
+    
+    public int getExitX(){
+        return this.exitX;
+    }
+    
+    public int getExitY(){
+        return this.exitY;
     }
 
     /**
@@ -80,7 +107,7 @@ public class MazeData {
      * false
      */
     public boolean inArea(int x, int y) {
-        return x >= 0 && x < lines && y >= 0 && y < columns;
+        return x >= 0 && x < rows && y >= 0 && y < columns;
     }
 
     private Scanner setScanner(File file) throws FileNotFoundException {
@@ -92,11 +119,16 @@ public class MazeData {
     private void setMaze(Scanner scanner) {
         String firstLine = scanner.nextLine();
         String[] info = firstLine.trim().split("\\s+");
-        lines = Integer.parseInt(info[0]);
+        rows = Integer.parseInt(info[0]);
         columns = Integer.parseInt(info[1]);
 
-        maze = new char[lines][columns];
-        for (int i = 0; i < lines; i++) {
+        maze = new char[rows][columns];
+//        visited=new boolean[lines][columns];
+//        path=new boolean[lines][columns];
+//        result=new boolean[lines][columns];
+        resetTables();
+       
+        for (int i = 0; i < rows; i++) {
             String line = scanner.nextLine();
             if (line.length() != columns) {
                 throw new IllegalArgumentException("The maze file is not correct");
@@ -109,16 +141,9 @@ public class MazeData {
 
     }
 
-//    /**
-//     * print the maze in text, only used in tests
-//     */
-//    public void print() {
-//        System.out.println(lines + " " + columns);
-//        for (int i = 0; i < lines; i++) {
-//            for (int j = 0; j < columns; j++) {
-//                System.out.print(maze[i][j]);
-//            }
-//            System.out.println("");
-//        }
-//    }
+    public void resetTables(){
+        visited=new boolean[rows][columns];
+        path=new boolean[rows][columns];
+        result=new boolean[rows][columns];
+    }
 }
