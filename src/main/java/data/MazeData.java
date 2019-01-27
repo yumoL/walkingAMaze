@@ -16,17 +16,17 @@ public class MazeData {
      * rows=how many lines in the maze, columns=how many columns in the maze
      */
     private int rows, columns;
-    private char[][] maze;
+    public char[][] maze;
 
     public static final char ROAD = ' ';
     public static final char WALL = '#';
-    
-    private int entranceX,entranceY;
-    private int exitX,exitY;
-    
-    public boolean[][]visited;
-    public boolean[][]path;
-    public boolean[][]result;
+
+    private int entranceX, entranceY;
+    private int exitX, exitY;
+
+    public boolean[][] visited;
+    public boolean[][] path;
+    public boolean[][] result;
 
     /**
      * initialise the maze
@@ -57,6 +57,10 @@ public class MazeData {
         entranceY=0;
         exitX=rows-2;
         exitY=columns-1;
+//        entranceX = 0;
+//        entranceY = 0;
+//        exitX = 0;
+//        exitY = 3;
     }
 
     public int getColumn() {
@@ -66,20 +70,20 @@ public class MazeData {
     public int getRow() {
         return this.rows;
     }
-    
-    public int getEntranceX(){
+
+    public int getEntranceX() {
         return this.entranceX;
     }
-    
-    public int getEntranceY(){
+
+    public int getEntranceY() {
         return this.entranceY;
     }
-    
-    public int getExitX(){
+
+    public int getExitX() {
         return this.exitX;
     }
-    
-    public int getExitY(){
+
+    public int getExitY() {
         return this.exitY;
     }
 
@@ -123,11 +127,8 @@ public class MazeData {
         columns = Integer.parseInt(info[1]);
 
         maze = new char[rows][columns];
-//        visited=new boolean[lines][columns];
-//        path=new boolean[lines][columns];
-//        result=new boolean[lines][columns];
         resetTables();
-       
+
         for (int i = 0; i < rows; i++) {
             String line = scanner.nextLine();
             if (line.length() != columns) {
@@ -141,9 +142,9 @@ public class MazeData {
 
     }
 
-    public void resetTables(){
-        visited=new boolean[rows][columns];
-        path=new boolean[rows][columns];
-        result=new boolean[rows][columns];
+    public void resetTables() {
+        visited = new boolean[rows][columns];
+        path = new boolean[rows][columns];
+        result = new boolean[rows][columns];
     }
 }

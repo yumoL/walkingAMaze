@@ -1,7 +1,9 @@
 package mazeVisualisation;
 
+import algo.Astar;
+import algo.Bfs;
+import algo.Dfs;
 
-import algo.MazeSolver;
 import data.MazeData;
 import java.awt.EventQueue;
 
@@ -10,16 +12,16 @@ import java.awt.EventQueue;
  */
 public class MazeSolverVisualizer {
 
-    private static int DELAY = 0;
     private static int blockSide = 8;
 
-    private int method = 1;
+    private int method = 4;
 
-    private MazeData data;
+    public MazeData data;
     private MazeFrame frame;
 
-    private MazeSolver solver;
-    
+    private Dfs dfs;
+    private Bfs bfs;
+    private Astar astar;
 
     public MazeSolverVisualizer(String mazeFile) {
 
@@ -31,8 +33,9 @@ public class MazeSolverVisualizer {
         //initialise the window and the canvas
         EventQueue.invokeLater(() -> {
             frame = new MazeFrame("Walking The Maze", sceneWidth, sceneHeight);
-            solver = new MazeSolver(data, frame);
-            
+            dfs = new Dfs(data, frame);
+            bfs = new Bfs(data, frame);
+            astar = new Astar(data, frame);
             new Thread(() -> {
                 run();
             }).start();
@@ -45,36 +48,25 @@ public class MazeSolverVisualizer {
      */
     public void run() {
 
-        solver.setData(-1, -1, false);
+        dfs.setData(-1, -1, false);
         if (method == 1) {
             data.resetTables();
-            if (!solver.dfsWithRecursion(data.getEntranceX(), data.getEntranceY())) {
-                System.out.println("The maze has no solution");
-            }
+            dfs.searchWay();
         }
         if (method == 2) {
             data.resetTables();
-            if (!solver.dfsWithoutRecursion()) {
-                System.out.println("The maze has no solution");
-            }
+            dfs.searchWayWithoutRecursion();
         }
 
         if (method == 3) {
             data.resetTables();
-            if (!solver.bfs()) {
-                System.out.println("The maze has no solution");
-            }
+            bfs.searchWay();
         }
 
-//        if(method==4){
-//            astar.setData(-1, -1, false);
-//            data.resetTables();
-//            if (!astar.searchWay()) {
-//                System.out.println("The maze has no solution");
-//            }
-//            astar.setData(-1, -1, false);
-//        }
-        solver.setData(-1, -1, false);
+        if (method == 4) {
+            astar.searchWay();
+        }
+        dfs.setData(-1, -1, false);
     }
 
 }
