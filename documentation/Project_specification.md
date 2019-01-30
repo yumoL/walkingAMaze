@@ -18,7 +18,7 @@ When drawing a new maze, the program will get the size of the maze (how many lin
 |  DFS           | O(V+E)          | O(V)            |
 |  BFS           | O(V+E)          | O(V)            |
 |  A*-search     | O(E) (worst case) | O(V)(worst case)|
-|  Randomized Prim| O(V^2)| O(V)| O(V)|
+|  Randomized Prim| O(V^2)| O(V)|
 
 V=number of nodes; E=number of edges
 
