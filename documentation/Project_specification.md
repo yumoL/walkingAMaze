@@ -1,7 +1,7 @@
 # Project Specification
 
 ### Problem to solve
-This project is about generating a maze wihout weights and walking through it using different algorithms.
+This project is about generating a maze and walking through it using different algorithms.
 
 In this project I'm going to use different algorithms to generate a maze and then walk through it. I'll use DFS(depth-first-search) and randomized Pim to generate a maze. After generating a maze, I'll use DFS, BFS(breadth-first-search) and A*-algorithm to walk through it. The purpose of this project is to compare the performence of different path finding algorithms in different mazes (depending on the algorithm used to generate it 
 
