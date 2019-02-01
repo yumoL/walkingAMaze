@@ -1,11 +1,10 @@
-package Algo;
+package algoTest;
 
-import algo.MazeSolver;
+import algo.*;
 import data.MazeData;
 import mazeVisualisation.MazeFrame;
 import org.junit.After;
 import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -17,9 +16,11 @@ import static org.mockito.Mockito.mock;
  */
 public class MazeSolverTest {
 
-    private MazeSolver testSolver;
+    private Bfs bfs;
+    private Astar astar;
     private MazeData data;
     private MazeFrame mockFrame;
+    private PrimGenerator primGen;
     private boolean hasSolution;
 
     public MazeSolverTest() {
@@ -33,17 +34,20 @@ public class MazeSolverTest {
     public static void tearDownClass() {
     }
 
-    public void setUp() {
+    public void init() {
         mockFrame = mock(MazeFrame.class);
+        int rows = 101;
+        int columns = 101;
+        data = new MazeData(rows, columns);
 
         if (hasSolution) {
-            data = new MazeData("labyrinth_101_101.txt");
-            testSolver = new MazeSolver(data, mockFrame);
-        } else {
-            data = new MazeData("labyrinthNoPath.txt");
-            testSolver = new MazeSolver(data, mockFrame);
+            primGen = new PrimGenerator(data, mockFrame);
+            primGen.generateMaze();
         }
-        testSolver.setDelay(0);//to make tests running faster
+        bfs = new Bfs(data, mockFrame);
+        astar = new Astar(data, mockFrame);
+        bfs.setDelay(0);//to make tests run faster
+        data.resetTables();
     }
 
     @After
@@ -51,45 +55,58 @@ public class MazeSolverTest {
     }
 
     @Test
-    public void returnTrueWhenPathFoundUsingDfsWithRecursion() {
-        hasSolution = true;
-        setUp();
-        assertTrue(testSolver.dfsWithRecursion(data.getEntranceX(), data.getEntranceY()));
-    }
-
-    @Test
-    public void returnFalseWhenPathNotFoundUsingDfsWithRecursion() {
-        hasSolution = false;
-        setUp();
-        assertFalse(testSolver.dfsWithRecursion(data.getEntranceX(), data.getEntranceY()));
-    }
-
-    @Test
-    public void returnTrueWhenPathFoundUsingDfsWithoutRecursion() {
-        hasSolution = true;
-        setUp();
-        assertTrue(testSolver.dfsWithoutRecursion());
-    }
-
-    @Test
-    public void returnFalseWhenPathNotFoundUsingDfsWithoutRecursion() {
-        hasSolution = false;
-        setUp();
-        assertFalse(testSolver.dfsWithoutRecursion());
-    }
-
-    @Test
     public void returnTrueWhenPathFoundUsingBfs() {
         hasSolution = true;
-        setUp();
-        assertTrue(testSolver.bfs());
+        init();
+        assertTrue(bfs.searchWay());
     }
 
     @Test
     public void returnFalseWhenPathNotFoundUsingBfs() {
         hasSolution = false;
-        setUp();
-        assertFalse(testSolver.bfs());
+        init();
+        assertFalse(bfs.searchWay());
+    }
+
+    @Test
+    public void returnTrueWhenPathFoundUsingAstar() {
+        hasSolution = true;
+        init();
+        assertTrue(astar.searchWay());
+    }
+
+    @Test
+    public void returnFalseWhenPathNotFoundUsingAstar() {
+        hasSolution = false;
+        init();
+        assertFalse(astar.searchWay());
+    }
+
+    @Test
+    public void canFindShortestPath() {
+        hasSolution = true;
+        init();
+        bfs.searchWay();
+        int bfsResult = countResult(data);
+
+        data.resetTables();
+        astar.searchWay();
+        int astarResult = countResult(data);
+
+        assertEquals(bfsResult, astarResult);
+
+    }
+
+    private int countResult(MazeData data) {
+        int count = 0;
+        for (int i = 0; i < data.getRow(); i++) {
+            for (int j = 0; j < data.getRow(); j++) {
+                if (data.result[i][j]) {
+                    count++;
+                }
+            }
+        }
+        return count;
     }
 
 }
