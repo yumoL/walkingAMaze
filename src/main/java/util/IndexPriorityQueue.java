@@ -1,6 +1,6 @@
 package util;
 
-public class IndexMinHeap<Element extends Comparable> {
+public class IndexPriorityQueue<Element extends Comparable> {
 
     private Element[] data; //data of the IndexMinHeap
     private int[] indexes; // indexes of the IndexMinHeap
@@ -8,7 +8,7 @@ public class IndexMinHeap<Element extends Comparable> {
     private int size;//number of the data
     private int capasity;//Heap can have at most capasity data
 
-    public IndexMinHeap(int capasity) {
+    public IndexPriorityQueue(int capasity) {
         this.capasity = capasity;
         data = (Element[]) new Comparable[capasity + 1];
         indexes = new int[capasity + 1];
@@ -30,10 +30,15 @@ public class IndexMinHeap<Element extends Comparable> {
      * @param element the new element itself
      */
     public void add(int i, Element element) {
-        assert size < capasity;
-        assert i >= 0 && i < capasity;
-
-        assert !hasElementInIndex(i);
+        if (size >= capasity) {
+            throw new IllegalArgumentException("The queue is already full");
+        }
+        if (i < 0 || i >= capasity) {
+            throw new IllegalArgumentException("The index is out of bound");
+        }
+        if (hasElementInIndex(i)) {
+            throw new IllegalArgumentException("There is already an element in this index");
+        }
 
         i++;
         data[i] = element;
@@ -50,7 +55,9 @@ public class IndexMinHeap<Element extends Comparable> {
      * @return the smallest element
      */
     public Element pollElement() {
-        assert size > 0;
+        if (size <= 0) {
+            throw new IllegalStateException("There is nothing to extract becaus the queue is empty");
+        }
 
         Element toBePolled = data[indexes[1]];
         swapIndexes(1, size);
@@ -67,7 +74,9 @@ public class IndexMinHeap<Element extends Comparable> {
      * @return the element whose index is i
      */
     public Element getElement(int i) {
-        assert hasElementInIndex(i);
+        if (!hasElementInIndex(i)) {
+            throw new IllegalArgumentException("Index i doesn't reference to anything");
+        }
         return data[i + 1];
     }
 
@@ -78,7 +87,9 @@ public class IndexMinHeap<Element extends Comparable> {
      * @param newOne new element
      */
     public void change(int i, Element newOne) {
-        assert hasElementInIndex(i);
+        if (!hasElementInIndex(i)) {
+            throw new IllegalArgumentException("Index i doesn't reference to anything");
+        }
         i++;
         data[i] = newOne;
         shiftup(helper[i]);
