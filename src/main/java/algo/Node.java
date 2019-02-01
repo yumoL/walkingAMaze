@@ -1,10 +1,14 @@
 package algo;
 
-public class Node implements Comparable<Node>{
+public class Node implements Comparable<Node> {
 
     private int x, y;
     private Node pre;// previous Node
-    public int g, h, f; //variables used in Astar-algorithm. Since A star doesn't work yet, the details of these variables haven't been added
+    /**
+     * g=distance from entrance node to current node h=estimated distance from
+     * current node to exit node f=g+h
+     */
+    public int g, h, f;
 
     public Node(int x, int y, Node pre) {
         this.x = x;
@@ -47,17 +51,24 @@ public class Node implements Comparable<Node>{
     public int getH() {
         return this.h;
     }
+    
+    public void setH(int newH){
+        this.h=newH;
+    }
 
+    //node a <node b, if a.f<b.f
     @Override
     public int compareTo(Node candidate) {
         return this.f - candidate.f;
     }
-    
+
     @Override
-    public boolean equals(Object obj){
-        if(this.getClass()!=obj.getClass())return false;
-        Node comp=(Node)obj;
-        return this.x==comp.x&&this.y==comp.y;
+    public boolean equals(Object obj) {
+        if (this.getClass() != obj.getClass()) {
+            return false;
+        }
+        Node comp = (Node) obj;
+        return this.x == comp.x && this.y == comp.y;
     }
 
     @Override
