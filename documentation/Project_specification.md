@@ -3,7 +3,7 @@
 ### Problem to solve
 This project is about generating a maze and walking through it using different algorithms.
 
-In this project I'm going to use different algorithms to generate a maze with multiple solutions and then walk through it by finding the shortest path. I'll use randomized Prim to generate a maze. After generating a maze, I'll use BFS(breadth-first-search), A*-algorithm and Dijkstra-algorithm to find the shirtest path. The purpose of this project is to compare the performence of different shortest path finding algorithms. 
+In this project I'm going to use different algorithms to generate a maze with multiple solutions and then walk through it by finding the shortest path. I'll use randomized Prim to generate a maze. After generating a maze, I'll use BFS(breadth-first-search), A*-algorithm and Dijkstra-algorithm to find the shortest path. The purpose of this project is to compare the performence of different shortest path finding algorithms. 
 
 ### Data structers and algorithms
 The data structures to be used are ArrayList, HashSet, HashMap, queue, PriorityQueue and LinkedList
