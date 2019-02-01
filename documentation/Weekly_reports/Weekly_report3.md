@@ -22,5 +22,4 @@ Used hours: 28h
 - If there's time remaining, I'll try to figure out I can repeat the tests in preformance evaluation. 
 
 ### Some questions
-- Is it enough that I evaluate the performance between BFS, A* and Dijkstra, or do I still need some more algorithms?
 - Last week it was written in the Labtool that I need to remove the gradle wrapper and gradlew files. I have these files because I'd like to run the program in console using ./gradlew commands. I just ask for sure if I still need to remove them?
