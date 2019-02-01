@@ -11,3 +11,5 @@ A project of TiraLabra
 [Week1 Report](https://github.com/yumoL/walkingAMaze/blob/master/documentation/Weekly_reports/Weekly_report1.md)
 
 [Week2 Report](https://github.com/yumoL/walkingAMaze/blob/master/documentation/Weekly_reports/Weekly_report2.md)
+
+[Week3 Report](https://github.com/yumoL/walkingAMaze/blob/master/documentation/Weekly_reports/Weekly_report3.md)
