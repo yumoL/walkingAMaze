@@ -7,11 +7,10 @@ import mazeVisualisation.VisualizationHelper;
 /**
  * An abstract class for different path finding algorithms
  *
- * @author luoyumo
  */
 public abstract class PathFindingAlgo {
 
-    protected MazeData data;
+    public MazeData data;
     protected MazeFrame frame;
     protected int delay;
     protected static final int DIRECTION[][] = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
@@ -19,7 +18,7 @@ public abstract class PathFindingAlgo {
     public PathFindingAlgo(MazeData data, MazeFrame frame) {
         this.data = data;
         this.frame = frame;
-        this.delay = 5;
+        this.delay = 0;
     }
 
     /**
@@ -37,10 +36,10 @@ public abstract class PathFindingAlgo {
     }
 
     /**
-     * Document whether a point is a path
+     * Document whether a point is on the path
      *
-     * @param x x-coordinate of the point
-     * @param y y-coordinate of the point
+     * @param x x-coordinate of the node
+     * @param y y-coordinate of the node
      * @param isPath if the point is a path, isPath=true, otherwise isPath=false
      */
     public void setData(int x, int y, boolean isPath) {
@@ -68,8 +67,7 @@ public abstract class PathFindingAlgo {
      */
     public boolean access(int x, int y) {
         return data.inArea(x, y)
-                && data.getMaze(x, y) == MazeData.ROAD
-                && !data.visited[x][y];
+                && !data.visited[x][y]&& data.getMaze(x, y) == MazeData.ROAD;
     }
 
     /**
