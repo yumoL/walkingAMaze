@@ -1,10 +1,6 @@
 package maze;
 
-import algo.Node;
-import java.util.HashMap;
-import java.util.PriorityQueue;
 import mazeVisualisation.MazeVisualizer;
-import util.IndexPriorityQueue;
 
 
 public class Main {
