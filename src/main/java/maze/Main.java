@@ -1,7 +1,11 @@
 package maze;
 
+import algo.Node;
+import java.util.HashMap;
 import java.util.PriorityQueue;
-import mazeVisualisation.MazeSolverVisualizer;
+import mazeVisualisation.MazeVisualizer;
+import util.IndexPriorityQueue;
+
 
 public class Main {
 
@@ -9,18 +13,11 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        String file = "labyrinth_101_101.txt";
-        MazeSolverVisualizer vis = new MazeSolverVisualizer(file);
-        
-//        int k=0;
-//        for(int i=0;i<101;i++){
-//            for(int j=0;j<101;j++){
-//                if(vis.data.maze[i][j]==' '){
-//                    k++;
-//                }
-//            }
-//        }
-//        System.out.println("Path: "+k);
+        int rows = 21;
+        int columns = 21;
+
+        MazeVisualizer gvis = new MazeVisualizer(rows, columns);
+       
 
     }
 }
