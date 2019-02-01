@@ -4,21 +4,23 @@ import data.MazeData;
 import java.util.HashMap;
 import java.util.HashSet;
 import mazeVisualisation.MazeFrame;
-import util.IndexMinHeap;
+import util.IndexPriorityQueue;
 
 public class Astar extends PathFindingAlgo {
 
-    private IndexMinHeap<Node> openList; //list of nodes to checked
+    private IndexPriorityQueue<Node> openList; //list of nodes to be checked
     private HashSet<Node> closeList; //list where nodes have already been checked
-    private HashMap<Node, Integer> map; //map to document the index of a node, key=node and value = index
     private int i;//index which will be inserted into IndexHeap
+    private HashMap<Node, Integer> map;
+
+    private final int COST = 1;
 
     public Astar(MazeData data, MazeFrame frame) {
         super(data, frame);
-        this.openList = new IndexMinHeap<>(data.getColumn() * data.getRow());
+        this.openList = new IndexPriorityQueue<>(data.getColumn() * data.getRow());
         this.closeList = new HashSet<>();
-        this.map = new HashMap<>();
         this.i = 0;
+        this.map = new HashMap<>();
     }
 
     @Override
@@ -27,13 +29,14 @@ public class Astar extends PathFindingAlgo {
         printResult(findPath);
         return findPath;
     }
-    
+
     /**
-     * Find path using a*
+     * Find path using a
+     *
+     *
      * @return true if a path has been found, otherwise false
      */
     public boolean astar() {
-        final int COST = 10;
 
         Node entranceNode = new Node(data.getEntranceX(), data.getEntranceY());
         Node exitNode = new Node(data.getExitX(), data.getExitY());
@@ -41,15 +44,11 @@ public class Astar extends PathFindingAlgo {
 
         openList.add(i, entranceNode);
         map.put(curNode, i);
-        //System.out.println(i);
         i++;
-        while (!openList.isEmpty()) {
+        while (!openList.isEmpty()) {        
             curNode = openList.pollElement();
-            //System.out.println(curNode.getX() + ", " + curNode.getY());
             setData(curNode.getX(), curNode.getY(), true);
-            // System.out.println(curNode.getX() + ", " + curNode.getY());
             if (curNode.equals(exitNode)) {
-                //System.out.println("ok");
                 findPath(curNode);
                 return true;
             }
@@ -67,9 +66,20 @@ public class Astar extends PathFindingAlgo {
 
     }
 
-    private boolean checkPath(int x, int y, Node preNode, Node endPoint,
-            int c) {
+    /**
+     * Check if node(x,y) is on the path and update cost if it's needed
+     *
+     * @param x x-coordinate of the node
+     * @param y y-coordinate of the node
+     * @param preNode parent node of the node
+     * @param exitNode exit
+     * @param cost cost from parent node to current node
+     * @return true if node(x,y) is on the path, otherwise false
+     */
+    private boolean checkPath(int x, int y, Node preNode, Node exitNode,
+            int cost) {
         Node node = new Node(x, y, preNode);
+        
         if (!data.inArea(x, y)) {
             return false;
         }
@@ -81,48 +91,52 @@ public class Astar extends PathFindingAlgo {
         if (closeList.contains(new Node(x, y))) {
             return false;
         }
-
-        int index = -1;
-        if ((index = map.getOrDefault(new Node(x, y), -1)) != -1) {
-
-            if ((preNode.g + c) < openList.getElement(index).g) {
-                countG(node, c);
-                countF(node);
+        int index = map.getOrDefault(new Node(x, y), -1);
+        if (index != -1) {
+            node.setG(openList.getElement(index).getG());
+            if (preNode.getG() + cost < node.getG()) {
+                count(node, exitNode, cost);
                 openList.change(index, node);
-                map.put(node, index);
-                //setData(node.getX(),node.getY(),true);
+
             }
         } else {
-
-            node.setPre(preNode);
-            count(node, endPoint, c);
+            count(node, exitNode, cost);
             openList.add(i, node);
             map.put(node, i);
-            //System.out.println(i);
             i++;
         }
+
         return true;
     }
 
-    private void count(Node node, Node eNode, int cost) {
+    /**
+     * Calculate g,h,f, g is the distance from entrance node to current node,h
+     * is the distance from current node to exit node, f=g+h
+     *
+     * @param node current node
+     * @param exitNode exit
+     * @param cost cost from parent node to current node
+     */
+    private void count(Node node, Node exitNode, int cost) {
         countG(node, cost);
-        countH(node, eNode);
+        countH(node, exitNode);
         countF(node);
     }
 
+    // Calculate the distance from entrance node to current node
     private void countG(Node node, int cost) {
-        if (node.getPre() == null) {
-            node.setG(cost);
-        } else {
-            node.setG(node.getPre().getG() + cost);
-        }
+
+        node.setG(node.getPre().getG() + cost);
+
     }
 
-    private void countH(Node node, Node eNode) {
-        node.setF((Math.abs(node.getX() - eNode.getX()) + Math.abs(node.getY()
-                - eNode.getY())) * 10);
+    // Calculate the estimated distance from current node to exit node uing Manhanttan distance
+    private void countH(Node node, Node exitNode) {
+        node.setH((Math.abs(node.getX() - exitNode.getX()) + Math.abs(node.getY()
+                - exitNode.getY())) * COST);
     }
 
+    // Calculate the total distance from entrance to exit passing the node
     private void countF(Node node) {
         node.setF(node.getG() + node.getH());
     }
