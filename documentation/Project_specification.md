@@ -10,7 +10,7 @@ The data structures to be used are ArrayList, HashSet, HshMap, queue, PriorityQu
 The algorithms to be used are BFS, A* , Dijkstra and randomized Prim.                                     
 
 ### Program input and use of them
-When drawing a new maze, the program will get the size of the maze (how many lines and how many columns does the maze have) as inputs, then the program will draw a new maze with given information automatically. After the maze being gennerated, the user can use different algorithms mentioned before to find the shortest path in the maze. 
+When generating a new maze, the program will get the size of the maze (how many lines and how many columns does the maze have) as inputs, then the program will generate a new maze with given information automatically. After the maze being gennerated, the user can use different algorithms mentioned before to find the shortest path in the maze. 
 
 ### Time and space complexity 
 | Algorithms     | Time complexity | Space complexity|
