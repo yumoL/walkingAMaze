@@ -36,8 +36,8 @@ public class MazeSolverTest {
 
     public void init() {
         mockFrame = mock(MazeFrame.class);
-        int rows = 101;
-        int columns = 101;
+        int rows = 1001;
+        int columns = 1001;
         data = new MazeData(rows, columns);
 
         if (hasSolution) {
@@ -72,7 +72,19 @@ public class MazeSolverTest {
     public void returnTrueWhenPathFoundUsingAstar() {
         hasSolution = true;
         init();
+        System.out.println("now astar");
+        int road = 0;
+        for (int k = 0; k < data.getRow(); k++) {
+            for (int j = 0; j < data.getColumn(); j++) {
+                if (data.maze[k][j] == MazeData.ROAD) {
+                    road++;
+                }
+            }
+
+        }
+        System.out.println("road " + road);
         assertTrue(astar.searchWay());
+        System.out.println(road);
     }
 
     @Test
@@ -100,7 +112,7 @@ public class MazeSolverTest {
     private int countResult(MazeData data) {
         int count = 0;
         for (int i = 0; i < data.getRow(); i++) {
-            for (int j = 0; j < data.getRow(); j++) {
+            for (int j = 0; j < data.getColumn(); j++) {
                 if (data.result[i][j]) {
                     count++;
                 }

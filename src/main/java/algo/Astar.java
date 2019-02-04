@@ -11,13 +11,14 @@ public class Astar extends PathFindingAlgo {
     private IndexPriorityQueue<Node> openList; //list of nodes to be checked
     private HashSet<Node> closeList; //list where nodes have already been checked
     private int i;//index which will be inserted into IndexHeap
-    private HashMap<Node, Integer> map;
+    private HashMap<Node, Integer> map; //document the index of every node
 
     private final int COST = 1;
 
     public Astar(MazeData data, MazeFrame frame) {
         super(data, frame);
         this.openList = new IndexPriorityQueue<>(data.getColumn() * data.getRow());
+
         this.closeList = new HashSet<>();
         this.i = 0;
         this.map = new HashMap<>();
@@ -45,23 +46,25 @@ public class Astar extends PathFindingAlgo {
         openList.add(i, entranceNode);
         map.put(curNode, i);
         i++;
-        while (!openList.isEmpty()) {        
-            curNode = openList.pollElement();
-            setData(curNode.getX(), curNode.getY(), true);
-            if (curNode.equals(exitNode)) {
-                findPath(curNode);
+        while (!openList.isEmpty()) {
+            if(map.containsKey(exitNode)){
+                setData(exitNode.getX(),exitNode.getY(),true);
+                int exitIndex=map.get(exitNode);
+                exitNode.setPre(openList.getElement(exitIndex).getPre());
+                findPath(exitNode);
                 return true;
             }
+            curNode = openList.pollElement();
+            closeList.add(curNode);
+            map.remove(curNode);
+            setData(curNode.getX(), curNode.getY(), true);
 
             for (int k = 0; k < 4; k++) {
                 int newX = curNode.getX() + DIRECTION[k][0];
                 int newY = curNode.getY() + DIRECTION[k][1];
                 checkPath(newX, newY, curNode, exitNode, COST);
             }
-
-            closeList.add(curNode);
         }
-
         return false;
 
     }
@@ -79,30 +82,32 @@ public class Astar extends PathFindingAlgo {
     private boolean checkPath(int x, int y, Node preNode, Node exitNode,
             int cost) {
         Node node = new Node(x, y, preNode);
-        
+
         if (!data.inArea(x, y)) {
             return false;
         }
         if (data.getMaze(x, y) == MazeData.WALL) {
-            closeList.add(node);
             return false;
         }
 
-        if (closeList.contains(new Node(x, y))) {
+        if (closeList.contains(node)) {
             return false;
         }
-        int index = map.getOrDefault(new Node(x, y), -1);
-        if (index != -1) {
+        
+        if (map.containsKey(node)) {
+            int index=map.get(node);
             node.setG(openList.getElement(index).getG());
             if (preNode.getG() + cost < node.getG()) {
                 count(node, exitNode, cost);
                 openList.change(index, node);
-
+                map.put(node, index);
             }
         } else {
             count(node, exitNode, cost);
+            System.out.println("(" + node.getX() + ", " + node.getY() + ")");
             openList.add(i, node);
             map.put(node, i);
+            System.out.println("i " + i);
             i++;
         }
 

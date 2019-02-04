@@ -15,7 +15,7 @@ import util.IndexPriorityQueue;
 
 public class IndexPriorityQueueTest {
 
-    private final int CAPASITY = 6;
+    private int capacity = 10;
     private IndexPriorityQueue<String> pq;
 
     @BeforeClass
@@ -28,7 +28,7 @@ public class IndexPriorityQueueTest {
 
     @Before
     public void setUp() {
-        this.pq = new IndexPriorityQueue<>(CAPASITY);
+        this.pq = new IndexPriorityQueue<>(capacity);
     }
 
     @After
@@ -64,7 +64,7 @@ public class IndexPriorityQueueTest {
 
     @Test(expected = Exception.class)
     public void cannotAddElementWhenIndexOutOfCapasity() {
-        pq.add(CAPASITY + 1, "wrongIndex");
+        pq.add(capacity + 1, "wrongIndex");
     }
     
     @Test(expected = Exception.class)

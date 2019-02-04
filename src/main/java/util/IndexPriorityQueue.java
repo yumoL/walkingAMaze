@@ -3,24 +3,24 @@ package util;
 public class IndexPriorityQueue<Element extends Comparable> {
 
     private Element[] data; //data of the IndexMinHeap
-    private int[] indexes; // indexes of the IndexMinHeap
-    private int[] helper; //the place of an index in array indexes
+    private int[] indexes; // indexes of the IndexMinHeap  
+    private int[] helper; //the place of an index in array indexes   
     private int size;//number of the data
-    private int capasity;//Heap can have at most capasity data
+    public int capasity;//Heap can have at most capasity data
 
     public IndexPriorityQueue(int capasity) {
         this.capasity = capasity;
-        data = (Element[]) new Comparable[capasity + 1];
-        indexes = new int[capasity + 1];
-        helper = new int[capasity + 1];
+        data = (Element[]) new Comparable[capasity + 1];        
+        indexes = new int[capasity + 1];        
+        helper = new int[capasity + 1];        
         for (int i = 0; i <= capasity; i++) {
             helper[i] = 0;
-        }
+        }        
         size = 0;
     }
 
     public boolean isEmpty() {
-        return size == 0;
+        return size==0;
     }
 
     /**
@@ -41,9 +41,9 @@ public class IndexPriorityQueue<Element extends Comparable> {
         }
 
         i++;
-        data[i] = element;
-        indexes[size + 1] = i;
-        helper[i] = size + 1;
+        data[i] = element;        
+        indexes[size + 1] = i;        
+        helper[i] = size + 1;       
         size++;
 
         shiftup(size);
@@ -59,9 +59,9 @@ public class IndexPriorityQueue<Element extends Comparable> {
             throw new IllegalStateException("There is nothing to extract becaus the queue is empty");
         }
 
-        Element toBePolled = data[indexes[1]];
+        Element toBePolled = data[indexes[1]];       
         swapIndexes(1, size);
-        helper[indexes[size]] = 0;
+        helper[indexes[size]] = 0;       
         size--;
         shiftdown(1);
         return toBePolled;
@@ -77,7 +77,7 @@ public class IndexPriorityQueue<Element extends Comparable> {
         if (!hasElementInIndex(i)) {
             throw new IllegalArgumentException("Index i doesn't reference to anything");
         }
-        return data[i + 1];
+        return data[i + 1];        
     }
 
     /**
@@ -106,7 +106,7 @@ public class IndexPriorityQueue<Element extends Comparable> {
         while (k > 1 && data[indexes[k / 2]].compareTo(data[indexes[k]]) > 0) {
             swapIndexes(k, k / 2);
             k /= 2;
-        }
+        }       
     }
 
     /**
@@ -121,11 +121,11 @@ public class IndexPriorityQueue<Element extends Comparable> {
             if (j < size && data[indexes[j + 1]].compareTo(data[indexes[j]]) < 0) {
                 j++;
             }
-
+            
             if (data[indexes[k]].compareTo(data[indexes[j]]) <= 0) {
                 break;
             }
-
+           
             swapIndexes(k, j);
             k = j;
         }
@@ -139,7 +139,7 @@ public class IndexPriorityQueue<Element extends Comparable> {
         indexes[i] = indexes[j];
         indexes[j] = temp;
         helper[indexes[i]] = i;
-        helper[indexes[j]] = j;
+        helper[indexes[j]] = j;        
     }
 
     /**
