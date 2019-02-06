@@ -1,6 +1,10 @@
 package algoTest;
 
+import algo.shortestPathSolver.Bfs;
 import algo.*;
+import algo.shortestPathSolver.AstarWithEuclidian;
+import algo.shortestPathSolver.AstarWithEuclidianSquare;
+import algo.shortestPathSolver.AstarWithManhattan;
 import data.MazeData;
 import mazeVisualisation.MazeFrame;
 import org.junit.After;
@@ -17,7 +21,9 @@ import static org.mockito.Mockito.mock;
 public class MazeSolverTest {
 
     private Bfs bfs;
-    private Astar astar;
+    private AstarWithManhattan astarManhattan;
+    private AstarWithEuclidian astarEu;
+    private AstarWithEuclidianSquare astarEuSq;
     private MazeData data;
     private MazeFrame mockFrame;
     private PrimGenerator primGen;
@@ -36,16 +42,18 @@ public class MazeSolverTest {
 
     public void init() {
         mockFrame = mock(MazeFrame.class);
-        int rows = 1001;
-        int columns = 1001;
+        int rows = 101;
+        int columns = 101;
         data = new MazeData(rows, columns);
 
         if (hasSolution) {
             primGen = new PrimGenerator(data, mockFrame);
-            primGen.generateMaze();
+            primGen.generateLabyrinth();
         }
         bfs = new Bfs(data, mockFrame);
-        astar = new Astar(data, mockFrame);
+        astarManhattan = new AstarWithManhattan(data, mockFrame);
+        astarEu = new AstarWithEuclidian(data, mockFrame);
+        astarEuSq = new AstarWithEuclidianSquare(data, mockFrame);
         bfs.setDelay(0);//to make tests run faster
         data.resetTables();
     }
@@ -69,29 +77,63 @@ public class MazeSolverTest {
     }
 
     @Test
-    public void returnTrueWhenPathFoundUsingAstar() {
+    public void returnTrueWhenPathFoundUsingAstarWithManhattan() {
+        //for (int i = 0; i < 10; i++) {
         hasSolution = true;
         init();
-        System.out.println("now astar");
-        int road = 0;
-        for (int k = 0; k < data.getRow(); k++) {
-            for (int j = 0; j < data.getColumn(); j++) {
-                if (data.maze[k][j] == MazeData.ROAD) {
-                    road++;
-                }
-            }
+        System.out.println("Manhattan");
+//            int road = 0;
+//            for (int k = 0; k < data.getRow(); k++) {
+//                for (int j = 0; j < data.getColumn(); j++) {
+//                    System.out.print(data.maze[k][j]);
+//                    if (data.maze[k][j] == MazeData.ROAD) {
+//                        road++;
+//                    }
+//                }
+//                System.out.println("");
+//
+//            }
+//            System.out.println("road " + road);
+        assertTrue(astarManhattan.searchWay());
+        //System.out.println(road);
+        //}
+    }
 
-        }
-        System.out.println("road " + road);
-        assertTrue(astar.searchWay());
-        System.out.println(road);
+    @Test
+    public void returnTrueWhenPathFoundUsingAstarWithEuclidian() {
+        hasSolution = true;
+        init();
+        System.out.println("Euclidian");
+//            int road = 0;
+//            for (int k = 0; k < data.getRow(); k++) {
+//                for (int j = 0; j < data.getColumn(); j++) {
+//                    System.out.print(data.maze[k][j]);
+//                    if (data.maze[k][j] == MazeData.ROAD) {
+//                        road++;
+//                    }
+//                }
+//                System.out.println("");
+//
+//            }
+//            System.out.println("road " + road);
+        assertTrue(astarEu.searchWay());
+        //System.out.println(road);
+        //}
+    }
+
+    @Test
+    public void returnTrueWhenPathFoundUsingAstarWithEuclidianSquare() {
+        hasSolution = true;
+        init();
+        System.out.println("Squared Euclidian");
+        assertTrue(astarEuSq.searchWay());
     }
 
     @Test
     public void returnFalseWhenPathNotFoundUsingAstar() {
         hasSolution = false;
         init();
-        assertFalse(astar.searchWay());
+        assertFalse(astarManhattan.searchWay());
     }
 
     @Test
@@ -102,10 +144,15 @@ public class MazeSolverTest {
         int bfsResult = countResult(data);
 
         data.resetTables();
-        astar.searchWay();
-        int astarResult = countResult(data);
+        astarManhattan.searchWay();
+        int astarManResult = countResult(data);
 
-        assertEquals(bfsResult, astarResult);
+        data.resetTables();
+        astarEu.searchWay();
+        int astarEuResult = countResult(data);
+
+        assertEquals(bfsResult, astarManResult);
+        assertEquals(bfsResult, astarEuResult);
 
     }
 

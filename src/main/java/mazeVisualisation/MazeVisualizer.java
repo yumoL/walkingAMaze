@@ -1,25 +1,29 @@
 package mazeVisualisation;
 
-import algo.Astar;
-import algo.Bfs;
+import algo.shortestPathSolver.Bfs;
 import data.MazeData;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import algo.PrimGenerator;
+import algo.shortestPathSolver.AstarWithEuclidian;
+import algo.shortestPathSolver.AstarWithEuclidianSquare;
+import algo.shortestPathSolver.AstarWithManhattan;
 
 public class MazeVisualizer {
 
-    private static final int DELAY=0;
+    private static final int DELAY = 0;
     private static int blockSide = 7;
 
     public MazeData data;
     private MazeFrame frame;
-    
+
     private PrimGenerator primGenerator;
 
     private Bfs bfs;
-    private Astar astar;
+    private AstarWithManhattan astarManhattan;
+    private AstarWithEuclidian astarEu;
+    private AstarWithEuclidianSquare astarEuSq;
 
     public MazeVisualizer(int rows, int columns) {
 
@@ -31,20 +35,19 @@ public class MazeVisualizer {
         // initialise frame
         EventQueue.invokeLater(() -> {
             frame = new MazeFrame("Maze", sceneWidth, sceneHeight);
-            
-            primGenerator=new PrimGenerator(data,frame);
-            
-            bfs = new Bfs(data, frame);
-            astar = new Astar(data, frame);
 
+            primGenerator = new PrimGenerator(data, frame);
+
+//            bfs = new Bfs(data, frame);
+//            astarManhattan = new Astar(data, frame);
+//            dijkstra=new Dijkstra(data,frame);
             frame.addKeyListener(new MazeKeyListener());
             new Thread(() -> {
                 //dfsGenerator.generateMaze();
-                primGenerator.generateMaze();
+                primGenerator.generateLabyrinth();
             }).start();
         });
     }
-
 
     /**
      * Keyboard will be used when walking the maze. For example when pressing
@@ -54,31 +57,55 @@ public class MazeVisualizer {
 
         @Override
         public void keyReleased(KeyEvent event) {
-            
-            if (event.getKeyChar() == 'c') {
-                data.resetTables();
 
+            if (event.getKeyChar() == 'a') {
+                data.resetTables();
+                bfs = new Bfs(data, frame);
                 new Thread(() -> {
                     long s = System.currentTimeMillis();
                     bfs.searchWay();
                     long e = System.currentTimeMillis();
-                    System.out.println("bfs: " + (e - s)+"ms");
+                    System.out.println("bfs: " + (e - s) + "ms");
+                }).start();
+
+            }
+            if (event.getKeyChar() == 'b') {
+                data.resetTables();
+                astarManhattan = new AstarWithManhattan(data, frame);
+
+                new Thread(() -> {
+                    long s = System.currentTimeMillis();
+                    astarManhattan.searchWay();
+                    long e = System.currentTimeMillis();
+                    System.out.println("A* using Manhattan distance: " + (e - s) + "ms");
+                }).start();
+
+            }
+            if (event.getKeyChar() == 'c') {
+                data.resetTables();
+                astarEu = new AstarWithEuclidian(data, frame);
+
+                new Thread(() -> {
+                    long s = System.currentTimeMillis();
+                    astarEu.searchWay();
+                    long e = System.currentTimeMillis();
+                    System.out.println("A* using Euclidian distance: " + (e - s) + "ms");
                 }).start();
 
             }
             if (event.getKeyChar() == 'd') {
                 data.resetTables();
-                astar = new Astar(data, frame);
+                astarEuSq = new AstarWithEuclidianSquare(data, frame);
 
                 new Thread(() -> {
                     long s = System.currentTimeMillis();
-                    astar.searchWay();
+                    astarEuSq.searchWay();
                     long e = System.currentTimeMillis();
-                    System.out.println("A*: " + (e - s)+"ms");
+                    System.out.println("A* using squared Euclidian distance: " + (e - s) + "ms");
                 }).start();
 
             }
+
         }
     }
-
 }

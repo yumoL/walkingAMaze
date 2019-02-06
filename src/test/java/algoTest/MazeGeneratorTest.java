@@ -1,6 +1,6 @@
 package algoTest;
 
-import algo.Bfs;
+import algo.shortestPathSolver.Bfs;
 import algo.PrimGenerator;
 import data.MazeData;
 import mazeVisualisation.MazeFrame;
@@ -44,7 +44,7 @@ public class MazeGeneratorTest {
     @Test
     public void mazeGeneratedByPrimHasSolution() {
         PrimGenerator primGen = new PrimGenerator(data, frame);
-        primGen.generateMaze();
+        primGen.generateLabyrinth();
         bfs = new Bfs(data, frame);
         data.resetTables();
         assertTrue(bfs.searchWay());
