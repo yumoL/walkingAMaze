@@ -1,4 +1,4 @@
-package algo;
+package algo.shortestPathSolver;
 
 import data.MazeData;
 import mazeVisualisation.MazeFrame;
