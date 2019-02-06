@@ -1,13 +1,14 @@
 package algo;
 
+import algo.shortestPathSolver.Node;
 import data.MazeData;
-import java.util.ArrayList;
 import java.util.Random;
 import mazeVisualisation.MazeFrame;
 import mazeVisualisation.VisualizationHelper;
+import util.MyArrayList;
 
 /**
- * Use randomized Prim to generate a maze
+ * Use randomized Prim to generate a labyrinth
  */
 public class PrimGenerator {
 
@@ -17,7 +18,7 @@ public class PrimGenerator {
     protected static final int DIRECTION[][] = {{0, 1}, {-1, 0}, {1, 0}, {0, -1}};
 
     private int markNode[][];
-    private ArrayList<Node> walls;
+    private MyArrayList<Node> walls;
     private final int VISITED_ROAD = 3;//the road has been visited or a wall has been broken into a road
     private final int NON_VISITED_ROAD = 1; //the road has not been visited
     private final int WALL = 0;
@@ -28,7 +29,7 @@ public class PrimGenerator {
         this.frame = frame;
 
         r = new Random();
-        walls = new ArrayList<>();
+        walls = new MyArrayList<>();
         markNode = new int[data.getRow()][data.getColumn()];
         for (int i = 0; i < data.getRow(); i++) {
             for (int j = 0; j < data.getColumn(); j++) {
@@ -69,9 +70,9 @@ public class PrimGenerator {
     }
 
     /**
-     * Generate a maze
+     * Generate a labyrinth
      */
-    public void generateMaze() {
+    public void generateLabyrinth() {
         setRoadData(-1, -1);
         markNode[data.getEntranceX()][data.getEntranceY()] = VISITED_ROAD;
         markNode[data.getExitX()][data.getExitY()] = VISITED_ROAD;
@@ -84,7 +85,7 @@ public class PrimGenerator {
             int newY = from.getY() + DIRECTION[i][1];
             if (valuable(newX, newY)) {
                 Node wall = new Node(newX, newY, from);
-                walls.add(wall);
+                walls.addLast(wall);
             }
         }
 
@@ -109,7 +110,7 @@ public class PrimGenerator {
                 int newY = from.getY() + DIRECTION[i][1];
                 if (valuable(newX, newY)) {
                     wall = new Node(newX, newY, from);
-                    walls.add(wall);
+                    walls.addLast(wall);
                 }
             }
 
