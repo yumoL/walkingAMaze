@@ -1,15 +1,15 @@
+package algo.shortestPathSolver;
 
-package algo;
-
+import algo.shortestPathSolver.Node;
+import algo.shortestPathSolver.PathFindingAlgo;
 import data.MazeData;
-import java.util.LinkedList;
 import mazeVisualisation.MazeFrame;
+import util.MyQueue;
 
+public class Bfs extends PathFindingAlgo {
 
-public class Bfs extends PathFindingAlgo{
-    
-    public Bfs(MazeData data,MazeFrame frame){
-        super(data,frame);
+    public Bfs(MazeData data, MazeFrame frame) {
+        super(data, frame);
     }
 
     /**
@@ -19,15 +19,15 @@ public class Bfs extends PathFindingAlgo{
      */
     @Override
     public boolean searchWay() {
-        LinkedList<Node> queue = new LinkedList<>();
+        MyQueue<Node> queue = new MyQueue<>();
         Node entrance = new Node(data.getEntranceX(), data.getEntranceY());
-        queue.addLast(entrance);
+        queue.enqueue(entrance);
         data.visited[entrance.getX()][entrance.getY()] = true;
 
         boolean hasSolution = false;
 
         while (!queue.isEmpty()) {
-            Node currentNode = queue.pop();
+            Node currentNode = queue.poll();
             setData(currentNode.getX(), currentNode.getY(), true);
 
             if (currentNode.getX() == data.getExitX() && currentNode.getY() == data.getExitY()) {
@@ -40,7 +40,7 @@ public class Bfs extends PathFindingAlgo{
                 int newY = currentNode.getY() + DIRECTION[i][1];
 
                 if (access(newX, newY)) {
-                    queue.addLast(new Node(newX, newY, currentNode));
+                    queue.enqueue(new Node(newX, newY, currentNode));
                     data.visited[newX][newY] = true;
                 }
             }
@@ -48,5 +48,5 @@ public class Bfs extends PathFindingAlgo{
         printResult(hasSolution);
         return hasSolution;
     }
-    
+
 }
