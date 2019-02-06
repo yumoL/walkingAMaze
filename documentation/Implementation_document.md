@@ -12,5 +12,5 @@ The randomized Prim-algorithm is used to generate a labyrinth with multipule sol
 ### Data Structures
 The implemented data structures in this project includes ArrayList, queue, PriorityQueue, HashMap, HashSet and LinkedList. 
 
-### Performance testting
+### Performance testing
 Please check the information of performance tesitng [here]()
