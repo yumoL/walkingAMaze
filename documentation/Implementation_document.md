@@ -13,4 +13,8 @@ The randomized Prim-algorithm is used to generate a labyrinth with multipule sol
 The implemented data structures in this project includes ArrayList, queue, PriorityQueue, HashMap, HashSet and LinkedList. 
 
 ### Performance testing
-Please check the information of performance tesitng [here]()
+Please check the information of performance tesitng [here](https://github.com/yumoL/walkingAMaze/blob/master/documentation/Testing_document.md).
+
+## Implemented Time and Space Complexity
+
+### Randomized Prim
