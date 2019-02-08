@@ -19,7 +19,7 @@ public class MyQueue<E> {
     Extract the element which was inserted first
     */
     public E poll(){
-        return list.remove(0);
+        return list.removeFirst();
     }
     
     public boolean isEmpty(){
