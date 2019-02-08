@@ -19,7 +19,7 @@ jacocoTestReport {
     }
     afterEvaluate {
         classDirectories = files(classDirectories.files.collect {
-            fileTree(dir: it, exclude: ['**/maze/**','**/mazeVisualisation/**'])
+            fileTree(dir: it, exclude: ['**/main/**','**/graphVisualization/**','**/PerformanceComparison/**'])
         })
     }
 
@@ -28,7 +28,7 @@ jacocoTestReport {
 
 check.dependsOn jacocoTestReport
 
-mainClassName = 'maze.Main'
+mainClassName = 'main.Main'
 
 run{
     standardInput = System.in
