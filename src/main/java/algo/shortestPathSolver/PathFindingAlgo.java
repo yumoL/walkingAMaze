@@ -1,8 +1,8 @@
 package algo.shortestPathSolver;
 
-import data.MazeData;
-import mazeVisualisation.MazeFrame;
-import mazeVisualisation.VisualizationHelper;
+import data.GraphData;
+import graphVisualization.GraphFrame;
+import graphVisualization.VisualizationHelper;
 
 /**
  * An abstract class for different path finding algorithms
@@ -10,15 +10,13 @@ import mazeVisualisation.VisualizationHelper;
  */
 public abstract class PathFindingAlgo {
 
-    public MazeData data;
-    protected MazeFrame frame;
-    protected int delay;
+    public GraphData data;
+    protected GraphFrame frame;
     protected static final int DIRECTION[][] = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
 
-    public PathFindingAlgo(MazeData data, MazeFrame frame) {
+    public PathFindingAlgo(GraphData data, GraphFrame frame) {
         this.data = data;
         this.frame = frame;
-        this.delay = 0;
     }
 
     /**
@@ -49,13 +47,8 @@ public abstract class PathFindingAlgo {
         }
 
         frame.render(data);
-
-        VisualizationHelper.pause(delay);
     }
 
-    public void setDelay(int t) {
-        this.delay = t;
-    }
 
     /**
      * Define if it's possible to access the exit through this point
@@ -67,7 +60,7 @@ public abstract class PathFindingAlgo {
      */
     public boolean access(int x, int y) {
         return data.inArea(x, y)
-                && !data.visited[x][y]&& data.getMaze(x, y) == MazeData.ROAD;
+                && !data.visited[x][y]&& data.getMaze(x, y) == GraphData.ROAD;
     }
 
     /**
@@ -82,6 +75,38 @@ public abstract class PathFindingAlgo {
         } else {
             System.out.println("This maze has no solution");
         }
+    }
+    
+    /**
+     * count how many nodes were checked during the path finding
+     * @return the number of checked nodes
+     */
+    public int checkedNodes(){
+        int checked=0;
+        for(int i=0;i<data.getRow();i++){
+            for(int j=0;j<data.getColumn();j++){
+                if(data.path[i][j]){
+                    checked++;
+                }
+            }
+        }
+        return checked;
+    }
+    
+    /**
+     * count how many nodes are on the path
+     * @return the length of the path
+     */
+    public int countResult(){
+        int path=0;
+        for(int i=0;i<data.getRow();i++){
+            for(int j=0;j<data.getColumn();j++){
+                if(data.result[i][j]){
+                    path++;
+                }
+            }
+        }
+        return path;
     }
 
     /**

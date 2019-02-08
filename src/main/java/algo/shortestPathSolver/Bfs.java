@@ -2,13 +2,13 @@ package algo.shortestPathSolver;
 
 import algo.shortestPathSolver.Node;
 import algo.shortestPathSolver.PathFindingAlgo;
-import data.MazeData;
-import mazeVisualisation.MazeFrame;
+import data.GraphData;
+import graphVisualization.GraphFrame;
 import util.MyQueue;
 
 public class Bfs extends PathFindingAlgo {
 
-    public Bfs(MazeData data, MazeFrame frame) {
+    public Bfs(GraphData data, GraphFrame frame) {
         super(data, frame);
     }
 
@@ -45,7 +45,7 @@ public class Bfs extends PathFindingAlgo {
                 }
             }
         }
-        printResult(hasSolution);
+        //printResult(hasSolution);
         return hasSolution;
     }
 

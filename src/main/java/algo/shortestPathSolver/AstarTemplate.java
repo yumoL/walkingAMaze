@@ -1,9 +1,9 @@
 package algo.shortestPathSolver;
 
-import data.MazeData;
+import data.GraphData;
 import java.util.HashMap;
 import java.util.HashSet;
-import mazeVisualisation.MazeFrame;
+import graphVisualization.GraphFrame;
 import util.IndexPriorityQueue;
 import util.MyHashMap;
 
@@ -19,9 +19,9 @@ public abstract class AstarTemplate extends PathFindingAlgo {
 
     protected final int COST = 1;
 
-    public AstarTemplate(MazeData data, MazeFrame frame) {
+    public AstarTemplate(GraphData data, GraphFrame frame) {
         super(data, frame);
-        this.openList = new IndexPriorityQueue<>(data.getColumn() * data.getRow());
+        this.openList = new IndexPriorityQueue<>(data.getRow()*data.getColumn());
         this.closeList = new HashSet<>();
         this.i = 0;
         this.map = new HashMap<>();
@@ -30,7 +30,7 @@ public abstract class AstarTemplate extends PathFindingAlgo {
     @Override
     public boolean searchWay() {
         boolean findPath = astar();
-        printResult(findPath);
+        //printResult(findPath);
         return findPath;
     }
 
@@ -90,7 +90,7 @@ public abstract class AstarTemplate extends PathFindingAlgo {
         if (!data.inArea(x, y)) {
             return false;
         }
-        if (data.getMaze(x, y) == MazeData.WALL) {
+        if (data.getMaze(x, y) == GraphData.WALL) {
             return false;
         }
 

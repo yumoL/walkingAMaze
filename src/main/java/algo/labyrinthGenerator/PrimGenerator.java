@@ -1,21 +1,15 @@
-package algo;
+package algo.labyrinthGenerator;
 
 import algo.shortestPathSolver.Node;
-import data.MazeData;
+import data.GraphData;
 import java.util.Random;
-import mazeVisualisation.MazeFrame;
-import mazeVisualisation.VisualizationHelper;
+import graphVisualization.GraphFrame;
 import util.MyArrayList;
 
 /**
  * Use randomized Prim to generate a labyrinth
  */
-public class PrimGenerator {
-
-    protected MazeData data;
-    protected MazeFrame frame;
-    protected final int DELAY = 0;
-    protected static final int DIRECTION[][] = {{0, 1}, {-1, 0}, {1, 0}, {0, -1}};
+public class PrimGenerator extends Generator {
 
     private int markNode[][];
     private MyArrayList<Node> walls;
@@ -24,9 +18,8 @@ public class PrimGenerator {
     private final int WALL = 0;
     private Random r;
 
-    public PrimGenerator(MazeData data, MazeFrame frame) {
-        this.data = data;
-        this.frame = frame;
+    public PrimGenerator(GraphData data, GraphFrame frame) {
+        super(data,frame);
 
         r = new Random();
         walls = new MyArrayList<>();
@@ -43,35 +36,9 @@ public class PrimGenerator {
     }
 
     /**
-     * Mark node(x,y) as road
+     * Generate a labyrinth using randomized Prim
      */
-    private void setRoadData(int x, int y) {
-        if (data.inArea(x, y)) {
-            data.maze[x][y] = MazeData.ROAD;
-        }
-        frame.render(data);
-        VisualizationHelper.pause(DELAY);
-    }
-
-    /**
-     * By using randomized Prim we have a smallest spanning tree, by breaking
-     * more walls we can have a graph with circle thus the maze has more than
-     * one solution
-     */
-    private void breakMoreWalls() {
-        for (int i = 0; i < data.getColumn() * data.getRow() / 20; i++) {
-            int row = (int) (Math.random() * (data.getRow() - 2)) + 1;
-            int column = (int) (Math.random() * (data.getColumn() - 2)) + 1;
-            if (data.maze[row][column] == MazeData.WALL) {
-                setRoadData(row, column);
-
-            }
-        }
-    }
-
-    /**
-     * Generate a labyrinth
-     */
+    @Override
     public void generateLabyrinth() {
         setRoadData(-1, -1);
         markNode[data.getEntranceX()][data.getEntranceY()] = VISITED_ROAD;
@@ -138,6 +105,18 @@ public class PrimGenerator {
     private boolean valuable(int x, int y) {
         return x > 0 && x < data.getRow() - 1 && y > 0 && y < data.getColumn() - 1;
 
+    }
+    
+    @Override
+    protected void breakMoreWalls() {
+        for (int i = 0; i < data.getColumn() * data.getRow() / 20; i++) {
+            int row = (int) (Math.random() * (data.getRow() - 2)) + 1;
+            int column = (int) (Math.random() * (data.getColumn() - 2)) + 1;
+            if (data.maze[row][column] == GraphData.WALL) {
+                setRoadData(row, column);
+
+            }
+        }
     }
 
 }

@@ -5,12 +5,12 @@
  */
 package algo.shortestPathSolver;
 
-import data.MazeData;
-import mazeVisualisation.MazeFrame;
+import data.GraphData;
+import graphVisualization.GraphFrame;
 
 public class AstarWithManhattan extends AstarTemplate {
 
-    public AstarWithManhattan(MazeData data, MazeFrame frame) {
+    public AstarWithManhattan(GraphData data, GraphFrame frame) {
         super(data, frame);
     }
 

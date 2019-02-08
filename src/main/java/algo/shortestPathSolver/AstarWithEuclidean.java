@@ -1,16 +1,16 @@
 package algo.shortestPathSolver;
 
-import data.MazeData;
-import mazeVisualisation.MazeFrame;
+import data.GraphData;
+import graphVisualization.GraphFrame;
 
-public class AstarWithEuclidian extends AstarTemplate {
+public class AstarWithEuclidean extends AstarTemplate {
 
-    public AstarWithEuclidian(MazeData data, MazeFrame frame) {
+    public AstarWithEuclidean(GraphData data, GraphFrame frame) {
         super(data, frame);
     }
 
     /*
-    Implement heuristic function using Euclidian distance
+    Implement heuristic function using Euclidean distance
      */
     @Override
     protected void countH(Node node, Node exitNode) {
