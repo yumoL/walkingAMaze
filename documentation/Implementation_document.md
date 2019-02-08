@@ -12,9 +12,6 @@ The DFS and randomized Prim-algorithm is used to generate a labyrinth with multi
 ### Data Structures
 The implemented data structures in this project includes ArrayList, queue, PriorityQueue, HashMap, HashSet and LinkedList. 
 
-### Performance testing
-Please check the information of performance tesitng [here](https://github.com/yumoL/walkingAMaze/blob/master/documentation/Testing_document.md).
-
 ## Implemented Time and Space Complexity
 
 ### Randomized Prim
