@@ -1,9 +1,10 @@
 package algoTest;
 
+import algo.labyrinthGenerator.DfsGenerator;
 import algo.shortestPathSolver.Bfs;
-import algo.PrimGenerator;
-import data.MazeData;
-import mazeVisualisation.MazeFrame;
+import algo.labyrinthGenerator.PrimGenerator;
+import data.GraphData;
+import graphVisualization.GraphFrame;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -14,8 +15,8 @@ import static org.mockito.Mockito.mock;
 
 public class MazeGeneratorTest {
 
-    private MazeData data;
-    private MazeFrame frame;
+    private GraphData data;
+    private GraphFrame frame;
     private Bfs bfs;
 
     public MazeGeneratorTest() {
@@ -33,8 +34,8 @@ public class MazeGeneratorTest {
     public void setUp() {
         int rows = 51;
         int columns = 71;
-        data = new MazeData(rows, columns);
-        frame = mock(MazeFrame.class);
+        data = new GraphData(rows, columns);
+        frame = mock(GraphFrame.class);
     }
 
     @After
@@ -42,9 +43,18 @@ public class MazeGeneratorTest {
     }
 
     @Test
-    public void mazeGeneratedByPrimHasSolution() {
+    public void graphGeneratedByPrimHasPath() {
         PrimGenerator primGen = new PrimGenerator(data, frame);
         primGen.generateLabyrinth();
+        bfs = new Bfs(data, frame);
+        data.resetTables();
+        assertTrue(bfs.searchWay());
+    }
+    
+    @Test
+    public void graphGeneratedByDfsHasPath() {
+        DfsGenerator dfsGen = new DfsGenerator(data, frame);
+        dfsGen.generateLabyrinth();
         bfs = new Bfs(data, frame);
         data.resetTables();
         assertTrue(bfs.searchWay());

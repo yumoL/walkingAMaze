@@ -1,12 +1,12 @@
 package algoTest;
 
+import algo.labyrinthGenerator.PrimGenerator;
 import algo.shortestPathSolver.Bfs;
-import algo.*;
-import algo.shortestPathSolver.AstarWithEuclidian;
-import algo.shortestPathSolver.AstarWithEuclidianSquare;
+import algo.shortestPathSolver.AstarWithEuclidean;
+import algo.shortestPathSolver.AstarWithEuclideanSquare;
 import algo.shortestPathSolver.AstarWithManhattan;
-import data.MazeData;
-import mazeVisualisation.MazeFrame;
+import data.GraphData;
+import graphVisualization.GraphFrame;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -22,10 +22,10 @@ public class MazeSolverTest {
 
     private Bfs bfs;
     private AstarWithManhattan astarManhattan;
-    private AstarWithEuclidian astarEu;
-    private AstarWithEuclidianSquare astarEuSq;
-    private MazeData data;
-    private MazeFrame mockFrame;
+    private AstarWithEuclidean astarEu;
+    private AstarWithEuclideanSquare astarEuSq;
+    private GraphData data;
+    private GraphFrame mockFrame;
     private PrimGenerator primGen;
     private boolean hasSolution;
 
@@ -41,10 +41,10 @@ public class MazeSolverTest {
     }
 
     public void init() {
-        mockFrame = mock(MazeFrame.class);
+        mockFrame = mock(GraphFrame.class);
         int rows = 101;
         int columns = 101;
-        data = new MazeData(rows, columns);
+        data = new GraphData(rows, columns);
 
         if (hasSolution) {
             primGen = new PrimGenerator(data, mockFrame);
@@ -52,9 +52,8 @@ public class MazeSolverTest {
         }
         bfs = new Bfs(data, mockFrame);
         astarManhattan = new AstarWithManhattan(data, mockFrame);
-        astarEu = new AstarWithEuclidian(data, mockFrame);
-        astarEuSq = new AstarWithEuclidianSquare(data, mockFrame);
-        bfs.setDelay(0);//to make tests run faster
+        astarEu = new AstarWithEuclidean(data, mockFrame);
+        astarEuSq = new AstarWithEuclideanSquare(data, mockFrame);
         data.resetTables();
     }
 
@@ -100,10 +99,10 @@ public class MazeSolverTest {
     }
 
     @Test
-    public void returnTrueWhenPathFoundUsingAstarWithEuclidian() {
+    public void returnTrueWhenPathFoundUsingAstarWithEuclidean() {
         hasSolution = true;
         init();
-        System.out.println("Euclidian");
+        System.out.println("Euclidean");
 //            int road = 0;
 //            for (int k = 0; k < data.getRow(); k++) {
 //                for (int j = 0; j < data.getColumn(); j++) {
@@ -122,10 +121,10 @@ public class MazeSolverTest {
     }
 
     @Test
-    public void returnTrueWhenPathFoundUsingAstarWithEuclidianSquare() {
+    public void returnTrueWhenPathFoundUsingAstarWithEuclideanSquare() {
         hasSolution = true;
         init();
-        System.out.println("Squared Euclidian");
+        System.out.println("Squared Euclidean");
         assertTrue(astarEuSq.searchWay());
     }
 
@@ -141,31 +140,18 @@ public class MazeSolverTest {
         hasSolution = true;
         init();
         bfs.searchWay();
-        int bfsResult = countResult(data);
+        int bfsResult = bfs.countResult();
 
         data.resetTables();
         astarManhattan.searchWay();
-        int astarManResult = countResult(data);
+        int astarManResult = astarManhattan.countResult();
 
         data.resetTables();
         astarEu.searchWay();
-        int astarEuResult = countResult(data);
+        int astarEuResult = astarEu.countResult();
 
         assertEquals(bfsResult, astarManResult);
         assertEquals(bfsResult, astarEuResult);
 
     }
-
-    private int countResult(MazeData data) {
-        int count = 0;
-        for (int i = 0; i < data.getRow(); i++) {
-            for (int j = 0; j < data.getColumn(); j++) {
-                if (data.result[i][j]) {
-                    count++;
-                }
-            }
-        }
-        return count;
-    }
-
 }

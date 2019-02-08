@@ -1,6 +1,6 @@
 package dataTest;
 
-import data.MazeData;
+import data.GraphData;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 
 public class MazeDataTest {
 
-    private MazeData data;
+    private GraphData data;
     private final int ROWS = 51;
     private final int COLUMNS = 31;
 
@@ -27,7 +27,7 @@ public class MazeDataTest {
 
     @Before
     public void setUp() {
-        data = new MazeData(ROWS, COLUMNS);
+        data = new GraphData(ROWS, COLUMNS);
     }
 
     @After
@@ -38,7 +38,7 @@ public class MazeDataTest {
     @Test(expected = Exception.class)
     public void throwExceptionIfFilenameEmptyWhenreadingAMazeFile() {
 
-        MazeData failedData = new MazeData(20, 30);
+        GraphData failedData = new GraphData(20, 30);
     }
     
     @Test
@@ -46,13 +46,13 @@ public class MazeDataTest {
         for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLUMNS; j++) {
                 if (i == 1 && j == 0) {
-                    assertEquals(MazeData.ROAD, data.maze[i][j]);
+                    assertEquals(GraphData.ROAD, data.maze[i][j]);
                 } else if (i == ROWS - 2 && (j == COLUMNS - 1)) {
-                    assertEquals(MazeData.ROAD, data.maze[i][j]);
+                    assertEquals(GraphData.ROAD, data.maze[i][j]);
                 } else if (i % 2 == 1 && j % 2 == 1) {
-                    assertEquals(MazeData.ROAD, data.maze[i][j]);
+                    assertEquals(GraphData.ROAD, data.maze[i][j]);
                 } else {
-                    assertEquals(MazeData.WALL, data.maze[i][j]);
+                    assertEquals(GraphData.WALL, data.maze[i][j]);
                 }
             }
         }
@@ -95,11 +95,11 @@ public class MazeDataTest {
     @Test
     public void canGetRightCharacterFromMaze() {
         char character = data.getMaze(2, 2);
-        char wall = MazeData.WALL;
+        char wall = GraphData.WALL;
         assertEquals(wall, character);
 
         char character2 = data.getMaze(3, 3);
-        char path = MazeData.ROAD;
+        char path = GraphData.ROAD;
         assertEquals(path, character2);
 
     }
