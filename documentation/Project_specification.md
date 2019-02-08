@@ -3,7 +3,7 @@
 ### Problem to solve
 This project is about generating a graph of labyrinth and walking through it using different algorithms.
 
-In this project I'm going to generate a graph of labyrinth with multiple solutions and then walk through it by looking for the shortest path. The entrance and exit are given in the labyrinth. In the labyrinth user can walk in four directions (left,right,up,down). User cannot walk diagnonally. 
+In this project I'm going to generate a graph of labyrinth with multiple solutions and then walk through it by looking for the shortest path (the term of shortest means walking thorugh the least noded to the exit). The entrance and exit are given in the labyrinth. In the labyrinth user can walk in four directions (left,right,up,down). User cannot walk diagnonally. 
 
 I'll use DFS(depth-first-search) and randomized Prim to generate a graph of labyrinth. After generating a labyrinth, I'll use BFS(breadth-first-search) and A*-algorithm to find the shortest path. I'll use different heuristic functions (Manhattan distance, Euclidean distance and squared Euclidean distance) when implementing A*-algorithm. In this project I'll compare the performence of different shortest path finding algorithms in different graphs. Because using squared Euclidean distance can find a path in a shorter time than using other heuristic functions mentioned before, but it will not always find the shortest path, I'm also going to find out the relationship between the sacrifice of accurancy and time saving when using squared Euclidean distance as the heuristic function. 
 
