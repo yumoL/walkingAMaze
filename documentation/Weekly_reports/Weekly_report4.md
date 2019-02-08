@@ -24,4 +24,4 @@ Used hours: 24h
 - I'll implement the rest of data structures which are HashMap and HashSet.
 
 ### Some Problems
-- I've learnt that in Java8 the HashMap uses linked list in the beginning, and when collisions are getting more it uses binary tree. I tried to implement the HashMap using TreeMap but it just caused problems when running algorithms. I guess the reason of this problem is that HashMap uses equals and TreeMap compareTo to define whether two elements are same...
+- I've learnt that in Java8 the HashMap uses linked list in the beginning, and when collisions are getting more it uses binary tree. I tried to implement the HashMap using TreeMap but it just caused problems when running algorithms. I guess the reason of this problem is that HashMap uses equals and TreeMap compareTo to define whether two elements are same. I'm using HashMap to save my own object Node, where both equals- and compareTo-methods have been overridden. Maybe I need to check these two methods again. 
