@@ -1,15 +1,15 @@
-package mazeVisualisation;
+package graphVisualization;
 
-import data.MazeData;
+import data.GraphData;
 import java.awt.*;
 import javax.swing.*;
 
-public class MazeFrame extends JFrame {
+public class GraphFrame extends JFrame {
 
     private int canvasWidth;
     private int canvasHeight;
 
-    public MazeFrame(String title, int canvasWidth, int canvasHeight) {
+    public GraphFrame(String title, int canvasWidth, int canvasHeight) {
 
         super(title);
 
@@ -26,7 +26,7 @@ public class MazeFrame extends JFrame {
         setVisible(true);
     }
 
-    public MazeFrame(String title) {
+    public GraphFrame(String title) {
 
         this(title, 1024, 768);
     }
@@ -40,9 +40,9 @@ public class MazeFrame extends JFrame {
     }
 
     // data
-    private MazeData data;
+    private GraphData data;
 
-    public void render(MazeData data) {
+    public void render(GraphData data) {
         this.data = data;
         repaint();
     }
@@ -55,7 +55,7 @@ public class MazeFrame extends JFrame {
         }
 
         /**
-         * Generate and walk the maze on the canvas using Graphics
+         * Generate and walk the labyrinth on the canvas using Graphics
          *
          * @param g the Graphics which will be used to draw the walls and the
          * roads of the maze and set colours to the them
@@ -72,7 +72,7 @@ public class MazeFrame extends JFrame {
             for (int i = 0; i < data.getRow(); i++) {
                 for (int j = 0; j < data.getColumn(); j++) {
                     
-                    if (data.maze[i][j] == MazeData.WALL) {
+                    if (data.maze[i][j] == GraphData.WALL) {
                         VisualizationHelper.setColor(graphics2d, Color.BLUE);
                     } else {
                         VisualizationHelper.setColor(graphics2d, Color.WHITE);

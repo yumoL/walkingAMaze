@@ -3,7 +3,7 @@ package data;
 /**
  * Data of a maze
  */
-public class MazeData{
+public class GraphData{
 
     public static final char ROAD = ' ';
     public static final char WALL = '#';
@@ -18,7 +18,7 @@ public class MazeData{
     public boolean path[][];
     public boolean result[][];
 
-    public MazeData(int rows, int columns) {
+    public GraphData(int rows, int columns) {
 
         if (rows % 2 == 0 || columns % 2 == 0) {
             throw new IllegalArgumentException("The numbers of the row and the column should be odd ");

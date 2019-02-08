@@ -1,4 +1,4 @@
-package mazeVisualisation;
+package graphVisualization;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
@@ -32,16 +32,16 @@ public class VisualizationHelper {
         g.fill(rectangle);
     }
 
-    /**
-     * pause the thread
-     *
-     * @param t how many milliseconds the thread will sleep
-     */
-    public static void pause(int t) {
-        try {
-            Thread.sleep(t);
-        } catch (InterruptedException e) {
-            System.out.println("Error in sleeping");
-        }
-    }
+//    /**
+//     * pause the thread
+//     *
+//     * @param t how many milliseconds the thread will sleep
+//     */
+//    public static void pause(int t) {
+//        try {
+//            Thread.sleep(t);
+//        } catch (InterruptedException e) {
+//            System.out.println("Error in sleeping");
+//        }
+//    }
 }
