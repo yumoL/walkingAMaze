@@ -24,7 +24,7 @@ public class Main {
         if (choose == 0) {
             GraphVisualizer gvis = new GraphVisualizer(101/*rows*/, 101/*columns*/, 0/*which way to generate the graph,0=dfs,1=randomized Prim*/);
         } else if (choose == 1) {
-//            Comparator comp = new Comparator(101, 101, 0);//Comparator is initialized in the same way as GraphVisualizer
+            Comparator comp = new Comparator(101, 101, 0);//Comparator is initialized in the same way as GraphVisualizer
             comp.testBfs();
             comp.testAstarManhattan();
         }

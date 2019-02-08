@@ -85,7 +85,7 @@ public abstract class PathFindingAlgo {
         int checked=0;
         for(int i=0;i<data.getRow();i++){
             for(int j=0;j<data.getColumn();j++){
-                if(data.path[i][j]){
+             if(data.path[i][j]){
                     checked++;
                 }
             }
