@@ -15,8 +15,7 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 
 /**
- *
- * @author luoyumo
+ * Test path finding algorithms
  */
 public class MazeSolverTest {
 
@@ -40,14 +39,13 @@ public class MazeSolverTest {
     public static void tearDownClass() {
     }
 
-    public void init() {
+    public void init(int rows, int columns) {
         mockFrame = mock(GraphFrame.class);
-        int rows = 101;
-        int columns = 101;
         data = new GraphData(rows, columns);
 
         if (hasSolution) {
             primGen = new PrimGenerator(data, mockFrame);
+            primGen.setRandomSeed(1037);
             primGen.generateLabyrinth();
         }
         bfs = new Bfs(data, mockFrame);
@@ -61,84 +59,40 @@ public class MazeSolverTest {
     public void tearDown() {
     }
 
-    @Test
-    public void returnTrueWhenPathFoundUsingBfs() {
+    private void pathFoundUsingBfs(int rows, int columns, int rightCheckedNodes) {
         hasSolution = true;
-        init();
+        init(rows, columns);
         assertTrue(bfs.searchWay());
+        assertEquals(rightCheckedNodes, bfs.checkedNodes());
     }
 
-    @Test
-    public void returnFalseWhenPathNotFoundUsingBfs() {
-        hasSolution = false;
-        init();
-        assertFalse(bfs.searchWay());
-    }
-
-    @Test
-    public void returnTrueWhenPathFoundUsingAstarWithManhattan() {
-        //for (int i = 0; i < 10; i++) {
+    private void pathFoundUsingAstarWithManhattan(int rows, int columns, int rightCheckedNodes) {
         hasSolution = true;
-        init();
+        init(rows, columns);
         System.out.println("Manhattan");
-//            int road = 0;
-//            for (int k = 0; k < data.getRow(); k++) {
-//                for (int j = 0; j < data.getColumn(); j++) {
-//                    System.out.print(data.maze[k][j]);
-//                    if (data.maze[k][j] == MazeData.ROAD) {
-//                        road++;
-//                    }
-//                }
-//                System.out.println("");
-//
-//            }
-//            System.out.println("road " + road);
         assertTrue(astarManhattan.searchWay());
-        //System.out.println(road);
-        //}
+        assertEquals(rightCheckedNodes, astarManhattan.checkedNodes());
     }
 
-    @Test
-    public void returnTrueWhenPathFoundUsingAstarWithEuclidean() {
+    private void pathFoundUsingAstarWithEuclidean(int rows, int columns, int rightCheckedNodes) {
         hasSolution = true;
-        init();
+        init(rows, columns);
         System.out.println("Euclidean");
-//            int road = 0;
-//            for (int k = 0; k < data.getRow(); k++) {
-//                for (int j = 0; j < data.getColumn(); j++) {
-//                    System.out.print(data.maze[k][j]);
-//                    if (data.maze[k][j] == MazeData.ROAD) {
-//                        road++;
-//                    }
-//                }
-//                System.out.println("");
-//
-//            }
-//            System.out.println("road " + road);
         assertTrue(astarEu.searchWay());
-        //System.out.println(road);
-        //}
+        assertEquals(rightCheckedNodes, astarEu.checkedNodes());
     }
 
-    @Test
-    public void returnTrueWhenPathFoundUsingAstarWithEuclideanSquare() {
+    private void pathFoundUsingAstarWithEuclideanSquare(int rows, int columns, int rightCheckedNodes) {
         hasSolution = true;
-        init();
+        init(rows, columns);
         System.out.println("Squared Euclidean");
         assertTrue(astarEuSq.searchWay());
+        assertEquals(rightCheckedNodes, astarEuSq.checkedNodes());
     }
 
-    @Test
-    public void returnFalseWhenPathNotFoundUsingAstar() {
-        hasSolution = false;
-        init();
-        assertFalse(astarManhattan.searchWay());
-    }
-
-    @Test
-    public void canFindShortestPath() {
+    private void rightPathLength(int rows, int columns, int shortest, int longerWhenSq) {
         hasSolution = true;
-        init();
+        init(rows, columns);
         bfs.searchWay();
         int bfsResult = bfs.countResult();
 
@@ -150,8 +104,55 @@ public class MazeSolverTest {
         astarEu.searchWay();
         int astarEuResult = astarEu.countResult();
 
+        data.resetTables();
+        astarEuSq.searchWay();
+        int astarEuSqResult = astarEuSq.countResult();
+
+        assertEquals(shortest, bfsResult);
         assertEquals(bfsResult, astarManResult);
         assertEquals(bfsResult, astarEuResult);
+        assertEquals(longerWhenSq, astarEuSqResult);
 
     }
+
+    @Test
+    public void returnFalseWhenPathNotFoundUsingAstar() {
+        hasSolution = false;
+        init(101, 101);
+        assertFalse(bfs.searchWay());
+        assertFalse(astarManhattan.searchWay());
+        assertFalse(astarEu.searchWay());
+        assertFalse(astarEuSq.searchWay());
+    }
+
+    @Test
+    public void pathFoundUsingBfs() {
+        pathFoundUsingBfs(101, 101, 5232);
+        pathFoundUsingBfs(1001, 1001, 523932);
+    }
+
+    @Test
+    public void pathFoundUsingAstarWithManhattan() {
+        pathFoundUsingAstarWithManhattan(101, 101, 1520);
+        pathFoundUsingAstarWithManhattan(1001, 1001, 287738);
+    }
+
+    @Test
+    public void pathFoundUsingAstarWithEuclidean() {
+        pathFoundUsingAstarWithEuclidean(101, 101, 4257);
+        pathFoundUsingAstarWithEuclidean(1001, 1001, 469518);
+    }
+
+    @Test
+    public void pathFoundUsingAstarWithEuclideanSquare() {
+        pathFoundUsingAstarWithEuclideanSquare(101, 101, 541);
+        pathFoundUsingAstarWithEuclideanSquare(1001, 1001, 6599);
+    }
+
+    @Test
+    public void getRightPathLength() {
+        rightPathLength(101, 101, 207, 249);
+        rightPathLength(1001, 1001, 2087, 2905);
+    }
+
 }
