@@ -72,7 +72,7 @@ public class GraphFrame extends JFrame {
             for (int i = 0; i < data.getRow(); i++) {
                 for (int j = 0; j < data.getColumn(); j++) {
                     
-                    if (data.maze[i][j] == GraphData.WALL) {
+                    if (data.graph[i][j] == GraphData.WALL) {
                         VisualizationHelper.setColor(graphics2d, Color.BLUE);
                     } else {
                         VisualizationHelper.setColor(graphics2d, Color.WHITE);

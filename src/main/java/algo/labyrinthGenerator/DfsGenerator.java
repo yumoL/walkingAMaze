@@ -1,6 +1,6 @@
 package algo.labyrinthGenerator;
 
-import algo.shortestPathSolver.Node;
+import data.Node;
 import data.GraphData;
 import graphVisualization.GraphFrame;
 import util.RandomQueue;
@@ -30,7 +30,7 @@ public class DfsGenerator extends Generator {
 
                 if (data.inArea(newX, newY)
                         && !data.visited[newX][newY]
-                        && data.maze[newX][newY] == GraphData.ROAD) {
+                        && data.graph[newX][newY] == GraphData.ROAD) {
                     queue.add(new Node(newX, newY));
                     data.visited[newX][newY] = true;
                     setRoadData(curPos.getX() + DIRECTION[i][0], curPos.getY() + DIRECTION[i][1]);
@@ -46,7 +46,7 @@ public class DfsGenerator extends Generator {
         for (int i = 0; i < data.getColumn() * data.getRow() / 1000; i++) {
             int row = (int) (Math.random() * (data.getRow() - 2)) + 1;
             int column = (int) (Math.random() * (data.getColumn() - 2)) + 1;
-            if (data.maze[row][column] == GraphData.WALL) {
+            if (data.graph[row][column] == GraphData.WALL) {
                 setRoadData(row, column);
 
             }

@@ -1,6 +1,6 @@
 package algo.labyrinthGenerator;
 
-import algo.shortestPathSolver.Node;
+import data.Node;
 import data.GraphData;
 import java.util.Random;
 import graphVisualization.GraphFrame;
@@ -110,13 +110,20 @@ public class PrimGenerator extends Generator {
     @Override
     protected void breakMoreWalls() {
         for (int i = 0; i < data.getColumn() * data.getRow() / 20; i++) {
-            int row = (int) (Math.random() * (data.getRow() - 2)) + 1;
-            int column = (int) (Math.random() * (data.getColumn() - 2)) + 1;
-            if (data.maze[row][column] == GraphData.WALL) {
+            //int row = (int) (Math.random() * (data.getRow() - 2)) + 1;
+            int row=r.nextInt(data.getRow()-2)+1;
+            
+            int column = r.nextInt(data.getColumn()-2)+1;
+            if (data.graph[row][column] == GraphData.WALL) {
                 setRoadData(row, column);
 
             }
         }
+    }
+    
+    //used in tests
+    public void setRandomSeed(int seed){
+        this.r=new Random(1037);
     }
 
 }

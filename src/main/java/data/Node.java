@@ -1,4 +1,4 @@
-package algo.shortestPathSolver;
+package data;
 
 public class Node implements Comparable<Node> {
 
@@ -47,8 +47,8 @@ public class Node implements Comparable<Node> {
     public void setF(int newF) {
         this.f = newF;
     }
-    
-    public int getF(){
+
+    public int getF() {
         return this.f;
     }
 
@@ -71,10 +71,14 @@ public class Node implements Comparable<Node> {
 
     @Override
     public boolean equals(Object obj) {
-        if(obj==this)return true;
-        if(!(obj instanceof Node))return false;
-        Node comp=(Node)obj;
-        return this.x==comp.x&&this.y==comp.y;
+        if (obj == this) {
+            return true;
+        }
+        if (!(obj instanceof Node)) {
+            return false;
+        }
+        Node comp = (Node) obj;
+        return this.x == comp.x && this.y == comp.y;
     }
 
     @Override
@@ -84,9 +88,7 @@ public class Node implements Comparable<Node> {
         hash = 71 * hash + this.y;
         return hash;
     }
-    
-    public String toString(){
-        return "("+this.x+", "+this.y+" "+this.f+")";
-    }
+
+  
 
 }

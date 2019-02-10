@@ -46,13 +46,13 @@ public class MazeDataTest {
         for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLUMNS; j++) {
                 if (i == 1 && j == 0) {
-                    assertEquals(GraphData.ROAD, data.maze[i][j]);
+                    assertEquals(GraphData.ROAD, data.graph[i][j]);
                 } else if (i == ROWS - 2 && (j == COLUMNS - 1)) {
-                    assertEquals(GraphData.ROAD, data.maze[i][j]);
+                    assertEquals(GraphData.ROAD, data.graph[i][j]);
                 } else if (i % 2 == 1 && j % 2 == 1) {
-                    assertEquals(GraphData.ROAD, data.maze[i][j]);
+                    assertEquals(GraphData.ROAD, data.graph[i][j]);
                 } else {
-                    assertEquals(GraphData.WALL, data.maze[i][j]);
+                    assertEquals(GraphData.WALL, data.graph[i][j]);
                 }
             }
         }

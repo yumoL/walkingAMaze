@@ -1,7 +1,6 @@
 package algo.shortestPathSolver;
 
-import algo.shortestPathSolver.Node;
-import algo.shortestPathSolver.PathFindingAlgo;
+import data.Node;
 import data.GraphData;
 import graphVisualization.GraphFrame;
 import util.MyQueue;

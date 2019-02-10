@@ -20,7 +20,7 @@ public abstract class Generator {
      */
     protected void setRoadData(int x, int y) {
         if (data.inArea(x, y)) {
-            data.maze[x][y] = GraphData.ROAD;
+            data.graph[x][y] = GraphData.ROAD;
         }
         frame.render(data);
     }

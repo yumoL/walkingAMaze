@@ -12,7 +12,7 @@ import algo.shortestPathSolver.AstarWithEuclideanSquare;
 import algo.shortestPathSolver.AstarWithManhattan;
 
 public class GraphVisualizer {
-    private static int blockSide = 7;
+    private static int blockSide = 1;
 
     public GraphData data;
     private GraphFrame frame;
@@ -49,6 +49,7 @@ public class GraphVisualizer {
                 if (howToGenerate == 0) {
                     dfsGenerator.generateLabyrinth();
                 } else if (howToGenerate == 1) {
+                    primGenerator.setRandomSeed(1037);
                     primGenerator.generateLabyrinth();
                 }
             }).start();

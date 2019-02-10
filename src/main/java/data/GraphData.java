@@ -9,7 +9,7 @@ public class GraphData{
     public static final char WALL = '#';
 
     private int rows, columns;
-    public char[][] maze;
+    public char[][] graph;
 
     private int entranceX, entranceY;
     private int exitX, exitY;
@@ -27,7 +27,7 @@ public class GraphData{
         this.rows = rows;
         this.columns = columns;
 
-        maze = new char[rows][columns];
+        graph = new char[rows][columns];
         visited=new boolean[rows][columns];
         path=new boolean[rows][columns];
         result=new boolean[rows][columns];
@@ -35,9 +35,9 @@ public class GraphData{
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 if (i % 2 == 1 && j % 2 == 1) {
-                    maze[i][j] = ROAD;
+                    graph[i][j] = ROAD;
                 } else {
-                    maze[i][j] = WALL;
+                    graph[i][j] = WALL;
                 }
             }
         }
@@ -47,8 +47,8 @@ public class GraphData{
         exitX = rows - 2;
         exitY = columns - 1;
 
-        maze[entranceX][entranceY] = ROAD;
-        maze[exitX][exitY] = ROAD;
+        graph[entranceX][entranceY] = ROAD;
+        graph[exitX][exitY] = ROAD;
     }
 
     public int getRow() {
@@ -91,7 +91,7 @@ public class GraphData{
         if (!inArea(i, j)) {
             throw new IllegalArgumentException("i or j out of index");
         }
-        return maze[i][j];
+        return graph[i][j];
     }
     
     
