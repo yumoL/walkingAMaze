@@ -49,20 +49,11 @@ public class GraphVisualizer {
                 if (howToGenerate == 0) {
                     dfsGenerator.generateLabyrinth();
                 } else if (howToGenerate == 1) {
-                    primGenerator.setRandomSeed(1037);
                     primGenerator.generateLabyrinth();
                 }
             }).start();
         });
     }
-
-//    private void setShortestPath() {
-//        bfs = new Bfs(data, frame);
-//        bfs.searchWay();
-//        shortestPath = bfs.countResult();
-//        data.resetTables();
-//
-//    }
 
     /**
      * Keyboard will be used when walking the maze. For example when pressing
