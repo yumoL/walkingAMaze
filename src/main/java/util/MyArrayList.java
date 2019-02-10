@@ -113,9 +113,10 @@ public class MyArrayList<E> {
         }
         return data[index];
     }
-    
+
     /**
-     * Check if the list contains element e 
+     * Check if the list contains element e
+     *
      * @param e
      * @return true if e is in the list, otherwise false
      */
