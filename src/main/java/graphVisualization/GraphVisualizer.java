@@ -49,6 +49,7 @@ public class GraphVisualizer {
                 if (howToGenerate == 0) {
                     dfsGenerator.generateLabyrinth();
                 } else if (howToGenerate == 1) {
+                    primGenerator.setRandomSeed(1037);
                     primGenerator.generateLabyrinth();
                 }
             }).start();
@@ -56,8 +57,8 @@ public class GraphVisualizer {
     }
 
     /**
-     * Keyboard will be used when walking the maze. For example when pressing
-     * character c program will use bfs with recursion to walk the maze
+     * Keyboard will be used when walking the graph. For example when pressing
+     * character a program will use bfs to walk the maze
      */
     private class MazeKeyListener extends KeyAdapter {
 

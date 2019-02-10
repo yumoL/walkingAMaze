@@ -128,31 +128,31 @@ public class MazeSolverTest {
     @Test
     public void pathFoundUsingBfs() {
         pathFoundUsingBfs(101, 101, 5232);
-        pathFoundUsingBfs(1001, 1001, 523932);
+        pathFoundUsingBfs(501, 501, 131018);
     }
 
     @Test
     public void pathFoundUsingAstarWithManhattan() {
         pathFoundUsingAstarWithManhattan(101, 101, 1520);
-        pathFoundUsingAstarWithManhattan(1001, 1001, 287738);
+        pathFoundUsingAstarWithManhattan(501, 501, 77715);
     }
 
     @Test
     public void pathFoundUsingAstarWithEuclidean() {
         pathFoundUsingAstarWithEuclidean(101, 101, 4257);
-        pathFoundUsingAstarWithEuclidean(1001, 1001, 469518);
+        pathFoundUsingAstarWithEuclidean(501, 501, 117849);
     }
 
     @Test
     public void pathFoundUsingAstarWithEuclideanSquare() {
         pathFoundUsingAstarWithEuclideanSquare(101, 101, 541);
-        pathFoundUsingAstarWithEuclideanSquare(1001, 1001, 6599);
+        pathFoundUsingAstarWithEuclideanSquare(501, 501, 4979);
     }
 
     @Test
     public void getRightPathLength() {
         rightPathLength(101, 101, 207, 249);
-        rightPathLength(1001, 1001, 2087, 2905);
+        rightPathLength(501, 501, 1045, 1593);
     }
 
 }
