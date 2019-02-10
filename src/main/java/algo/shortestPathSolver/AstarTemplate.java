@@ -15,15 +15,15 @@ public abstract class AstarTemplate extends PathFindingAlgo {
 
     private IndexPriorityQueue<Node> openList; //list of nodes to be checked
     private int i;//index which will be inserted into IndexHeap
-    private HashMap<Node, Integer> map; //document the index of every node
+    private MyHashMap map; //document the index of every node
 
     protected final int COST = 1;
 
     public AstarTemplate(GraphData data, GraphFrame frame) {
         super(data, frame);
-        this.openList = new IndexPriorityQueue<>(data.getRow()*data.getColumn());
+        this.openList = new IndexPriorityQueue<>(data.getRow() * data.getColumn());
         this.i = 0;
-        this.map = new HashMap<>();
+        this.map = new MyHashMap();
     }
 
     @Override
@@ -52,14 +52,14 @@ public abstract class AstarTemplate extends PathFindingAlgo {
             if (map.containsKey(exitNode)) {
                 setData(exitNode.getX(), exitNode.getY(), true);
                 int exitIndex = map.get(exitNode);
-                exitNode=openList.getElement(exitIndex);
+                exitNode = openList.getElement(exitIndex);
                 findPath(exitNode);
                 return true;
             }
             curNode = openList.pollElement();
             //System.out.println("extract "+curNode.getX()+","+curNode.getY()+" "+curNode.getF());
             //closeList.add(curNode);
-            data.visited[curNode.getX()][curNode.getY()]=true;
+            data.visited[curNode.getX()][curNode.getY()] = true;
             map.remove(curNode);
             setData(curNode.getX(), curNode.getY(), true);
 
@@ -97,7 +97,9 @@ public abstract class AstarTemplate extends PathFindingAlgo {
 //        if (closeList.contains(node)) {
 //            return false;
 //        }
-        if(data.visited[node.getX()][node.getY()])return false;
+        if (data.visited[node.getX()][node.getY()]) {
+            return false;
+        }
         //System.out.println("contains (1,6) "+map.containsKey(node));
         if (map.containsKey(node)) {
             int index = map.get(node);

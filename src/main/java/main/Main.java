@@ -20,11 +20,11 @@ public class Main {
         
         //When walking the labyrinth,, press keyboard 'a' for bfs, 'b' for A* using manhattan disctance, 'c'for A* using euclidean distance and 'd' for A* using squared euclidean distance
         // please walk the labyrinth in other algorithms before using A* with squared euclidean distance
-        int choose = 0;
+        int choose = 1;
         if (choose == 0) {
             GraphVisualizer gvis = new GraphVisualizer(1001/*rows*/, 1001/*columns*/, 1/*which way to generate the graph,0=dfs,1=randomized Prim*/);
         } else if (choose == 1) {
-            Comparator comp = new Comparator(101, 101, 1);//Comparator is initialized in the same way as GraphVisualizer
+            Comparator comp = new Comparator(2001, 2001, 0);//Comparator is initialized in the same way as GraphVisualizer
             comp.testBfs();
             comp.testAstarManhattan();
         }
