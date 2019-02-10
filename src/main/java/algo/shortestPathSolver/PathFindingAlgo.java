@@ -3,7 +3,6 @@ package algo.shortestPathSolver;
 import data.Node;
 import data.GraphData;
 import graphVisualization.GraphFrame;
-import graphVisualization.VisualizationHelper;
 
 /**
  * An abstract class for different path finding algorithms
@@ -50,7 +49,6 @@ public abstract class PathFindingAlgo {
         frame.render(data);
     }
 
-
     /**
      * Define if it's possible to access the exit through this point
      *
@@ -61,48 +59,36 @@ public abstract class PathFindingAlgo {
      */
     public boolean access(int x, int y) {
         return data.inArea(x, y)
-                && !data.visited[x][y]&& data.getMaze(x, y) == GraphData.ROAD;
+                && !data.visited[x][y] && data.getMaze(x, y) == GraphData.ROAD;
     }
 
     /**
-     * Print the result of the path finding
-     *
-     * @param hasPath If a path has been found, hasPath=true, otherwise
-     * hasPath=false
-     */
-    public void printResult(boolean hasPath) {
-        if (hasPath) {
-            System.out.println("Path has been found");
-        } else {
-            System.out.println("This maze has no solution");
-        }
-    }
-    
-    /**
      * count how many nodes were checked during the path finding
+     *
      * @return the number of checked nodes
      */
-    public int checkedNodes(){
-        int checked=0;
-        for(int i=0;i<data.getRow();i++){
-            for(int j=0;j<data.getColumn();j++){
-             if(data.path[i][j]){
+    public int checkedNodes() {
+        int checked = 0;
+        for (int i = 0; i < data.getRow(); i++) {
+            for (int j = 0; j < data.getColumn(); j++) {
+                if (data.path[i][j]) {
                     checked++;
                 }
             }
         }
         return checked;
     }
-    
+
     /**
      * count how many nodes are on the path
+     *
      * @return the length of the path
      */
-    public int countResult(){
-        int path=0;
-        for(int i=0;i<data.getRow();i++){
-            for(int j=0;j<data.getColumn();j++){
-                if(data.result[i][j]){
+    public int countResult() {
+        int path = 0;
+        for (int i = 0; i < data.getRow(); i++) {
+            for (int j = 0; j < data.getColumn(); j++) {
+                if (data.result[i][j]) {
                     path++;
                 }
             }
