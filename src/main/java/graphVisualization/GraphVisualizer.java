@@ -12,10 +12,10 @@ import algo.shortestPathSolver.AstarWithEuclideanSquare;
 import algo.shortestPathSolver.AstarWithManhattan;
 
 public class GraphVisualizer {
-    private static int blockSide = 1;
+    public static int blockSide = 2;
 
     public GraphData data;
-    private GraphFrame frame;
+    public GraphFrame frame;
 
     private PrimGenerator primGenerator;
     private DfsGenerator dfsGenerator;
@@ -26,7 +26,7 @@ public class GraphVisualizer {
     private AstarWithEuclideanSquare astarEuSq;
 
     private int shortestPath;
-    private int howToGenerate;
+    protected int howToGenerate;
 
     public GraphVisualizer(int rows, int columns, int generator) {
 
@@ -49,7 +49,7 @@ public class GraphVisualizer {
                 if (howToGenerate == 0) {
                     dfsGenerator.generateLabyrinth();
                 } else if (howToGenerate == 1) {
-                    primGenerator.setRandomSeed(1037);
+                    
                     primGenerator.generateLabyrinth();
                 }
             }).start();
@@ -114,7 +114,7 @@ public class GraphVisualizer {
                     long e = System.currentTimeMillis();
                     System.out.println("A* using squared Euclidian distance: " + (e - s) + "ms");
                     System.out.println("checked nodes in A* using squared Euclidean distance: " + astarEuSq.checkedNodes());
-                    System.out.println("shotest "+shortestPath);
+                    System.out.println("shortest path: "+shortestPath);
                     System.out.println(astarEuSq.findShortestPathOrNot(shortestPath));
                 }).start();
 
