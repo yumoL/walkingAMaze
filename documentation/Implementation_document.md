@@ -22,6 +22,8 @@ The implemented data structures in this project includes ArrayList, queue, Prior
 (V=number of nodes, E=number of edges)
 
 ### Graph Generation
+<img src="https://github.com/yumoL/walkingAMaze/blob/master/documentation/pictures/dfs.jpg" width="200" height="200">
+
 #### DFS
 ```java
 RandomQueue queue (adding and removing an element randomly)
