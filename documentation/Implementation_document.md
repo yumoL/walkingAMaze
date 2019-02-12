@@ -19,5 +19,22 @@ The graphic UI is implemented by using Java Swing. When user run the program, af
 The implemented data structures in this project includes ArrayList, queue, PriorityQueue and HashMap.
 
 ## Implemented Time and Space Complexity
+(V=number of nodes, E=number of edges)
 
-### Randomized Prim
+### Graph Generation
+#### DFS
+```java
+RandomQueue queue (adding and removing an element randomly)
+
+queue.add (first)
+while (queue is not empty)
+  Node currentNode = queue.remove()
+  for (neighbourNode: neighbour nodes of currentNode in four directions)
+    if (neighbour is in the area of the graph and it hasn't been visited and it's a road)
+      queue.add (neighbour)
+      visited[neighbour.x][neighbour.y]=true
+      set the wall between currentNode and neighbourNode as a road
+    
+```
+Time complexity: O(V), because we need to traverse all nodes, adding,removing and checking a node are all O(1)-actions
+Space complaxity: O(V), because we need an extra queue to save all nodes. 
