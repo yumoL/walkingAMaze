@@ -17,7 +17,7 @@ import static org.mockito.Mockito.mock;
 /**
  * Test path finding algorithms
  */
-public class MazeSolverTest {
+public class GraphSolverTest {
 
     private Bfs bfs;
     private AstarWithManhattan astarManhattan;
@@ -28,7 +28,7 @@ public class MazeSolverTest {
     private PrimGenerator primGen;
     private boolean hasSolution;
 
-    public MazeSolverTest() {
+    public GraphSolverTest() {
     }
 
     @BeforeClass

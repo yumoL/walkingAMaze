@@ -1,7 +1,7 @@
 package data;
 
 /**
- * Data of a maze
+ * Data of a graph
  */
 public class GraphData{
 
@@ -80,14 +80,14 @@ public class GraphData{
     }
     
     /**
-     * get certain character of the maze
+     * get certain character of the graph
      *
-     * @param i the x-coordinate of the character in the maze
-     * @param j the y-coordinate of the character in the maze
+     * @param i the x-coordinate of the character in the graph
+     * @param j the y-coordinate of the character in the graph
      * @return character whose x-coordinate is i and y-coordinate is j in the
-     * maze
+     * graph
      */
-    public char getMaze(int i, int j) {
+    public char getGraph(int i, int j) {
         if (!inArea(i, j)) {
             throw new IllegalArgumentException("i or j out of index");
         }

@@ -8,13 +8,13 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class MazeDataTest {
+public class GraphDataTest {
 
     private GraphData data;
     private final int ROWS = 51;
     private final int COLUMNS = 31;
 
-    public MazeDataTest() {
+    public GraphDataTest() {
     }
 
     @BeforeClass
@@ -34,13 +34,6 @@ public class MazeDataTest {
     public void tearDown() {
     }
 
-   
-    @Test(expected = Exception.class)
-    public void throwExceptionIfFilenameEmptyWhenreadingAMazeFile() {
-
-        GraphData failedData = new GraphData(20, 30);
-    }
-    
     @Test
     public void initialiseCorrcectPattern() {
         for (int i = 0; i < ROWS; i++) {
@@ -64,16 +57,14 @@ public class MazeDataTest {
         assertEquals(ROWS, data.getRow());
     }
 
-    
     @Test
-    public void returnTrueWhenCoordinatePairInMaze() {
+    public void returnTrueWhenCoordinatePairInGraph() {
         boolean result = data.inArea(3, 3);
         assertTrue(result);
     }
 
-    
     @Test
-    public void returnFalseWhenCoordinatePairOutsideMaze() {
+    public void returnFalseWhenCoordinatePairOutsideGraph() {
         boolean xOutside = data.inArea(300, 3);
         boolean yOutside = data.inArea(3, 300);
         boolean xNegative = data.inArea(-2, 9);
@@ -85,20 +76,18 @@ public class MazeDataTest {
         assertFalse(yNegative);
     }
 
-    
     @Test(expected = Exception.class)
-    public void throwExceptionIfCoordinatePairOutsideMazeWhenGettingCertainCharFromMaze() {
-        char wrongCoordinates = data.getMaze(300, 300);
+    public void throwExceptionIfCoordinatePairOutsideGraphWhenGettingCertainCharFromGraph() {
+        char wrongCoordinates = data.getGraph(300, 300);
     }
 
-    
     @Test
-    public void canGetRightCharacterFromMaze() {
-        char character = data.getMaze(2, 2);
+    public void canGetRightCharacterFromGraph() {
+        char character = data.getGraph(2, 2);
         char wall = GraphData.WALL;
         assertEquals(wall, character);
 
-        char character2 = data.getMaze(3, 3);
+        char character2 = data.getGraph(3, 3);
         char path = GraphData.ROAD;
         assertEquals(path, character2);
 

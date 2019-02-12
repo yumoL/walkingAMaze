@@ -94,9 +94,9 @@ public class PrimGenerator extends Generator {
     }
 
     /**
-     * Define if a wall is inside the maze, which means the x-coordinate of the
-     * wall should in [1,the number of rows of the maze-2] and the y-coordinate
-     * of the wall should in [1,the number of columns of the maze-2]
+     * Define if a wall is inside the labyrinth, which means the x-coordinate of the
+     * wall should in [1,the number of rows of the labyrinth-2] and the y-coordinate
+     * of the wall should in [1,the number of columns of the labyrinth-2]
      *
      * @param x the x-coordinate of the wall
      * @param y the y-coordinate of the wall
@@ -123,7 +123,7 @@ public class PrimGenerator extends Generator {
     
     //used in tests
     public void setRandomSeed(int seed){
-        this.r=new Random(1037);
+        this.r=new Random(seed);
     }
 
 }

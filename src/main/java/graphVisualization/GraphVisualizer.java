@@ -12,7 +12,7 @@ import algo.shortestPathSolver.AstarWithEuclideanSquare;
 import algo.shortestPathSolver.AstarWithManhattan;
 
 public class GraphVisualizer {
-    public static int blockSide = 2;
+    public static int blockSide = 7;
 
     public GraphData data;
     public GraphFrame frame;
@@ -38,13 +38,13 @@ public class GraphVisualizer {
 
         // initialise frame
         EventQueue.invokeLater(() -> {
-            frame = new GraphFrame("Maze", sceneWidth, sceneHeight);
+            frame = new GraphFrame("Graph", sceneWidth, sceneHeight);
 
             primGenerator = new PrimGenerator(data, frame);
             dfsGenerator = new DfsGenerator(data, frame);
 
             //setShortestPath();
-            frame.addKeyListener(new MazeKeyListener());
+            frame.addKeyListener(new GrapfKeyListener());
             new Thread(() -> {
                 if (howToGenerate == 0) {
                     dfsGenerator.generateLabyrinth();
@@ -58,9 +58,9 @@ public class GraphVisualizer {
 
     /**
      * Keyboard will be used when walking the graph. For example when pressing
-     * character a program will use bfs to walk the maze
+     * character a program will use bfs to walk the labyrinth
      */
-    private class MazeKeyListener extends KeyAdapter {
+    private class GrapfKeyListener extends KeyAdapter {
 
         @Override
         public void keyReleased(KeyEvent event) {

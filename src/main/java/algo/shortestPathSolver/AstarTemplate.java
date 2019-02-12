@@ -90,7 +90,7 @@ public abstract class AstarTemplate extends PathFindingAlgo {
         if (!data.inArea(x, y)) {
             return false;
         }
-        if (data.getMaze(x, y) == GraphData.WALL) {
+        if (data.getGraph(x, y) == GraphData.WALL) {
             return false;
         }
 

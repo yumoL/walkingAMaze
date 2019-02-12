@@ -3,6 +3,7 @@ package algo.labyrinthGenerator;
 import data.Node;
 import data.GraphData;
 import graphVisualization.GraphFrame;
+import java.util.Random;
 import util.RandomQueue;
 
 public class DfsGenerator extends Generator {
@@ -13,7 +14,10 @@ public class DfsGenerator extends Generator {
         super(data, frame);
         this.queue = new RandomQueue<>();
     }
-
+    
+    /**
+     * Generate labyrinth using DFS
+     */
     @Override
     public void generateLabyrinth() {
         setRoadData(-1, -1);
@@ -52,5 +56,7 @@ public class DfsGenerator extends Generator {
             }
         }
     }
+    
+   
 
 }

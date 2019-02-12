@@ -21,7 +21,7 @@ public abstract class PathFindingAlgo {
 
     /**
      * Find the path from exit back to entrance. This will be used when marking
-     * the path in the maze
+     * the path in the graph
      *
      * @param destination exit point
      */
@@ -54,12 +54,12 @@ public abstract class PathFindingAlgo {
      *
      * @param x x-coordinate of the point
      * @param y y-coordinate of the point
-     * @return true if the point is in the area of the maze and it's a road and
+     * @return true if the point is in the area of the graph and it's a road and
      * it hasn't be visited yet. Otherwise false
      */
     public boolean access(int x, int y) {
         return data.inArea(x, y)
-                && !data.visited[x][y] && data.getMaze(x, y) == GraphData.ROAD;
+                && !data.visited[x][y] && data.getGraph(x, y) == GraphData.ROAD;
     }
 
     /**

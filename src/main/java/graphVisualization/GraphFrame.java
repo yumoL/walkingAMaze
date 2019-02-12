@@ -58,7 +58,7 @@ public class GraphFrame extends JFrame {
          * Generate and walk the labyrinth on the canvas using Graphics
          *
          * @param g the Graphics which will be used to draw the walls and the
-         * roads of the maze and set colours to the them
+         * roads of the labyrinth and set colours to the them
          */
         @Override
         public void paintComponent(Graphics g) {

@@ -34,6 +34,7 @@ public class Comparator {
         if (generate == USE_DFS) {
             dfsGen.generateLabyrinth();
         } else if (generate == USE_PRIM) {
+            primGen.setRandomSeed(1037);
             primGen.generateLabyrinth();
         }
     }
