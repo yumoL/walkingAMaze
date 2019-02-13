@@ -22,28 +22,62 @@ The implemented data structures in this project includes ArrayList, queue, Prior
 (V=number of nodes, E=number of edges)
 
 ### Graph Generation
-<img src="https://github.com/yumoL/walkingAMaze/blob/master/documentation/pictures/dfs.jpg" width="200" height="200">
+Initialized graph, where '#'=wall and'*'=road
+<img src="https://github.com/yumoL/walkingAMaze/blob/master/documentation/pictures/dfsGen.jpg" width="200" height="200">
 
 #### DFS
+This algorithm is a randomized verion of DFS. The principle is to start from the first road(A) marked in the graph above and add its neighbouring roads into the queue. Then the algorithm chooses a road(B) from the queue randomly, sets the wall between road A and B as a road. Then the algorithm adds the neibouring roads into the queue and choose a road randomly from the queue and sets the wall between road B and C as a road. The algorithm continues doing this process until all roads have been visited. 
 ```java
 RandomQueue queue (adding and removing an element randomly)
 
 queue.add (first)
 while (queue is not empty)
   Node currentRoad = queue.remove()
-  for (neighbourSquare: neighbour suqares of currentRoad in four directions)
-    if (neighbourSquare is in the area of the graph and it hasn't been visited and it's a road)
-      queue.add (neighbourSquare)
-      visited[neighbourSquare.x][neighbourSquare.y]=true
-      set the wall between currentNode and neighbourSquare as a road
+  for (neighbourRoad: neighbouring stars of currentRoad in four directions) //four directions = up, down, left, right
+    if (neighbourRoad hasn't been visited)
+      queue.add (neighbourRoad)
+      visited[neighbourRoad.x][neighbourRoad.y]=true
+      set the wall between currentRoad and neighbourRoad as a road
     
 ```
-Time complexity: O(V). We need to traverse all nodes, adding,removing and checking a node are all O(1)-actions
-Space complaxity: O(V). We need an extra queue to save all nodes. 
+Time complexity: O(V). We need to traverse all road nodes, adding,removing and checking a node are all O(1)-actions
+Space complaxity: O(V). We need an extra queue to save all road nodes. 
 
 #### Randomized Prim
+This algorithm is a randomized version of Prim's algorithm. 
+1. Pick a road, mark it as visited. Add the walls next to the road into a list
+2. While there are walls in the list
+  1. Pick a random wall from the list. If one of the two roads that the wall divides is visited:
+    1. Mark the wall as a road and the road(A) which hasn't been visited as visited
+    2. Add the neighbouring walls of the road A to the list
+  2. Remove the wall
 ```java
 ArrayList walls
 
+Node from=new Node(entranceX, entranceY+1)
+visited[entranceX][entranceY]=true
+visited[from.x][from.y]=true
+visited[exitX][exitY]=true
 
+for(neighbourWall: walls next to from)
+  if(neighbourWall isn't the outermost)
+    walls.add(neighbourWall)
+    
+While (walls is not empty)
+  Node wall = walls.remove(randomIndex)
+  Node next = another road of two roads that the wall divides
+  if (visited[next.x][next.y]==false)
+    visited[next.x][next.y]=true
+    visited[wall.x][wall.y]=true
+    from = next
+  else
+    continue
+  for(neighbourWall: walls next to from)
+    if(neighbourWall isn't the outermost)
+      walls.add(neighbourWall)
 ```
+Time complexity: O(V). We need to check all the walls and the roads next to them.
+Space complexity: O(V). We need an extra list to save the walls.
+
+Using randomized DFS and Prim we get a graph which is a spanning tree. Then we can randomly choose some walls and mark them as roads. In this way we get a graph with circle, therefore, the graph has more than one path between two nodes. 
+The time complexity of marking more walls as roads is O(V) and doesn't require extra space. Therefore, the time complexity of generating a graph is O(V) and space complexity O(V). 
