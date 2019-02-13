@@ -15,10 +15,12 @@ public class RandomQueue<E> {
         queue = new MyArrayList<>();
         r = new Random();
     }
-    
+
     /**
-     * Add an element to the queue. If the random number is odd, the element will be added to the begin of the queue,
-     * Otherwise the element will be added to the end of the queue.
+     * Add an element to the queue. If the random number is odd, the element
+     * will be added to the begin of the queue, Otherwise the element will be
+     * added to the end of the queue.
+     *
      * @param e The element to be added
      */
     public void add(E e) {
@@ -28,10 +30,12 @@ public class RandomQueue<E> {
             queue.addLast(e);
         }
     }
-    
+
     /**
-     * Remove an element from the queue. If the random number is odd, the last element of the queue will be removed.
-     * Otherwise the first element of the queue will be removed
+     * Remove an element from the queue. If the random number is odd, the last
+     * element of the queue will be removed. Otherwise the first element of the
+     * queue will be removed
+     *
      * @return the element which was removed
      */
     public E remove() {
@@ -46,21 +50,31 @@ public class RandomQueue<E> {
         }
     }
 
+    /**
+     * Get the size of the queue
+     *
+     * @return the size of the queue
+     */
     public int size() {
         return queue.size();
     }
 
-    public boolean empty() {
+    /**
+     * Determine if the is empty
+     *
+     * @return true if the size is 0, otherwise false
+     */
+    public boolean isEmpty() {
         return size() == 0;
     }
-    
+
     // only used in unit test
-    public MyArrayList<E>getQueue(){
+    public MyArrayList<E> getQueue() {
         return this.queue;
     }
-    
+
     // only used in unit tests
-    public void setRandom(Random r){
-        this.r=r;
+    public void setRandom(Random r) {
+        this.r = r;
     }
 }
