@@ -78,7 +78,7 @@ public class GraphDataTest {
 
     @Test(expected = Exception.class)
     public void throwExceptionIfCoordinatePairOutsideGraphWhenGettingCertainCharFromGraph() {
-        char wrongCoordinates = data.getGraph(300, 300);
+        char wrongCoordinates = data.getGraph(301, 301);
     }
 
     @Test
@@ -91,6 +91,18 @@ public class GraphDataTest {
         char path = GraphData.ROAD;
         assertEquals(path, character2);
 
+    }
+
+    @Test(expected = Exception.class)
+    public void throwExceptionIfGivenRowsEven() {
+        int wrongRows = 100;
+        data = new GraphData(wrongRows, COLUMNS);
+    }
+
+    @Test(expected = Exception.class)
+    public void throwExceptionIfGivenCOlsEven() {
+        int wrongCols = 100;
+        data = new GraphData(ROWS, wrongCols);
     }
 
 }

@@ -13,6 +13,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 /**
  * Test path finding algorithms
@@ -154,5 +155,5 @@ public class GraphSolverTest {
         rightPathLength(101, 101, 207, 249);
         rightPathLength(501, 501, 1045, 1593);
     }
-
+    
 }

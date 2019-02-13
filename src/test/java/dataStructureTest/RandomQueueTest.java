@@ -78,4 +78,18 @@ public class RandomQueueTest {
         assertEquals(2, removed);
         assertFalse(rq.getQueue().contains(removed));
     }
+
+    @Test
+    public void canDefineIfaQueueIsEmpty() {
+        rq.add(1);
+        assertFalse(rq.isEmpty());
+        rq = new RandomQueue<>();
+        assertTrue(rq.isEmpty());
+    }
+
+    @Test(expected = Exception.class)
+    public void cannotRemoveIfQueueEmpty() {
+        rq = new RandomQueue<>();
+        rq.remove();
+    }
 }

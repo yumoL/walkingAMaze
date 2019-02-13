@@ -107,5 +107,25 @@ public class MyArrayListTest {
         assertEquals(2, removed);
         assertFalse(list.contains(removed));
     }
+    
+    @Test(expected = Exception.class)
+    public void cannotRemoveElementWhenGivenIndexNegative() {
+        list.remove(-1);
+    }
+    
+    @Test(expected = Exception.class)
+    public void cannotRemoveElementWhenGivenIndexLargerThanSize() {
+        list.remove(list.size()+1);
+    }
+    
+    @Test(expected = Exception.class)
+    public void cannotGetElementWhenGivenIndexNegative() {
+        list.get(-1);
+    }
+    
+    @Test(expected = Exception.class)
+    public void cannotGetElementWhenGivenIndexLargerThanSize() {
+        list.get(list.size()+1);
+    }
 
 }
