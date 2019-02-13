@@ -15,7 +15,9 @@ The algorithms to be used are BFS, A* and randomized Prim.
 When generating a new maze, the program will get the size of the labyrinth (how many rows and how many columns does the labyrinth have) and also the information about which way to use to generate the graph as inputs, then the program will generate a new labyrinth with given information automatically. After the labyrinth being gennerated, the user can use different algorithms mentioned before to find the (relatively)shortest path in the labyrinth. 
 
 ### Time and space complexity 
+
 The graph will be generated as a matirx. Assumed rows=the number of rows in the matrx and cols=the number of columns in the matrix
+
 | Algorithms     | Time complexity | Space complexity|
 | :-------------:| :----------:    | :-----------:   |
 |  BFS           | O(rows x cols)          | O(rows x cols)            |
