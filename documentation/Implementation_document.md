@@ -40,16 +40,20 @@ while (queue is not empty)
       set the wall between currentRoad and neighbourRoad as a road
     
 ```
-Time complexity: O(V). We need to traverse all road nodes, adding,removing and checking a node are all O(1)-actions
+Time complexity: O(V). We need to traverse all road nodes, adding,removing and checking a node are all O(1)-actions.
+
 Space complaxity: O(V). We need an extra queue to save all road nodes. 
 
 #### Randomized Prim
 This algorithm is a randomized version of Prim's algorithm. 
 1. Pick a road, mark it as visited. Add the walls next to the road into a list
 2. While there are walls in the list
+
   1. Pick a random wall from the list. If one of the two roads that the wall divides is visited:
+  
     1. Mark the wall as a road and the road(A) which hasn't been visited as visited
     2. Add the neighbouring walls of the road A to the list
+    
   2. Remove the wall
 ```
 ArrayList walls
@@ -77,6 +81,7 @@ While (walls is not empty)
       walls.add(neighbourWall)
 ```
 Time complexity: O(V). We need to check all the walls and the roads next to them.
+
 Space complexity: O(V). We need an extra list to save the walls.
 
 Using randomized DFS and Prim we get a graph which is a spanning tree. Then we can randomly choose some mroe walls and mark them as roads. In this way we get a graph with circles, therefore, the graph has more than one path between two nodes. 
