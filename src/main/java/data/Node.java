@@ -32,10 +32,6 @@ public class Node implements Comparable<Node> {
         return this.pre;
     }
 
-    public void setPre(Node newPre) {
-        this.pre = newPre;
-    }
-
     public int getG() {
         return this.g;
     }
@@ -63,9 +59,6 @@ public class Node implements Comparable<Node> {
     //node a <node b, if a.f<b.f
     @Override
     public int compareTo(Node candidate) {
-        if (this.equals(candidate)) {
-            return 0;
-        }
         return this.f - candidate.f;
     }
 
@@ -87,11 +80,6 @@ public class Node implements Comparable<Node> {
         hash = 71 * hash + this.x;
         hash = 71 * hash + this.y;
         return hash;
-    }
-
-    @Override
-    public String toString() {
-        return this.x + "-" + this.y;
     }
 
 }
