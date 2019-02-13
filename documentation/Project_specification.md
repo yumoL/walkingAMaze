@@ -20,7 +20,7 @@ When generating a new maze, the program will get the size of the labyrinth (how 
 |  BFS           | O(V)          | O(V)            |
 |  A*-search     | O(E) (worst case) | O(V)(worst case)|
 |  Randomized Prim| O(V^2)| O(V)|
-|DFS|O(V)|O(V)|
+|Randomized DFS|O(V)|O(V)|
 
 V=number of nodes; E=number of edges
 
