@@ -19,7 +19,7 @@ The graphic UI is implemented by using Java Swing. When user run the program, af
 The implemented data structures in this project includes ArrayList, queue, PriorityQueue and HashMap.
 
 ## Implemented Time and Space Complexity
-(V=number of nodes, E=number of edges)
+The gragh is saved as an adjacency matrix. Assumed that rows = the number of rows in the matrix, cols = the number of columns in the matrix. 
 
 ### Graph Generation
 Initialized graph, where '#'=wall and'*'=road
@@ -28,21 +28,22 @@ Initialized graph, where '#'=wall and'*'=road
 #### Randomized DFS
 This algorithm is a randomized verion of DFS. The principle is to start from the first road(A) marked in the graph above and add its neighbouring roads into the queue. Then the algorithm chooses a road(B) from the queue randomly, sets the wall between road A and B as a road. Then the algorithm adds the neibouring roads into the queue and choose a road randomly from the queue and sets the wall between road B and C as a road. The algorithm continues doing this process until all roads have been visited. 
 ```
-RandomQueue queue (adding and removing an element randomly)
+function RandomizedDfs()
+  RandomQueue queue (adding and removing an element randomly)
 
-queue.add (first)
-while (queue is not empty)
-  Node currentRoad = queue.remove()
-  for (neighbourRoad: neighbouring stars of currentRoad in four directions) //four directions = up, down, left, right
-    if (neighbourRoad hasn't been visited)
-      queue.add (neighbourRoad)
-      visited[neighbourRoad.x][neighbourRoad.y]=true
-      set the wall between currentRoad and neighbourRoad as a road
+  queue.add (first)
+  while (queue is not empty)
+    Node currentRoad = queue.remove()
+    for (neighbourRoad: neighbouring roads of currentRoad in four directions) //four directions = up, down, left, right
+      if (neighbourRoad hasn't been visited)
+        queue.add (neighbourRoad)
+        visited[neighbourRoad.x][neighbourRoad.y]=true
+        set the wall between currentRoad and neighbourRoad as a road
     
 ```
-Time complexity: O(V). We need to traverse all road nodes, adding,removing and checking a node are all O(1)-actions.
+Time complexity: O(2xrowsxcols) = O(rowsxcols). We need to traverse all road nodes twice (add them into the queue and remove them from the queue), adding,removing and checking a node are all O(1)-actions.
 
-Space complaxity: O(V). We need an extra queue to save all road nodes. 
+Space complaxity: O(rowsxcols). We need an extra queue to save all road nodes. 
 
 #### Randomized Prim
 This algorithm is a randomized version of Prim's algorithm. 
@@ -56,33 +57,35 @@ This algorithm is a randomized version of Prim's algorithm.
     
   2. Remove the wall
 ```
-ArrayList walls
+function RandomizedPrim():
+  ArrayList walls
 
-Node from=new Node(entranceX, entranceY+1)
-visited[entranceX][entranceY]=true
-visited[from.x][from.y]=true
-visited[exitX][exitY]=true
+  Node from=new Node(entranceX, entranceY+1)
+  visited[entranceX][entranceY]=true
+  visited[from.x][from.y]=true
+  visited[exitX][exitY]=true
 
-for(neighbourWall: walls next to from)
-  if(neighbourWall isn't the outermost)
-    walls.add(neighbourWall)
-    
-While (walls is not empty)
-  Node wall = walls.remove(randomIndex)
-  Node next = another road of two roads that the wall divides
-  if (visited[next.x][next.y]==false)
-    visited[next.x][next.y]=true
-    visited[wall.x][wall.y]=true
-    from = next
-  else
-    continue
   for(neighbourWall: walls next to from)
     if(neighbourWall isn't the outermost)
       walls.add(neighbourWall)
+    
+  While (walls is not empty)
+   Node wall = walls.remove(randomIndex)
+   Node next = another road of two roads that the wall divides
+    if (visited[next.x][next.y]==false)
+      visited[next.x][next.y]=true
+      visited[wall.x][wall.y]=true
+      from = next
+    else
+      continue
+    for(neighbourWall: walls next to from)
+      if(neighbourWall isn't the outermost)
+        wall.precessor = from
+        walls.add(neighbourWall)
 ```
-Time complexity: O(V). We need to check all the walls and the roads next to them.
+Time complexity: O(rowsxcols). We need to check all the walls and the roads next to them.
 
-Space complexity: O(V). We need an extra list to save the walls.
+Space complexity: O(rowsxcols). We need an extra list to save the walls.
 
 Using randomized DFS and Prim we get a graph which is a spanning tree. Then we can randomly choose some mroe walls and mark them as roads. In this way we get a graph with circles, therefore, the graph has more than one path between two nodes. 
 The time complexity of marking more walls as roads is O(V) and doesn't require extra space. Therefore, the time complexity of generating a graph is O(V) and space complexity O(V). 
@@ -90,4 +93,63 @@ The time complexity of marking more walls as roads is O(V) and doesn't require e
 ### Path Finding
 #### BFS
 ```
+function Bfs(): 
+  Queue queue
+
+  queue.enqueue (entranceNode)
+  visited[entranceX][entranceY] = true
+
+  boolean hasSolution = false
+  while (queue is not empty)
+    Node currentNode  = queue.poll()
+    if(currentNode.equals(exitNode)
+      hasSolution = true
+      break
+    for (neighbour: neighbouring nodes of currentNode)
+      if (!visited[neighbour.x][neighbour.y] and neighbour is a road)
+        neighbour.precessor = currentNode
+        queue.enqueue(neighbour)
+        visited[neighbourX][neighbourY] = true
+  return hasSolution
+```
+Time complexity: O(rowsxcols). We need to traverse all nodes in the worst situation.
+
+Space complexity: O(rowsxcols). We need an extra queue to save road nodes.
+
+#### A*
+```
+g = distance from entrance to current node
+h = estimated distance from current node to the exit using heuristic function
+f = g + h
+PriorityQueue pq
+
+function CheckPath (x,y,preNode,exitNode):
+  Node node = new Node(x,y,preNode)
+  if(node is not inside the graph)
+    return false
+  if(node is a wall)
+    return false
+  if(visited[x][y])
+    return false
+  if(pq.contains(node))
+    preNode.g+1<node.g
+    node.g=preNode.g+1
+    pq.change(node) //insert node with new g and remove node with old g
+  else
+    pq.add(node)
+    
+function Astar():
+  pq.add(entranceNode)
+  while(pq is not empty)
+    if(pq.contains(exitNode)
+      return true
+    Node currentNode = pq.poll()
+    visited[currentNode.x][currentNode.y]=true
+    for(neighbour: neibouring nodes of the currentNode)
+      CheckPath(neighbour.x,neighbour.y,currentNode, exitNode)
+  return false
+  ```
+  Time complexity: O(rowsxcols). We need to traverse all nodes in the worst case.
+  
+  Space complexity: O(rowsxcols). We need an extra priority queue to save the roads.
 
