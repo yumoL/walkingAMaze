@@ -25,9 +25,9 @@ The implemented data structures in this project includes ArrayList, queue, Prior
 Initialized graph, where '#'=wall and'*'=road
 <img src="https://github.com/yumoL/walkingAMaze/blob/master/documentation/pictures/dfsGen.jpg" width="200" height="200">
 
-#### DFS
+#### Randomized DFS
 This algorithm is a randomized verion of DFS. The principle is to start from the first road(A) marked in the graph above and add its neighbouring roads into the queue. Then the algorithm chooses a road(B) from the queue randomly, sets the wall between road A and B as a road. Then the algorithm adds the neibouring roads into the queue and choose a road randomly from the queue and sets the wall between road B and C as a road. The algorithm continues doing this process until all roads have been visited. 
-```java
+```
 RandomQueue queue (adding and removing an element randomly)
 
 queue.add (first)
@@ -51,7 +51,7 @@ This algorithm is a randomized version of Prim's algorithm.
     1. Mark the wall as a road and the road(A) which hasn't been visited as visited
     2. Add the neighbouring walls of the road A to the list
   2. Remove the wall
-```java
+```
 ArrayList walls
 
 Node from=new Node(entranceX, entranceY+1)
@@ -84,4 +84,5 @@ The time complexity of marking more walls as roads is O(V) and doesn't require e
 
 ### Path Finding
 #### BFS
+```
 
