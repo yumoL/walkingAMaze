@@ -79,5 +79,9 @@ While (walls is not empty)
 Time complexity: O(V). We need to check all the walls and the roads next to them.
 Space complexity: O(V). We need an extra list to save the walls.
 
-Using randomized DFS and Prim we get a graph which is a spanning tree. Then we can randomly choose some walls and mark them as roads. In this way we get a graph with circle, therefore, the graph has more than one path between two nodes. 
+Using randomized DFS and Prim we get a graph which is a spanning tree. Then we can randomly choose some mroe walls and mark them as roads. In this way we get a graph with circles, therefore, the graph has more than one path between two nodes. 
 The time complexity of marking more walls as roads is O(V) and doesn't require extra space. Therefore, the time complexity of generating a graph is O(V) and space complexity O(V). 
+
+### Path Finding
+#### BFS
+
