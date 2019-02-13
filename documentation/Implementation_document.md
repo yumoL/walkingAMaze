@@ -162,7 +162,9 @@ function Astar():
   
   ## Sources
   [Graph generation](https://en.wikipedia.org/wiki/Maze_generation_algorithm)
+  
   [A*](https://en.wikipedia.org/wiki/A*_search_algorithm#Pseudocode)
+  
   [HashMap implementation](https://dzone.com/articles/custom-hashmap-implementation-in-java)
  
 
