@@ -6,6 +6,7 @@
 package dataStructureTest;
 
 import data.Node;
+import java.util.HashMap;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -56,8 +57,17 @@ public class MyHashMapTest {
     }
 
     @Test
-    public void canGetCorrecValue() {
+    public void canGetCorrectValue() {
         assertEquals(1, map.get(n1));
+    }
+    
+    @Test
+    public void canGetCorectValuesWhenCollision(){
+        Node n4=new Node(2,-70,n2);//has same hashcode with n1
+        System.out.println("n1 "+n1.hashCode());
+        System.out.println("n4 "+n4.hashCode());
+        assertEquals(1,map.get(n1));
+        assertEquals(-1,map.get(n4));
     }
 
     @Test
@@ -75,7 +85,16 @@ public class MyHashMapTest {
 
     @Test
     public void canRemoveKey() {
-        map.remove(n2);
+        assertEquals(2,(int)map.remove(n2));
         assertFalse(map.containsKey(n2));
+    }
+    
+    @Test
+    public void returnNullIfKeyDoesNotExitWhenRemoving(){
+        Node n4=new Node(99,99,null);
+        assertTrue(map.remove(n4)==null);
+        
+        Node n5=new Node(2,-70,null);//has same hashcode as n1
+        assertTrue(map.remove(n5)==null);
     }
 }

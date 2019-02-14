@@ -66,7 +66,7 @@ public class IndexPriorityQueueTest {
     public void cannotAddElementWhenIndexOutOfCapasity() {
         pq.add(capacity + 1, "wrongIndex");
     }
-    
+
     @Test(expected = Exception.class)
     public void cannotAddElementWhenIndexNegative() {
         pq.add(-1, "wrongIndex");
