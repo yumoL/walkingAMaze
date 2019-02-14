@@ -10,10 +10,10 @@ public class MyHashMap {
     class Entry {
 
         Node key;
-        int value;
+        Integer value;
         Entry next;
 
-        public Entry(Node key, int value, Entry next) {
+        public Entry(Node key, Integer value, Entry next) {
             this.key = key;
             this.value = value;
             this.next = next;
@@ -85,24 +85,29 @@ public class MyHashMap {
      * Remove the mapping for the specified key from this map if present.
      *
      * @param key key whose mapping is to be removed from the map
+     * @return value associated with the removed key if key presents. Otherwise return null
      */
-    public void remove(Node key) {
+    public Integer remove(Node key) {
         int h = hash(key);
-        if (map[h] != null) {
-            Entry prevEntry = null;
-            Entry entry = map[h];
-            while (entry.next != null && !entry.key.equals(key)) {
-                prevEntry = entry;
-                entry = entry.next;
-            }
-            if (entry.key.equals(key)) {
-                if (prevEntry == null) {
-                    map[h] = entry.next;
-                } else {
-                    prevEntry.next = entry.next;
-                }
-            }
+        if (map[h] == null) {
+            return null;
         }
+
+        Entry prevEntry = null;
+        Entry entry = map[h];
+        while (entry.next != null && !entry.key.equals(key)) {
+            prevEntry = entry;
+            entry = entry.next;
+        }
+        if (entry.key.equals(key)) {
+            if (prevEntry == null) {
+                map[h] = entry.next;
+            } else {
+                prevEntry.next = entry.next;
+            }
+            return entry.value;
+        }
+        return null;
     }
 
     /**
