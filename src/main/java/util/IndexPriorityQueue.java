@@ -149,7 +149,6 @@ public class IndexPriorityQueue<Element extends Comparable> {
      * @return true if there is an element at index i, otherwise false
      */
     private boolean hasElementInIndex(int i) {
-        assert i >= 0 && i < capasity;
         return helper[i + 1] != 0;
     }
 
