@@ -114,6 +114,12 @@ public class GraphSolverTest {
         assertEquals(bfsResult, astarEuResult);
         assertEquals(longerWhenSq, astarEuSqResult);
 
+        if (astarEuSqResult != shortest) {
+            assertTrue(astarEuSq.findShortestPathOrNot(shortest).contains("Didn't find the shortest path"));
+        } else {
+            assertTrue(astarEuSq.findShortestPathOrNot(shortest).contains("Shortest path has been found"));
+        }
+
     }
 
     @Test
@@ -152,8 +158,9 @@ public class GraphSolverTest {
 
     @Test
     public void getRightPathLength() {
+        rightPathLength(3, 3, 3, 3);
         rightPathLength(101, 101, 207, 249);
         rightPathLength(501, 501, 1045, 1593);
     }
-    
+
 }
