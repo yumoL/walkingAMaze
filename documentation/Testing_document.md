@@ -27,6 +27,12 @@ In the performance testing I'm going to test the efficiency of BFS-algorithm and
 ||Prim|4|1299|
 |101 x 101|DFS|5|4744|
 ||Prim|15|5232|
+|301 x 301|DFS|14|42502|
+||Prim|19|47205|
+|501 x 501|DFS|22|117537|
+||Prim|41|131038|
+|1001 x 1001|DFS|67|477731|
+||Prim|226|523932|
 
 |size(rows x columns)|generation method|performance time using A* with Manhattan distance(ms)|traversed roads using  A* with Manhattan distance|
 |:------------------:|:---------------:|:--------------:|:-------------:|
@@ -34,6 +40,12 @@ In the performance testing I'm going to test the efficiency of BFS-algorithm and
 ||Prim|2|353|
 |101 x 101|DFS|5|4612|
 ||Prim|4|1520|
+|301 x 301|DFS|24|41676|
+||Prim|17|22379|
+|501 x 501|DFS|39|115189|
+||Prim|36|77715|
+|1001 x 1001|DFS|106|465633|
+||Prim|98|287738|
 
 |size(rows x columns)|generation method|performance time using A* with Euclidean distance(ms)|traversed roads using  A* with Euclidean distance|
 |:------------------:|:---------------:|:--------------:|:-------------:|
@@ -41,6 +53,12 @@ In the performance testing I'm going to test the efficiency of BFS-algorithm and
 ||Prim|2|978|
 |101 x 101|DFS|4|4677|
 ||Prim|4|4257|
+|301 x 301|DFS|14|41752|
+||Prim|21|41064|
+|501 x 501|DFS|31|115447|
+||Prim|37|117849|
+|1001 x 1001|DFS|99|467008|
+||Prim|130|469518|
 
 |size(rows x columns)|generation method|performance time using A* with squared Euclidean distance(ms)|traversed roads using squared A* with Euclidean distance|shortest path|found path longer than shotest path
 |:------------------:|:---------------:|:--------------:|:-------------:|:--:|:--:|
@@ -48,4 +66,10 @@ In the performance testing I'm going to test the efficiency of BFS-algorithm and
 ||Prim|0.038|210|99|12|
 |101 x 101|DFS|0.35|3610|1095|0|
 ||Prim|0.77|541|207|42|
+|301 x 301|DFS|5|38704|10343|80|
+||Prim|0.38|2309|623|210|
+|501 x 501|DFS|10|103426|18323|3582|
+||Prim|0.59|4979|1045|548|
+|1001 x 1001|DFS|10|219019|35295|9706|
+||Prim|1|6599|2087|818|
 
