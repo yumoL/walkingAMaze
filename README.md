@@ -16,6 +16,8 @@ A project of TiraLabra
 
 [Week4 Report](https://github.com/yumoL/walkingAMaze/blob/master/documentation/Weekly_reports/Weekly_report4.md)
 
+[Week5 Report](https://github.com/yumoL/walkingAMaze/blob/master/documentation/Weekly_reports/Weekly_report5.md)
+
 [Implementation document](https://github.com/yumoL/walkingAMaze/blob/master/documentation/Implementation_document.md)
 
 [Testing document](https://github.com/yumoL/walkingAMaze/blob/master/documentation/Testing_document.md)
