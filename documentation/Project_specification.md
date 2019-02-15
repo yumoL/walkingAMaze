@@ -21,7 +21,7 @@ The graph will be generated as a matirx. Assumed rows=the number of rows in the 
 | Algorithms     | Time complexity | Space complexity|
 | :-------------:| :----------:    | :-----------:   |
 |  BFS           | O(rows x cols)          | O(rows x cols)            |
-|  A*-search     | O(rows x cols) | O(rows x cols)|
+|  A*-search     | O(rows x cols x log(rows x cols)) | O(rows x cols)|
 |  Randomized Prim| O(rows x cols)| O(rows x cols)|
 |Randomized DFS|O(rows x cols)|O(rows x cols)|
 
