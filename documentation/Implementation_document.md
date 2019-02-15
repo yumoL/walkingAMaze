@@ -41,7 +41,7 @@ function RandomizedDfs()
         set the wall between currentRoad and neighbourRoad as a road
     
 ```
-Time complexity: O(2 x rows x cols) = O(rows x cols). We need to traverse all road nodes twice (add them into the queue and remove them from the queue), adding,removing and checking a node are all O(1)-actions.
+Time complexity: O(rows x cols). We need to traverse all road nodes twice (add them into the queue and remove them from the queue), adding,removing and checking a node are all O(1)-actions.
 
 Space complaxity: O(rows x cols). We need an extra queue to save all road nodes. 
 
@@ -85,7 +85,7 @@ function RandomizedPrim():
         wall.precessor = from
         walls.add(neighbourWall)
 ```
-Time complexity: O(rows x cols). We need to check all the walls and the roads next to them.
+Time complexity: O(rows x cols). We need to check all the walls and the roads next to them and adding a node into an ArrayList, removing a node from an ArrayList and changing the status of a node are O(1) actions.
 
 Space complexity: O(rows x cols). We need an extra list to save the walls.
 
@@ -114,7 +114,7 @@ function Bfs():
         visited[neighbourX][neighbourY] = true
   return hasSolution
 ```
-Time complexity: O(rows x cols). We need to traverse all nodes in the worst situation.
+Time complexity: O(rows x cols). We need to traverse all nodes in the worst situation and adding a node into a queue and removing a node from a queue are O(1) actions.
 
 Space complexity: O(rows x cols). We need an extra queue to save road nodes.
 
@@ -151,7 +151,7 @@ function Astar():
       CheckPath(neighbour.x,neighbour.y,currentNode, exitNode)
   return false
   ```
-  Time complexity: O(rows x cols). We need to traverse all nodes in the worst case.
+  Time complexity: O(rows x cols x log(rows x cols)). We need to traverse all nodes in the worst case. Adding a node into a PrioityQueue and extracting the smallest node from a PriorityQueue are O(logn) actions.
   
   Space complexity: O(rows x cols). We need an extra priority queue to save the roads.
   
