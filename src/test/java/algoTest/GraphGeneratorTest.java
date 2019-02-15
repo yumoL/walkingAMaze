@@ -44,20 +44,25 @@ public class GraphGeneratorTest {
 
     @Test
     public void graphGeneratedByPrimHasPath() {
-        PrimGenerator primGen = new PrimGenerator(data, frame);
-        primGen.generateLabyrinth();
-        bfs = new Bfs(data, frame);
-        data.resetTables();
-        assertTrue(bfs.searchWay());
+        for (int i = 0; i < 5; i++) {
+            PrimGenerator primGen = new PrimGenerator(data, frame);
+            primGen.generateLabyrinth();
+            bfs = new Bfs(data, frame);
+            data.resetTables();
+            assertTrue(bfs.searchWay());
+        }
     }
-    
+
     @Test
     public void graphGeneratedByDfsHasPath() {
-        DfsGenerator dfsGen = new DfsGenerator(data, frame);
-        dfsGen.generateLabyrinth();
-        bfs = new Bfs(data, frame);
-        data.resetTables();
-        assertTrue(bfs.searchWay());
+        for (int i = 0; i < 5; i++) {
+            DfsGenerator dfsGen = new DfsGenerator(data, frame);
+            dfsGen.generateLabyrinth();
+            bfs = new Bfs(data, frame);
+            data.resetTables();
+            assertTrue(bfs.searchWay());
+        }
+
     }
 
 }
