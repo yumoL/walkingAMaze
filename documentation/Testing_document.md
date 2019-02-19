@@ -31,6 +31,14 @@ In the performance testing I'm going to test the efficiency of BFS-algorithm and
 ||Prim|41|131038|
 |1001 x 1001|DFS|67|477731|
 ||Prim|226|523932|
+|1551 x 1551|DFS|142|1013547|
+||Prim|706|1258948|
+|2001 x 2001|DFS|228|1495320|
+||Prim|1459|2095870|
+|2551 x 2551|DFS|571|2783285|
+||Prim|2918|3407822|
+|3001 x 3001|DFS|679|3676195|
+||Prim|4720|4715972|
 
 |size(rows x columns)|generation method|performance time using A* with Manhattan distance(ms)|traversed roads using  A* with Manhattan distance|
 |:------------------:|:---------------:|:--------------:|:-------------:|
@@ -42,6 +50,14 @@ In the performance testing I'm going to test the efficiency of BFS-algorithm and
 ||Prim|36|77715|
 |1001 x 1001|DFS|106|465633|
 ||Prim|98|287738|
+|1551 x 1551|DFS|201|992955|
+||Prim|249|815550|
+|2001 x 2001|DFS|320|1396264|
+||Prim|436|1194841|
+|2551 x 2551|DFS|748|2738740|
+||Prim|581|1685124|
+|3001 x 3001|DFS|1021|3581161|
+||Prim|813|2165638|
 
 |size(rows x columns)|generation method|performance time using A* with Euclidean distance(ms)|traversed roads using  A* with Euclidean distance|
 |:------------------:|:---------------:|:--------------:|:-------------:|
@@ -53,8 +69,16 @@ In the performance testing I'm going to test the efficiency of BFS-algorithm and
 ||Prim|37|117849|
 |1001 x 1001|DFS|99|467008|
 ||Prim|130|469518|
+|1551 x 1551|DFS|248|998050|
+||Prim|328|1150733|
+|2001 x 2001|DFS|369|1418970|
+||Prim|648|1882423|
+|2001 x 2001|DFS|793|2748069|
+||Prim|1028|3009247|
+|3001 x 3001|DFS|1316|3602496|
+||Prim|1954|4117374|
 
-|size(rows x columns)|generation method|performance time using A* with squared Euclidean distance(ms)|traversed roads using squared A* with Euclidean distance|shortest path|found path longer than shotest path
+|size(rows x columns)|generation method|performance time using A* with squared Euclidean distance(ms)|traversed roads using squared A* with Euclidean distance|shortest path|found path longer than shortest path
 |:------------------:|:---------------:|:--------------:|:-------------:|:--:|:--:|
 |51 x 51|DFS|0.074|598|251|0|
 ||Prim|0.038|210|99|12|
@@ -64,4 +88,13 @@ In the performance testing I'm going to test the efficiency of BFS-algorithm and
 ||Prim|0.59|4979|1045|548|
 |1001 x 1001|DFS|10|219019|35295|9706|
 ||Prim|1|6599|2087|818|
+|1551 x 1551|DFS|22|771464|73911|17952|
+||Prim|1|10573|3249|1020|
+|2001 x 2001|DFS|29|1053244|66243|33076|
+||Prim|1|14127|4175|1494|
+|2551 x 2551|DFS|54|1859003|45039|103630|
+||Prim|1|17374|5289|1536|
+|3001 x 3001|DFS|86|2421024|82195|155796|
+||Prim|1|18679|6207|2036|
+
 
