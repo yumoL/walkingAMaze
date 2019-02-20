@@ -73,7 +73,7 @@ In the performance testing I'm going to test the efficiency of BFS-algorithm and
 ||Prim|328|1150733|
 |2001 x 2001|DFS|369|1418970|
 ||Prim|648|1882423|
-|2001 x 2001|DFS|793|2748069|
+|2551 x 2551|DFS|793|2748069|
 ||Prim|1028|3009247|
 |3001 x 3001|DFS|1316|3602496|
 ||Prim|1954|4117374|
