@@ -12,7 +12,7 @@ The data structures to be used are ArrayList, HashSet, HashMap, LinkedList, queu
 The algorithms to be used are BFS, A* and randomized Prim.                                     
 
 ### Program input and use of them
-When generating a new maze, the program will get the size of the labyrinth (how many rows and how many columns does the labyrinth have) and also the information about which way to use to generate the graph as inputs, then the program will generate a new labyrinth with given information automatically. After the labyrinth being gennerated, the user can use different algorithms mentioned before to find the (relatively)shortest path in the labyrinth. 
+When generating a new labyrinth, the program will get the size of the labyrinth (how many rows and how many columns does the labyrinth have) and also the information about which way to use to generate the graph as inputs, then the program will generate a new labyrinth with given information automatically. After the labyrinth being gennerated, the user can use different algorithms mentioned before to find the (relatively)shortest path in the labyrinth. 
 
 ### Time and space complexity 
 
