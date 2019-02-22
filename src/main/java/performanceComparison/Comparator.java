@@ -126,9 +126,9 @@ public class Comparator {
         long time = 0;
         for (int i = 0; i < 10; i++) {
             astarEuSq = new AstarWithEuclideanSquare(data, frame);
-            long start = System.nanoTime();
+            long start = System.currentTimeMillis();// for smaller size such as 51x51, use nonoTime
             if (astarEuSq.searchWay()) {
-                long end = System.nanoTime();
+                long end = System.currentTimeMillis();
                 time += (end - start);
             }
             if (i == 9) {
