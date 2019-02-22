@@ -1,8 +1,8 @@
 package util;
 
-public class IndexPriorityQueue<Element extends Comparable> {
+public class IndexPriorityQueue<E extends Comparable>{
 
-    private Element[] data; //data of the IndexMinHeap
+    private E[] data; //data of the IndexMinHeap
     private int[] indexes; // indexes of the IndexMinHeap  
     private int[] helper; //the place of an index in array indexes   
     private int size;//number of the data
@@ -10,7 +10,7 @@ public class IndexPriorityQueue<Element extends Comparable> {
 
     public IndexPriorityQueue(int capasity) {
         this.capasity = capasity;
-        data = (Element[]) new Comparable[capasity + 1];        
+        data = (E[]) new Comparable[capasity + 1];        
         indexes = new int[capasity + 1];        
         helper = new int[capasity + 1];        
         for (int i = 0; i <= capasity; i++) {
@@ -29,7 +29,7 @@ public class IndexPriorityQueue<Element extends Comparable> {
      * @param i index of the new data
      * @param element the new element itself
      */
-    public void add(int i, Element element) {
+    public void add(int i, E element) {
         if (size >= capasity) {
             throw new IllegalArgumentException("The queue is already full");
         }
@@ -54,12 +54,12 @@ public class IndexPriorityQueue<Element extends Comparable> {
      *
      * @return the smallest element
      */
-    public Element pollElement() {
+    public E poll() {
         if (size <= 0) {
             throw new IllegalStateException("There is nothing to extract becaus the queue is empty");
         }
 
-        Element toBePolled = data[indexes[1]];       
+        E toBePolled = data[indexes[1]];       
         swapIndexes(1, size);
         helper[indexes[size]] = 0;       
         size--;
@@ -73,7 +73,7 @@ public class IndexPriorityQueue<Element extends Comparable> {
      * @param i The index of the element to be returned
      * @return the element whose index is i
      */
-    public Element getElement(int i) {
+    public E getElement(int i) {
         if (!hasElementInIndex(i)) {
             throw new IllegalArgumentException("Index i doesn't reference to anything");
         }
@@ -86,7 +86,7 @@ public class IndexPriorityQueue<Element extends Comparable> {
      * @param i the index of the element to be changed
      * @param newOne new element
      */
-    public void change(int i, Element newOne) {
+    public void change(int i, E newOne) {
         if (!hasElementInIndex(i)) {
             throw new IllegalArgumentException("Index i doesn't reference to anything");
         }

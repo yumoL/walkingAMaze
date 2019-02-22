@@ -54,7 +54,7 @@ public abstract class AstarTemplate extends PathFindingAlgo {
                 findPath(exitNode);
                 return true;
             }
-            curNode = openList.pollElement();
+            curNode = openList.poll();
             //System.out.println("extract "+curNode.getX()+","+curNode.getY()+" "+curNode.getF());
             //closeList.add(curNode);
             data.visited[curNode.getX()][curNode.getY()] = true;

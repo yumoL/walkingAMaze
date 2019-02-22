@@ -20,7 +20,7 @@ public class Bfs extends PathFindingAlgo {
     public boolean searchWay() {
         MyQueue<Node> queue = new MyQueue<>();
         Node entrance = new Node(data.getEntranceX(), data.getEntranceY());
-        queue.enqueue(entrance);
+        queue.add(entrance);
         data.visited[entrance.getX()][entrance.getY()] = true;
 
         boolean hasSolution = false;
@@ -39,7 +39,7 @@ public class Bfs extends PathFindingAlgo {
                 int newY = currentNode.getY() + DIRECTION[i][1];
 
                 if (access(newX, newY)) {
-                    queue.enqueue(new Node(newX, newY, currentNode));
+                    queue.add(new Node(newX, newY, currentNode));
                     data.visited[newX][newY] = true;
                 }
             }

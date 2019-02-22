@@ -6,7 +6,7 @@ import java.util.Random;
  *
  * @author luoyumo
  */
-public class RandomQueue<E> {
+public class RandomQueue<E> implements Queue<E> {
 
     private MyArrayList<E> queue;
     private Random r;
@@ -23,6 +23,7 @@ public class RandomQueue<E> {
      *
      * @param e The element to be added
      */
+    @Override
     public void add(E e) {
         if (r.nextInt() % 2 == 1) {
             queue.addFirst(e);
@@ -38,7 +39,8 @@ public class RandomQueue<E> {
      *
      * @return the element which was removed
      */
-    public E remove() {
+    @Override
+    public E poll() {
         if (queue.isEmpty()) {
             throw new IllegalArgumentException("There's no element to remove in Random Qeuue");
         }
@@ -64,6 +66,7 @@ public class RandomQueue<E> {
      *
      * @return true if the size is 0, otherwise false
      */
+    @Override
     public boolean isEmpty() {
         return size() == 0;
     }

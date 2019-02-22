@@ -66,7 +66,7 @@ public class RandomQueueTest {
     @Test
     public void removeFirstWhenRandomOdd() {
         when(r.nextInt()).thenReturn(5);
-        int removed = rq.remove();
+        int removed = rq.poll();
         assertEquals(0, removed);
         assertFalse(rq.getQueue().contains(removed));
     }
@@ -74,7 +74,7 @@ public class RandomQueueTest {
     @Test
     public void removeLastWhenRandomEven() {
         when(r.nextInt()).thenReturn(4);
-        int removed = rq.remove();
+        int removed = rq.poll();
         assertEquals(2, removed);
         assertFalse(rq.getQueue().contains(removed));
     }
@@ -90,6 +90,6 @@ public class RandomQueueTest {
     @Test(expected = Exception.class)
     public void cannotRemoveIfQueueEmpty() {
         rq = new RandomQueue<>();
-        rq.remove();
+        rq.poll();
     }
 }

@@ -1,7 +1,7 @@
 
 package util;
 
-public class MyQueue<E> {
+public class MyQueue<E> implements Queue<E> {
     private MyArrayList<E>list;
     
     public MyQueue(){
@@ -11,17 +11,20 @@ public class MyQueue<E> {
     /*
     Insert e into the last of queue
     */
-    public void enqueue(E e){
+    @Override
+    public void add(E e){
         list.addLast(e);
     }
     
     /*
     Extract the element which was inserted first
     */
+    @Override
     public E poll(){
         return list.removeFirst();
     }
     
+    @Override
     public boolean isEmpty(){
         return list.isEmpty();
     }

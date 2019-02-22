@@ -80,7 +80,7 @@ public class IndexPriorityQueueTest {
 
     @Test(expected = Exception.class)
     public void throwExceptionWhenExtractElementFromEmptyQueue() {
-        pq.pollElement();
+        pq.poll();
     }
 
     @Test
@@ -88,7 +88,7 @@ public class IndexPriorityQueueTest {
         pq.add(4, "c");
         pq.add(1, "a");
         pq.add(0, "b");
-        assertEquals("a", pq.pollElement());
+        assertEquals("a", pq.poll());
     }
 
     @Test(expected = Exception.class)

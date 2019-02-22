@@ -26,7 +26,7 @@ public class DfsGenerator extends Generator {
         data.visited[first.getX()][first.getY()] = true;
 
         while (queue.size() != 0) {
-            Node curPos = queue.remove();
+            Node curPos = queue.poll();
 
             for (int i = 0; i < 4; i++) {
                 int newX = curPos.getX() + DIRECTION[i][0] * 2;
