@@ -85,7 +85,7 @@ In the performance testing I'm going to test the efficiency of BFS-algorithm and
 |101 x 101|DFS|3|2315|871|0|
 ||Prim|0.83|647|205|70|
 |501 x 501|DFS|16|51606|13803|2920|
-||Prim|5|4406|1037|508|
+||Prim|5|4406|1037|308|
 |1001 x 1001|DFS|92|353511|43315|6870|
 ||Prim|8|7047|2079|526|
 |1551 x 1551|DFS|159|608340|70036|27974|
@@ -95,15 +95,15 @@ In the performance testing I'm going to test the efficiency of BFS-algorithm and
 |2551 x 2551|DFS|661|2050116|120431|113546|
 ||Prim|9|17299|5275|1136|
 |3001 x 3001|DFS|928|2520426|115807|91164|
-||Prim|10|21036|6209|2406|
+||Prim|10|21036|6209|2006|
 
 <img src="https://github.com/yumoL/walkingAMaze/blob/master/documentation/pictures/Time%20used%20in%20walking%20graphs%20generated%20by%20randomized%20DFS.png">
 
 <img src="https://github.com/yumoL/walkingAMaze/blob/master/documentation/pictures/Time%20used%20in%20walking%20graphs%20generated%20by%20randomized%20Prim.png">
 
-<img src="https://github.com/yumoL/walkingAMaze/blob/master/documentation/pictures/Traversed%20roads%20n%20graphs%20generated%20by%20randomized%20DFS.png">
+<img src="https://github.com/yumoL/walkingAMaze/blob/master/documentation/pictures/Traversed%20roads%20in%20graphs%20generated%20by%20randomized%20DFS.png">
 
-<img src="https://github.com/yumoL/walkingAMaze/blob/master/documentation/pictures/Traversed%20roads%20n%20graphs%20generated%20by%20randomized%20Prim.png">
+<img src="https://github.com/yumoL/walkingAMaze/blob/master/documentation/pictures/Traversed%20roads%20in%20graphs%20generated%20by%20randomized%20Prim.png">
 
 <img src="https://github.com/yumoL/walkingAMaze/blob/master/documentation/pictures/Error%20comparison%20in%20A_%20implemented%20using%20squared%20Euclidean%20distance.png">
 
