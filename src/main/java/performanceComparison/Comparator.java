@@ -126,13 +126,14 @@ public class Comparator {
         long time = 0;
         for (int i = 0; i < 10; i++) {
             astarEuSq = new AstarWithEuclideanSquare(data, frame);
-            long start = System.currentTimeMillis();
+            long start = System.nanoTime();
             if (astarEuSq.searchWay()) {
-                long end = System.currentTimeMillis();
+                long end = System.nanoTime();
                 time += (end - start);
             }
             if (i == 9) {
                 checkedNodes = astarEuSq.checkedNodes();
+                break;
             }
             data.resetTables();
 
@@ -146,7 +147,7 @@ public class Comparator {
     }
 
     public static void main(String[] args) {
-        Comparator comp = new Comparator(1001, 1001, 0);
+        Comparator comp = new Comparator(1001/*rows*/, 1001/*columns*/, 1/*how to generate 0=DFS and 1=Prim*/);
         comp.testBfs();
         comp.testAstarManhattan();
         comp.testAstarEu();
