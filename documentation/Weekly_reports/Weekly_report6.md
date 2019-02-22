@@ -10,3 +10,4 @@ Used hours: 10h
 
 ### What I'm going to do
 - I'll continue refactoring my codes. 
+- I'll start to write the user guide.
