@@ -8,17 +8,7 @@ A project of TiraLabra
 
 [Project Specification](https://github.com/yumoL/walkingAMaze/blob/master/documentation/Project_specification.md)
 
-[Week1 Report](https://github.com/yumoL/walkingAMaze/blob/master/documentation/Weekly_reports/Weekly_report1.md)
-
-[Week2 Report](https://github.com/yumoL/walkingAMaze/blob/master/documentation/Weekly_reports/Weekly_report2.md)
-
-[Week3 Report](https://github.com/yumoL/walkingAMaze/blob/master/documentation/Weekly_reports/Weekly_report3.md)
-
-[Week4 Report](https://github.com/yumoL/walkingAMaze/blob/master/documentation/Weekly_reports/Weekly_report4.md)
-
-[Week5 Report](https://github.com/yumoL/walkingAMaze/blob/master/documentation/Weekly_reports/Weekly_report5.md)
-
-[Week6 Report](https://github.com/yumoL/walkingAMaze/blob/master/documentation/Weekly_reports/Weekly_report6.md)
+[Weekly Reports](https://github.com/yumoL/walkingAMaze/tree/master/documentation/Weekly_reports)
 
 [Implementation document](https://github.com/yumoL/walkingAMaze/blob/master/documentation/Implementation_document.md)
 
