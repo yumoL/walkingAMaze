@@ -3,7 +3,7 @@ package data;
 /**
  * Data of a graph
  */
-public class GraphData{
+public class GraphData {
 
     public static final char ROAD = ' ';
     public static final char WALL = '#';
@@ -13,9 +13,21 @@ public class GraphData{
 
     private int entranceX, entranceY;
     private int exitX, exitY;
-    
+
+    /**
+     * visited[i][j]=true if the node(i,j)has already been visited
+     */
     public boolean visited[][];
+
+    /**
+     * path[i][j]=true if the node(i,j) probably belongs to the final path found
+     * by an algorithm
+     */
     public boolean path[][];
+
+    /**
+     * result[i][j]=true if node(i,j)is on the final path
+     */
     public boolean result[][];
 
     public GraphData(int rows, int columns) {
@@ -28,10 +40,10 @@ public class GraphData{
         this.columns = columns;
 
         graph = new char[rows][columns];
-        visited=new boolean[rows][columns];
-        path=new boolean[rows][columns];
-        result=new boolean[rows][columns];
-        
+        visited = new boolean[rows][columns];
+        path = new boolean[rows][columns];
+        result = new boolean[rows][columns];
+
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 if (i % 2 == 1 && j % 2 == 1) {
@@ -74,11 +86,11 @@ public class GraphData{
     public int getExitY() {
         return exitY;
     }
-    
+
     public boolean inArea(int x, int y) {
         return x >= 0 && x < rows && y >= 0 && y < columns;
     }
-    
+
     /**
      * get certain character of the graph
      *
@@ -93,9 +105,7 @@ public class GraphData{
         }
         return graph[i][j];
     }
-    
-    
-    
+
     //Initialise tables
     public void resetTables() {
         visited = new boolean[rows][columns];
