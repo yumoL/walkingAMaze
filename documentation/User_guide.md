@@ -4,7 +4,7 @@
 ```
 git clone git@github.com:yumoL/walkingAMaze.git
 ```
-- Access the program by enter the command
+- Access the program by entering the command
  ```
 cd thePlaceWhereYouSavedTheProgram/walkingAMaze
 ```
