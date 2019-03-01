@@ -41,5 +41,5 @@ cd thePlaceWhereYouSavedTheProgram/walkingAMaze
 
 - Enter 'n' to generate a new graph. 
 
-- Close the frame of your graph or enter 'e' as the number of row to close the program.
+- Close the frame of your graph to close the program.
 <img src="https://github.com/yumoL/walkingAMaze/blob/master/documentation/pictures/close.png" width="300" height="300">
