@@ -17,7 +17,7 @@ cd thePlaceWhereYouSavedTheProgram/walkingAMaze
 - A short introduction will be shown
 <img src=https://github.com/yumoL/walkingAMaze/blob/master/documentation/pictures/intro.png>
 
-- Enter an available row number and column number and choose the way in which your graph will be generated
+- Enter an available row number and column number and choose the way in which your graph will be generated. Row number and column number should be odd numbers and between 51-1001. Enter "dfs" to use randomized DFS and "prim" to use randomized Prim to generate a graph.  
 <img src="https://github.com/yumoL/walkingAMaze/blob/master/documentation/pictures/generate.png">
 
 - A new graph with defaulted entrance and exit will be generated. Entrance is on the top left corner and exit is on the bottom right corner of the graph.
@@ -39,7 +39,7 @@ cd thePlaceWhereYouSavedTheProgram/walkingAMaze
 
 <img src="https://github.com/yumoL/walkingAMaze/blob/master/documentation/pictures/result.png">
 
-- Press 'n' to generate a new graph. 
+- Enter 'n' to generate a new graph. 
 
 - Close the frame of your graph or enter 'e' as the number of row to close the program.
 <img src="https://github.com/yumoL/walkingAMaze/blob/master/documentation/pictures/close.png" width="300" height="300">
