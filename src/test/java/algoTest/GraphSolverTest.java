@@ -64,7 +64,7 @@ public class GraphSolverTest {
         hasSolution = true;
         init(rows, columns);
         assertTrue(bfs.searchWay());
-        assertEquals(rightCheckedNodes, bfs.checkedNodes());
+        assertEquals(rightCheckedNodes, bfs.countExpandedRoads());
     }
 
     private void pathFoundUsingAstarWithManhattan(int rows, int columns, int rightCheckedNodes) {
@@ -72,7 +72,7 @@ public class GraphSolverTest {
         init(rows, columns);
         System.out.println("Manhattan");
         assertTrue(astarManhattan.searchWay());
-        assertEquals(rightCheckedNodes, astarManhattan.checkedNodes());
+        assertEquals(rightCheckedNodes, astarManhattan.countExpandedRoads());
     }
 
     private void pathFoundUsingAstarWithEuclidean(int rows, int columns, int rightCheckedNodes) {
@@ -80,7 +80,7 @@ public class GraphSolverTest {
         init(rows, columns);
         System.out.println("Euclidean");
         assertTrue(astarEu.searchWay());
-        assertEquals(rightCheckedNodes, astarEu.checkedNodes());
+        assertEquals(rightCheckedNodes, astarEu.countExpandedRoads());
     }
 
     private void pathFoundUsingAstarWithEuclideanSquare(int rows, int columns, int rightCheckedNodes) {
@@ -88,7 +88,7 @@ public class GraphSolverTest {
         init(rows, columns);
         System.out.println("Squared Euclidean");
         assertTrue(astarEuSq.searchWay());
-        assertEquals(rightCheckedNodes, astarEuSq.checkedNodes());
+        assertEquals(rightCheckedNodes, astarEuSq.countExpandedRoads());
     }
 
     private void rightPathLength(int rows, int columns, int shortest, int longerWhenSq) {

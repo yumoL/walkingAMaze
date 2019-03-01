@@ -63,11 +63,11 @@ public abstract class PathFindingAlgo {
     }
 
     /**
-     * count how many nodes were checked during the path finding
+     * count how many roads were expanded during the path finding
      *
-     * @return the number of checked nodes
+     * @return the number of expanded roads
      */
-    public int checkedNodes() {
+    public int countExpandedRoads() {
         int checked = 0;
         for (int i = 0; i < data.getRow(); i++) {
             for (int j = 0; j < data.getColumn(); j++) {

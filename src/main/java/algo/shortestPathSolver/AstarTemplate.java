@@ -55,8 +55,6 @@ public abstract class AstarTemplate extends PathFindingAlgo {
                 return true;
             }
             curNode = openList.poll();
-            //System.out.println("extract "+curNode.getX()+","+curNode.getY()+" "+curNode.getF());
-            //closeList.add(curNode);
             data.visited[curNode.getX()][curNode.getY()] = true;
             map.remove(curNode);
             setData(curNode.getX(), curNode.getY(), true);
@@ -92,16 +90,13 @@ public abstract class AstarTemplate extends PathFindingAlgo {
             return false;
         }
 
-//        if (closeList.contains(node)) {
-//            return false;
-//        }
+
         if (data.visited[node.getX()][node.getY()]) {
             return false;
         }
-        //System.out.println("contains (1,6) "+map.containsKey(node));
+        ;
         if (map.containsKey(node)) {
             int index = map.get(node);
-            //System.out.println("index "+index);
             node.setG(openList.getElement(index).getG());
             if (preNode.getG() + cost < node.getG()) {
                 count(node, exitNode, cost);
@@ -116,7 +111,6 @@ public abstract class AstarTemplate extends PathFindingAlgo {
                 exitNode.setF(node.getF());
             }
 
-            // System.out.println("i " + i);
             i++;
         }
 

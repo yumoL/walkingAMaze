@@ -23,8 +23,6 @@ public class Comparator {
     private GraphFrame frame;
     private PrimGenerator primGen;
     private DfsGenerator dfsGen;
-    private final int USE_DFS = 0;
-    private final int USE_PRIM = 1;
     private int shortest;
 
     public Comparator(int rows, int columns, String generate) {
@@ -44,7 +42,7 @@ public class Comparator {
      * Test the efficiency of bfs
      */
     public void testBfs() {
-        int checkedNodes = 0;
+        int expandedRoads = 0;
         long time = 0;
         for (int i = 0; i < 10; i++) {
             bfs = new Bfs(data, frame);
@@ -54,14 +52,14 @@ public class Comparator {
                 time += (end - start);
             }
             if (i == 9) {
-                checkedNodes = bfs.checkedNodes();
+                expandedRoads = bfs.countExpandedRoads();
                 shortest = bfs.countResult();
             }
             data.resetTables();
 
         }
         System.out.println("Bfs average time: " + time / 10 + " ms");
-        System.out.println("Checked nodes in Bfs: " + checkedNodes);
+        System.out.println("Expanded roads in Bfs: " + expandedRoads);
         frame.dispose();
 
     }
@@ -71,7 +69,7 @@ public class Comparator {
      * function
      */
     public void testAstarManhattan() {
-        int checkedNodes = 0;
+        int expandedRoads = 0;
         long time = 0;
         for (int i = 0; i < 10; i++) {
             astarManhattan = new AstarWithManhattan(data, frame);
@@ -81,13 +79,13 @@ public class Comparator {
                 time += (end - start);
             }
             if (i == 9) {
-                checkedNodes = astarManhattan.checkedNodes();
+                expandedRoads = astarManhattan.countExpandedRoads();
             }
             data.resetTables();
 
         }
         System.out.println("Astar with Manhattan average time: " + time / 10 + " ms");
-        System.out.println("Checked nodes in astar with Manhattan: " + checkedNodes);
+        System.out.println("Expanded roads in astar with Manhattan: " + expandedRoads);
         frame.dispose();
 
     }
@@ -97,7 +95,7 @@ public class Comparator {
      * function
      */
     public void testAstarEu() {
-        int checkedNodes = 0;
+        int expandedRoads = 0;
         long time = 0;
         for (int i = 0; i < 10; i++) {
             astarEu = new AstarWithEuclidean(data, frame);
@@ -107,23 +105,23 @@ public class Comparator {
                 time += (end - start);
             }
             if (i == 9) {
-                checkedNodes = astarEu.checkedNodes();
+                expandedRoads = astarEu.countExpandedRoads();
             }
             data.resetTables();
 
         }
         System.out.println("Astar with Euclidean average time: " + time / 10 + " ms");
-        System.out.println("Checked nodes in astar with Euclidean: " + checkedNodes);
+        System.out.println("Expanded roads in astar with Euclidean: " + expandedRoads);
         frame.dispose();
 
     }
-    
+
     /**
-     * Test the efficiency of A* when using squared Euclidean distance as heuristic
-     * function
+     * Test the efficiency of A* when using squared Euclidean distance as
+     * heuristic function
      */
     public void testAstarSquaredEu() {
-        int checkedNodes = 0;
+        int expandedRoads = 0;
         long time = 0;
         for (int i = 0; i < 10; i++) {
             astarEuSq = new AstarWithEuclideanSquare(data, frame);
@@ -133,14 +131,14 @@ public class Comparator {
                 time += (end - start);
             }
             if (i == 9) {
-                checkedNodes = astarEuSq.checkedNodes();
+                expandedRoads = astarEuSq.countExpandedRoads();
                 break;
             }
             data.resetTables();
 
         }
         System.out.println("Astar with squared Euclidean average time: " + time / 10 + " ms");
-        System.out.println("Checked nodes in astar with squared Euclidean: " + checkedNodes);
+        System.out.println("Expanded roads in astar with squared Euclidean: " + expandedRoads);
         System.out.println("shortest: " + shortest);
         System.out.println(astarEuSq.findShortestPathOrNot(shortest));
         frame.dispose();
