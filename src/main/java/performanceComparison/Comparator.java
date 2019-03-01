@@ -8,6 +8,7 @@ import algo.shortestPathSolver.AstarWithManhattan;
 import algo.shortestPathSolver.Bfs;
 import data.GraphData;
 import graphVisualization.GraphFrame;
+import graphVisualization.GraphVisualizer;
 
 /**
  * Compare the performance of different path finding algorithms
@@ -26,15 +27,15 @@ public class Comparator {
     private final int USE_PRIM = 1;
     private int shortest;
 
-    public Comparator(int rows, int columns, int generate) {
+    public Comparator(int rows, int columns, String generate) {
         data = new GraphData(rows, columns);
         frame = new GraphFrame(null, 0, 0);
 
         dfsGen = new DfsGenerator(data, frame);
         primGen = new PrimGenerator(data, frame);
-        if (generate == USE_DFS) {
+        if (generate.equals(GraphVisualizer.DFS)) {
             dfsGen.generateLabyrinth();
-        } else if (generate == USE_PRIM) {
+        } else if (generate.equals(GraphVisualizer.PRIM)) {
             primGen.generateLabyrinth();
         }
     }
@@ -147,7 +148,7 @@ public class Comparator {
     }
 
     public static void main(String[] args) {
-        Comparator comp = new Comparator(1001/*rows*/, 1001/*columns*/, 1/*how to generate 0=DFS and 1=Prim*/);
+        Comparator comp = new Comparator(1001/*rows*/, 1001/*columns*/, "dfs"/*how to generate dfs=DFS and prim=Prim*/);
         comp.testBfs();
         comp.testAstarManhattan();
         comp.testAstarEu();

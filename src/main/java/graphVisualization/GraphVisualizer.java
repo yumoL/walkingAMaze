@@ -26,9 +26,12 @@ public class GraphVisualizer {
     private AstarWithEuclideanSquare astarEuSq;
 
     private int shortestPath;
-    protected int howToGenerate;
+    protected String howToGenerate;
+    
+    public static final String DFS="dfs";
+    public static final String PRIM="prim";
 
-    public GraphVisualizer(int rows, int columns, int generator) {
+    public GraphVisualizer(int rows, int columns, String generator) {
 
         // initialise data
         data = new GraphData(rows, columns);
@@ -43,12 +46,11 @@ public class GraphVisualizer {
             primGenerator = new PrimGenerator(data, frame);
             dfsGenerator = new DfsGenerator(data, frame);
 
-            //setShortestPath();
             frame.addKeyListener(new GrapfKeyListener());
             new Thread(() -> {
-                if (howToGenerate == 0) {
+                if (howToGenerate.equals(DFS)) {
                     dfsGenerator.generateLabyrinth();
-                } else if (howToGenerate == 1) {
+                } else if (howToGenerate.equals(PRIM)) {
                     
                     primGenerator.generateLabyrinth();
                 }
