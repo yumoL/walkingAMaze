@@ -25,8 +25,8 @@ public class App {
     }
 
     private void printIntroduction() {
-        System.out.println("Please enter the numbers of the rows and columns of your graph"
-                + "and choose in which way your graph will be generated");
+        System.out.println("Please enter the numbers of the rows and columns of your graph "
+                + "and choose in which way your graph will be generated. The numbers of rows and columns should be odd numbers and between 51-1001");
     }
 
     private void requireCheck() {
@@ -44,7 +44,7 @@ public class App {
 
     private void howToWalk() {
         System.out.println("Please make sure your mouse is on the graph. Press a to use BFS, b to use A* with Manhattan distance, "
-                + "c to use A* with Eucidean distance and d to use A* with squared Euclidean distance to walk the graph");
+                + "c to use A* with Eucidean distance and d to use A* with squared Euclidean distance to walk the graph. Please use some other algorithm to find the shortest path before you use A* with squared Euclidean distance");
     }
 
     private void exit() {
