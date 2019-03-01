@@ -3,7 +3,6 @@ package algo.labyrinthGenerator;
 import data.Node;
 import data.GraphData;
 import graphVisualization.GraphFrame;
-import java.util.Random;
 import util.RandomQueue;
 
 public class DfsGenerator extends Generator {
