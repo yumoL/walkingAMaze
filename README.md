@@ -13,3 +13,5 @@ A project of TiraLabra
 [Implementation document](https://github.com/yumoL/walkingAMaze/blob/master/documentation/Implementation_document.md)
 
 [Testing document](https://github.com/yumoL/walkingAMaze/blob/master/documentation/Testing_document.md)
+
+[User Guide](https://github.com/yumoL/walkingAMaze/blob/master/documentation/User_guide.md)
