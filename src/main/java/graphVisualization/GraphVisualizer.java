@@ -73,7 +73,7 @@ public class GraphVisualizer {
                     bfs.searchWay();
                     long e = System.currentTimeMillis();
                     System.out.println("bfs: " + (e - s) + "ms");
-                    System.out.println("checked nodes in bfs: " + bfs.checkedNodes());
+                    System.out.println("checked roads in bfs: " + bfs.checkedNodes());
                     shortestPath=bfs.countResult();
                 }).start();
 
@@ -87,7 +87,7 @@ public class GraphVisualizer {
                     astarManhattan.searchWay();
                     long e = System.currentTimeMillis();
                     System.out.println("A* using Manhattan distance: " + (e - s) + "ms");
-                    System.out.println("checked nodes in A* using Manhattan distance: " + astarManhattan.checkedNodes());
+                    System.out.println("checked roads in A* using Manhattan distance: " + astarManhattan.checkedNodes());
                 }).start();
 
             }
@@ -100,7 +100,7 @@ public class GraphVisualizer {
                     astarEu.searchWay();
                     long e = System.currentTimeMillis();
                     System.out.println("A* using Euclidean distance: " + (e - s) + "ms");
-                    System.out.println("checked nodes in A* using Euclidean distance: " + astarEu.checkedNodes());
+                    System.out.println("checked roads in A* using Euclidean distance: " + astarEu.checkedNodes());
                 }).start();
 
             }
@@ -113,7 +113,7 @@ public class GraphVisualizer {
                     astarEuSq.searchWay();
                     long e = System.currentTimeMillis();
                     System.out.println("A* using squared Euclidian distance: " + (e - s) + "ms");
-                    System.out.println("checked nodes in A* using squared Euclidean distance: " + astarEuSq.checkedNodes());
+                    System.out.println("checked roads in A* using squared Euclidean distance: " + astarEuSq.checkedNodes());
                     System.out.println("shortest path: "+shortestPath);
                     System.out.println(astarEuSq.findShortestPathOrNot(shortestPath));
                 }).start();
