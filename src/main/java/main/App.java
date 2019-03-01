@@ -10,14 +10,11 @@ public class App {
 
     private GraphVisualizer gvis;
     private Scanner scanner;
-    private int order;
-    private final int GENERATE_BY_DFS = 0;
-    private final int GENERATE_BY_PRIM = 1;
-    private final int NEW_ONE = 3;
+    private String order;
+    private final String NEW_ONE = "n";
 
     public App() {
         scanner = new Scanner(System.in);
-        order = -1;
     }
 
     private void printWelcome() {
@@ -25,8 +22,8 @@ public class App {
     }
 
     private void printIntroduction() {
-        System.out.println("Please enter the numbers of the rows and columns of your graph "
-                + "and choose in which way your graph will be generated. The numbers of rows and columns should be odd numbers and between 51-1001");
+        System.out.println("Please enter the numbers of the rows and columns of your graph, the numbers of rows and columns should be odd numbers and between 51-1001. "
+                + "Then choose in which way your graph will be generated. If you'd like to exit the program, just simply close the frame.");
     }
 
     private void requireCheck() {
@@ -35,20 +32,16 @@ public class App {
 
     private void printChooseWay() {
         System.out.println("Which way would you like to use to generate your graph?"
-                + "Enter 0 for DFS or 1 for randomized Prim");
+                + "Enter dfs for DFS or prim for randomized Prim");
     }
 
     private void newOne() {
-        System.out.println("Choose 3 to generate a new graph");
+        System.out.println("Enter n to generate a new graph");
     }
 
     private void howToWalk() {
         System.out.println("Please make sure your mouse is on the graph. Press a to use BFS, b to use A* with Manhattan distance, "
                 + "c to use A* with Eucidean distance and d to use A* with squared Euclidean distance to walk the graph. Please use some other algorithm to find the shortest path before you use A* with squared Euclidean distance");
-    }
-
-    private void exit() {
-        System.out.println("If you'd like to exit the program, just simply close the frame of your graph or enter -1 as the number of rows");
     }
 
     /**
@@ -87,15 +80,20 @@ public class App {
 
         while (true) {
             printIntroduction();
-            exit();
 
             System.out.println("Rows:");
-            int rows = scanner.nextInt();
-            if (rows < 0) {
-                break;
+            String input = scanner.next();
+            if (!isDigit(input)) {
+                continue;
             }
+            int rows = Integer.parseInt(input);
+
             System.out.println("Columns");
-            int columns = scanner.nextInt();
+            input = scanner.next();
+            if (!isDigit(input)) {
+                continue;
+            }
+            int columns = Integer.parseInt(input);
 
             if (!valuableRowsAndColumns(rows, columns)) {
                 requireCheck();
@@ -103,21 +101,56 @@ public class App {
             }
             chooseBlockSide(rows, columns);
 
-            printChooseWay();
-            order = scanner.nextInt();
-            if (order == GENERATE_BY_DFS) {
-                gvis = new GraphVisualizer(rows, columns, GENERATE_BY_DFS);
-            } else if (order == GENERATE_BY_PRIM) {
-                gvis = new GraphVisualizer(rows, columns, GENERATE_BY_PRIM);
-            }
+            chooseGenerationWay(rows, columns);
+
             howToWalk();
 
             newOne();
-            order = scanner.nextInt();
-            if (order == NEW_ONE) {
+            order = scanner.next();
+            order = order.toLowerCase();
+            if (order.equals(NEW_ONE)) {
                 gvis.frame.dispose();
             }
 
         }
+    }
+
+    /**
+     * Determine if an input is digit
+     *
+     * @param str Input
+     * @return true if the input is digit, otherwise false
+     */
+    private boolean isDigit(String str) {
+        for (int i = 0; i < str.length(); i++) {
+            if (!Character.isDigit(str.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * The logic of choosing the way in which a graph will be generated
+     *
+     * @param rows
+     * @param columns
+     */
+    private void chooseGenerationWay(int rows, int columns) {
+        while (true) {
+            printChooseWay();
+
+            order = scanner.next();
+            order = order.toLowerCase();
+            if (order.equals(GraphVisualizer.DFS)) {
+                gvis = new GraphVisualizer(rows, columns, GraphVisualizer.DFS);
+                break;
+            } else if (order.equals(GraphVisualizer.PRIM)) {
+                gvis = new GraphVisualizer(rows, columns, GraphVisualizer.PRIM);
+                break;
+            }
+
+        }
+
     }
 }
