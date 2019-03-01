@@ -21,7 +21,7 @@ cd thePlaceWhereYouSavedTheProgram/walkingAMaze
 <img src="https://github.com/yumoL/walkingAMaze/blob/master/documentation/pictures/generate.png">
 
 - A new graph with defaulted entrance and exit will be generated. Entrance is on the top left corner and exit is on the bottom right corner of the graph.
-<img src="https://github.com/yumoL/walkingAMaze/blob/master/documentation/pictures/newGraph.png" width="300" height="300">
+<img src="https://github.com/yumoL/walkingAMaze/blob/master/documentation/pictures/new.png" width="300" height="300">
 
 - Make sure your mouse is on the graph
 
