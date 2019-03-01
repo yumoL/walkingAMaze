@@ -20,5 +20,5 @@ cd thePlaceWhereYouSavedTheProgram/walkingAMaze
 - Make sure your mouse is on the graph
 - Find the path of the graph using defferent algorithms. Press 'a' to use BFS, 'b' to use A* whose heuristic function is Manhattan distance, 'c' to use A* whose heuristic function is Euclidean distance and 'd' to use A* whose heuristic function is squared Euclidean function. Please use some other algorithm to find the shortest path before you use A* with squared Euclidean distance. 
 - You can see the time that each algorithm used and the number of roads that each algorithm expanded. You can also see whether the A* with squared Euclidean distance found the shortest path or not and if not, how many more nodes the path found by A* with squared Euclidean distance has compared to the shortest path. 
-- Press '3' to generate a new graph. 
-- Close the frame of your graph or enter -1 as the number of row to close the program.
+- Press 'n' to generate a new graph. 
+- Close the frame of your graph or enter 'e' as the number of row to close the program.
