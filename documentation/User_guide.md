@@ -2,7 +2,8 @@
 ### Download the Program
 - Enter the command below in your console
 ```
-git clone git@github.com:yumoL/walkingAMaze.git
+git clone https://github.com/yumoL/walkingAMaze.git
+
 ```
 - Access the program by entering the command
  ```
@@ -14,6 +15,11 @@ cd thePlaceWhereYouSavedTheProgram/walkingAMaze
 ```
 ./gradlew run
 ```
+If it dosen't work, please try 
+```
+gradle run
+```
+
 - A short introduction will be shown
 <img src=https://github.com/yumoL/walkingAMaze/blob/master/documentation/pictures/intro.png>
 
