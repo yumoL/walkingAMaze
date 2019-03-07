@@ -3,8 +3,7 @@ package util;
 import java.util.Random;
 
 /**
- *
- * @author luoyumo
+ * Queue which can extract element randomly
  */
 public class RandomQueue<E> implements Queue<E> {
 

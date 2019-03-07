@@ -6,15 +6,17 @@ package util;
  */
 public interface Queue<E> {
 
-    /*
-    Insert an element
+    /**
+     * Insert an element
+     * @param e 
      */
     void add(E e);
 
     boolean isEmpty();
 
-    /*
-    Extract the element
+    /**
+     * Extract an element
+     * @return the extracted element
      */
     E poll();
     

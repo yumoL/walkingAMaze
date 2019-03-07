@@ -18,8 +18,11 @@ public class MyArrayList<E> {
         return size == 0;
     }
 
-    /*
-    Insert e to the given index
+    /**
+     * Insert e to the given index
+     *
+     * @param index index to which an element should be added
+     * @param e the element which is to be added
      */
     public void add(int index, E e) {
         if (index < 0 || index > size) {
@@ -35,15 +38,19 @@ public class MyArrayList<E> {
         size++;
     }
 
-    /*
-    Insert e to the end of the array
+    /**
+     * Insert an element to the end of the array
+     *
+     * @param e
      */
     public void addLast(E e) {
         add(size, e);
     }
 
-    /*
-    Insert e to the begin of the array
+    /**
+     * Insert e to the begin of the array
+     *
+     * @param e
      */
     public void addFirst(E e) {
         add(0, e);
