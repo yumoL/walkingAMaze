@@ -33,3 +33,12 @@ mainClassName = 'main.Main'
 run{
     standardInput = System.in
 }
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'main.Main'
+    }
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}

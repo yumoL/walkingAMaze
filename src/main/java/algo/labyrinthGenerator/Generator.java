@@ -16,7 +16,10 @@ public abstract class Generator {
     }
 
     /**
-     * Mark node(x,y) as road
+     * Mark node(x,y) as a road
+     *
+     * @param x the x-coordinate of the node
+     * @param y the y-coordinate of the node
      */
     protected void setRoadData(int x, int y) {
         if (data.inArea(x, y)) {

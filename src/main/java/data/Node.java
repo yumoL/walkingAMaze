@@ -59,7 +59,7 @@ public class Node implements Comparable<Node> {
     /**
      * Compare two nodes
      *
-     * @param candidate
+     * @param candidate the node which is to be compared with the current one
      * @return a negative number if the f of the node is smaller than the f of
      * candidate. Return 0 if the f of node is equals to the f of candidate.
      * Otherwise return a positive number

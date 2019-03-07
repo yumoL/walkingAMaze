@@ -1,4 +1,3 @@
-
 package util;
 
 /**
@@ -8,7 +7,8 @@ public interface Queue<E> {
 
     /**
      * Insert an element
-     * @param e 
+     *
+     * @param e the element which is to be added
      */
     void add(E e);
 
@@ -16,8 +16,9 @@ public interface Queue<E> {
 
     /**
      * Extract an element
+     *
      * @return the extracted element
      */
     E poll();
-    
+
 }

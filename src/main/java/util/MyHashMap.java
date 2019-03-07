@@ -40,7 +40,7 @@ public class MyHashMap {
     /**
      * Get value according to the key
      *
-     * @param key
+     * @param key the key whose mapping value should be gotten
      * @return the value to which the specified key is mapped, or -1 if this map
      * contains no mapping for the key or the key doesn't exist
      */

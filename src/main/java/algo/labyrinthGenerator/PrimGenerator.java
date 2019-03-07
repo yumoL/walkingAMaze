@@ -19,7 +19,7 @@ public class PrimGenerator extends Generator {
     private Random r;
 
     public PrimGenerator(GraphData data, GraphFrame frame) {
-        super(data,frame);
+        super(data, frame);
 
         r = new Random();
         walls = new MyArrayList<>();
@@ -94,9 +94,10 @@ public class PrimGenerator extends Generator {
     }
 
     /**
-     * Define if a wall is inside the labyrinth, which means the x-coordinate of the
-     * wall should in [1,the number of rows of the labyrinth-2] and the y-coordinate
-     * of the wall should in [1,the number of columns of the labyrinth-2]
+     * Define if a wall is inside the labyrinth, which means the x-coordinate of
+     * the wall should in [1,the number of rows of the labyrinth-2] and the
+     * y-coordinate of the wall should in [1,the number of columns of the
+     * labyrinth-2]
      *
      * @param x the x-coordinate of the wall
      * @param y the y-coordinate of the wall
@@ -106,27 +107,29 @@ public class PrimGenerator extends Generator {
         return x > 0 && x < data.getRow() - 1 && y > 0 && y < data.getColumn() - 1;
 
     }
-    
+
     @Override
     protected void breakMoreWalls() {
         for (int i = 0; i < data.getColumn() * data.getRow() / 20; i++) {
             //int row = (int) (Math.random() * (data.getRow() - 2)) + 1;
-            int row=r.nextInt(data.getRow()-2)+1;
-            
-            int column = r.nextInt(data.getColumn()-2)+1;
+            int row = r.nextInt(data.getRow() - 2) + 1;
+
+            int column = r.nextInt(data.getColumn() - 2) + 1;
             if (data.graph[row][column] == GraphData.WALL) {
                 setRoadData(row, column);
 
             }
         }
     }
-    
+
     /**
-     * Used in test so that the algorithm can generate the same labyrinth all the time
-     * @param seed 
+     * Used in test so that the algorithm can generate the same labyrinth all
+     * the time
+     *
+     * @param seed the seed which will be set to the Random-object
      */
-    public void setRandomSeed(int seed){
-        this.r=new Random(seed);
+    public void setRandomSeed(int seed) {
+        this.r = new Random(seed);
     }
 
 }

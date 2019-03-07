@@ -41,7 +41,7 @@ public class MyArrayList<E> {
     /**
      * Insert an element to the end of the array
      *
-     * @param e
+     * @param e the element which is to be added
      */
     public void addLast(E e) {
         add(size, e);
@@ -50,7 +50,7 @@ public class MyArrayList<E> {
     /**
      * Insert e to the begin of the array
      *
-     * @param e
+     * @param e the element which is to be added
      */
     public void addFirst(E e) {
         add(0, e);
@@ -72,6 +72,7 @@ public class MyArrayList<E> {
     /**
      * Delete the element from the given index
      *
+     * @param index the index from which the element will be removed
      * @return deleted element
      */
     public E remove(int index) {
@@ -122,9 +123,9 @@ public class MyArrayList<E> {
     }
 
     /**
-     * Check if the list contains element e
+     * Check if the list contains an element
      *
-     * @param e
+     * @param e the element which should be determined if it's in the list
      * @return true if e is in the list, otherwise false
      */
     public boolean contains(E e) {

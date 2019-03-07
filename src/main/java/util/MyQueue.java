@@ -9,7 +9,7 @@ public class MyQueue<E> implements Queue<E> {
     }
 
     /**
-    Insert e into the last of queue
+     * Insert e into the last of queue
      */
     @Override
     public void add(E e) {
@@ -18,6 +18,7 @@ public class MyQueue<E> implements Queue<E> {
 
     /**
      * Extract the element which was inserted first
+     *
      * @return the extracted element
      */
     @Override

@@ -86,11 +86,12 @@ public class GraphData {
     public int getExitY() {
         return exitY;
     }
-    
+
     /**
      * Determine if node(x,y) is inside the graph
-     * @param x
-     * @param y
+     *
+     * @param x the x-coordinate of the node
+     * @param y the y-coordinate of the node
      * @return true if the node is inside the graph, otherwise false
      */
     public boolean inArea(int x, int y) {
