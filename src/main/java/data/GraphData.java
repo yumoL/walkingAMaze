@@ -86,7 +86,13 @@ public class GraphData {
     public int getExitY() {
         return exitY;
     }
-
+    
+    /**
+     * Determine if node(x,y) is inside the graph
+     * @param x
+     * @param y
+     * @return true if the node is inside the graph, otherwise false
+     */
     public boolean inArea(int x, int y) {
         return x >= 0 && x < rows && y >= 0 && y < columns;
     }
@@ -106,7 +112,9 @@ public class GraphData {
         return graph[i][j];
     }
 
-    //Initialise tables
+    /**
+     * initialise tables
+     */
     public void resetTables() {
         visited = new boolean[rows][columns];
         path = new boolean[rows][columns];

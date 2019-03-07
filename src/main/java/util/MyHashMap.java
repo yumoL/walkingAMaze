@@ -27,8 +27,11 @@ public class MyHashMap {
         map = new Entry[CAPACITY];
     }
 
-    /*
-    Hash function
+    /**
+     * Hash function
+     *
+     * @param node the node for which the hash value should be generated
+     * @return generated hash value
      */
     private int hash(Node node) {
         return node.hashCode() % CAPACITY;
@@ -85,7 +88,8 @@ public class MyHashMap {
      * Remove the mapping for the specified key from this map if present.
      *
      * @param key key whose mapping is to be removed from the map
-     * @return value associated with the removed key if key presents. Otherwise return null
+     * @return value associated with the removed key if key presents. Otherwise
+     * return null
      */
     public Integer remove(Node key) {
         int h = hash(key);

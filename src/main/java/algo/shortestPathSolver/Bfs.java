@@ -44,7 +44,7 @@ public class Bfs extends PathFindingAlgo {
                 }
             }
         }
-        //printResult(hasSolution);
+        
         return hasSolution;
     }
 

@@ -56,7 +56,14 @@ public class Node implements Comparable<Node> {
         this.h = newH;
     }
 
-    //node a <node b, if a.f<b.f
+    /**
+     * Compare two nodes
+     *
+     * @param candidate
+     * @return a negative number if the f of the node is smaller than the f of
+     * candidate. Return 0 if the f of node is equals to the f of candidate.
+     * Otherwise return a positive number
+     */
     @Override
     public int compareTo(Node candidate) {
         return this.f - candidate.f;

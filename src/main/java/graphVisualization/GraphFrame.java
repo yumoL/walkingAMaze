@@ -4,6 +4,9 @@ import data.GraphData;
 import java.awt.*;
 import javax.swing.*;
 
+/**
+ * Create a frame for the graph
+ */
 public class GraphFrame extends JFrame {
 
     private int canvasWidth;

@@ -121,7 +121,10 @@ public class PrimGenerator extends Generator {
         }
     }
     
-    //used in tests
+    /**
+     * Used in test so that the algorithm can generate the same labyrinth all the time
+     * @param seed 
+     */
     public void setRandomSeed(int seed){
         this.r=new Random(seed);
     }
