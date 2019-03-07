@@ -1,5 +1,6 @@
 # User Guide
 ### Download the Program
+##### Download the source code
 - Enter the command below in your console
 ```
 git clone https://github.com/yumoL/walkingAMaze.git
@@ -9,8 +10,11 @@ git clone https://github.com/yumoL/walkingAMaze.git
  ```
 cd thePlaceWhereYouSavedTheProgram/walkingAMaze
 ```
+##### Download the jar-file
+- Go to the release and download the jar-file
 
 ### Use the program
+##### For source code
 - Start the program by entering the command
 ```
 ./gradlew run
@@ -18,6 +22,11 @@ cd thePlaceWhereYouSavedTheProgram/walkingAMaze
 If it dosen't work, please try 
 ```
 gradle run
+```
+##### For jar-file
+If you downloaded the jar-file, you can start the program by entering
+```
+java -jar thePlaceWhereYouSavedTheJarFile/WalkingAMaze.jar
 ```
 
 - A short introduction will be shown
