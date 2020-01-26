@@ -1,5 +1,5 @@
 # walkingAMaze
-A project of TiraLabra
+A project of TiraLabra to generate maze and find the shortest path from entrance to exit.
 
 [![Build Status](https://travis-ci.org/yumoL/walkingAMaze.svg?branch=master)](https://travis-ci.org/yumoL/walkingAMaze)
 [![codecov](https://codecov.io/gh/yumoL/walkingAMaze/branch/master/graph/badge.svg)](https://codecov.io/gh/yumoL/walkingAMaze)
